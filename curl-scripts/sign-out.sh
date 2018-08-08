@@ -1,6 +1,6 @@
 # ID=2 sh curl-scripts/sign-out.sh
 
-curl "https://wdi-library-api.herokuapp.com/sign-out" \
+curl "https://aqueous-atoll-85096.herokuapp.com/sign-out" \
   --include \
   --request DELETE \
   --header "Content-Type: application/json" \

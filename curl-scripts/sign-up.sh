@@ -1,6 +1,6 @@
 # sh curl-scripts/json/sign-up.sh
 
-curl "https://wdi-library-api.herokuapp.com/sign-up" \
+curl "https://aqueous-atoll-85096.herokuapp.com/sign-up" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \

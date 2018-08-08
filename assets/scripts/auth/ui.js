@@ -7,6 +7,7 @@ const signUpSuccess = function () {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#sign-up input').val('')
+  console.log('signUpSuccess ran')
   // $('#timeout')
 }
 
@@ -15,6 +16,7 @@ const signUpFail = function () {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#sign-up input').val('')
+  console.log('signUpFail ran')
 }
 
 const signInSuccess = function (response) {
@@ -25,6 +27,7 @@ const signInSuccess = function (response) {
   console.log('response is', response)
   store.user = response.user
   console.log('store', store)
+  console.log('signInSuccess ran')
   // $('#timeout')
 }
 
@@ -33,24 +36,25 @@ const signInFail = function () {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#sign-in input').val('')
+  console.log('signInFail ran')
 }
 
-const passwordChangeSuccess = function (response) {
-  $('#message').text('Successful Password Change')
-  $('#message').removeClass()
-  $('#message').addClass('success')
-  $('#sign-in input').val('')
-  console.log('response is', response)
-  console.log('store', store)
-  // $('#timeout')
-}
-
-const passwordChangeFail = function () {
-  $('#message').text('Password Change Failed')
-  $('#message').removeClass()
-  $('#message').addClass('fail')
-  $('#sign-in input').val('')
-}
+// const passwordChangeSuccess = function (response) {
+//   $('#message').text('Successful Password Change')
+//   $('#message').removeClass()
+//   $('#message').addClass('success')
+//   $('#sign-in input').val('')
+//   console.log('response is', response)
+//   console.log('store', store)
+//   // $('#timeout')
+// }
+//
+// const passwordChangeFail = function () {
+//   $('#message').text('Password Change Failed')
+//   $('#message').removeClass()
+//   $('#message').addClass('fail')
+//   $('#sign-in input').val('')
+// }
 
 const signOutSuccess = function (response) {
   $('#message').text('Successful Sign Out')
@@ -67,31 +71,32 @@ const signOutFail = function () {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#sign-in input').val('')
+  console.log('signoutFail ran')
 }
 
-const toggleLoginButton = function () {
-  // let myToggle = document.getElementById('sign-in');
-  // let displaySetting = myToggle.style.display;
-  const signInButton = document.getElementById('sign-in')
-  const displaySetting = signInButton.style.display
-  if (displaySetting === 'block') {
-    signInButton.style.display = 'none'
-    signInButton.innerHTML = 'Show signInButton'
-  } else {
-    signInButton.style.display = 'block'
-    signInButton.innerHTML = 'Hide signInButton'
-  }
-}
+// const toggleLoginButton = function () {
+//   // let myToggle = document.getElementById('sign-in');
+//   // let displaySetting = myToggle.style.display;
+//   const signInButton = document.getElementById('sign-in')
+//   const displaySetting = signInButton.style.display
+//   if (displaySetting === 'block') {
+//     signInButton.style.display = 'none'
+//     signInButton.innerHTML = 'Show signInButton'
+//   } else {
+//     signInButton.style.display = 'block'
+//     signInButton.innerHTML = 'Hide signInButton'
+//   }
+// }
 
 module.exports = {
   signUpSuccess,
   signUpFail,
   signInSuccess,
   signInFail,
-  passwordChangeSuccess,
-  passwordChangeFail,
+  // passwordChangeSuccess,
+  // passwordChangeFail,
   signOutSuccess,
   signOutFail,
-  toggleLoginButton,
+  // toggleLoginButton,
   store
 }

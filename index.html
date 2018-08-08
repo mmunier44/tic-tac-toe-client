@@ -17,6 +17,7 @@
 
       <h1>Tic Tac Toe</h1>
 
+
       <!-- <div class="game-box">
           <div class="top left square" id=0>0</div>
           <div class="top h-mid square" id=1>1</div>
@@ -48,12 +49,93 @@
                 <div class="col-md-4 box blue">X</div>
               </div>
       <br>
-              <div class="crud">
+              <!-- <div class="crud">
                 <div class="col-md-3 box">Sign Up</div>
                 <div class="col-md-3 box">Login</div>
                 <div class="col-md-3 box">Start Game</div>
                 <div class="col-md-3 box">Reset</div>
+              </div> -->
+
+              <p id="message"></p>
+
+                <form id="sign-up" class="border">
+                  <fieldset>
+                    <legend>Sign up!</legend>
+                    <input type="text" name="credentials[email]" placeholder="Email">
+                    <input type="password" name="credentials[password]" placeholder="Password">
+                    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                    <input type="submit" value="Sign up!">
+                  </fieldset>
+                </form>
+
+                <form id="sign-in" class="border">
+                  <fieldset>
+                    <legend>Sign in!</legend>
+                    <input type="text" name="credentials[email]" placeholder="Email">
+                    <input type="password" name="credentials[password]" placeholder="Password">
+                    <input type="submit" value="Sign in!">
+                  </fieldset>
+                </form>
+
+                <form id="sign-out" class="border">
+                  <fieldset>
+                    <legend>Sign Out!</legend>
+                    <input type="submit" value="Sign out!">
+                  </fieldset>
+                </form>
+
+                <!-- <form id="change-password" class="border">
+                  <fieldset>
+                    <legend>Change Password!</legend>
+                    <input type="password" name="passwords[old]" placeholder="Old Password">
+                    <input type="password" name="passwords[new]" placeholder="New Password">
+                    <input type="submit" value="Change Password!">
+                  </fieldset>
+                </form> -->
+
+
+              <!-- <div>
+                <form id="sign-up">
+                  <fieldset>
+                    <legend>Sign Up</legend>
+                    <input type ="email" name="credentials[email]" placeholder="Email">
+                    <input type ="password" name="credentials[password]" placeholder="Password">
+                    <input type ="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                    <button type = "submit">Sign Up</button>
+                  </fieldset>
+                </form>
               </div>
+
+              <div>
+                  <form id="sign-in">
+                    <fieldset>
+                      <legend>Sign In</legend>
+                      <input type ="email" name="credentials[email]" placeholder="Email">
+                      <input type ="password" name="credentials[password]" placeholder="Password">
+                      <button type = "submit">Sign In</button>
+                    </fieldset>
+                </form>
+              </div>
+
+              <div>
+                <form id="change-password">
+                  <fieldset>
+                    <legend>Password Change</legend>
+                    <input type ="password" name="passwords[old]" placeholder="Old Password">
+                    <input type ="password" name="passwords[new]" placeholder="New Password">
+                    <button type = "submit">Change Password</button>
+                  </fieldset>
+              </form>
+              </div>
+
+              <div>
+                <form id="sign-out">
+                  <fieldset>
+                    <legend>Sign Out</legend>
+                    <button type = "submit">Sign Out</button>
+                  </fieldset>
+              </form>
+              </div> -->
 
 
 

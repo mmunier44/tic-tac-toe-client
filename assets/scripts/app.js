@@ -7,7 +7,7 @@
 // require('./example')
 
 const authEvents = require('./auth/events.js')
-const authExampleEvents = require('./examples.events.js')
+// const authExampleEvents = require('./examples.events.js')
 
 // const signIn = function (data) {
 //   console.log('api URL is', config.apiUrl)
@@ -15,5 +15,5 @@ const authExampleEvents = require('./examples.events.js')
 
 $(() => {
   authEvents.addHandlers()
-  authExampleEvents.addExampleHandlers()
+  // authExampleEvents.addExampleHandlers()
 })

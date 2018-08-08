@@ -7,7 +7,7 @@ const ui = require('./ui.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  // $('#message').text('Sign Up Successful')
+  $('#message').text('Sign Up Successful')
   console.log('submitted the form')
   console.log('event.target:', event.target)
   const data = getFormFields(event.target)
@@ -19,7 +19,7 @@ const onSignUp = function (event) {
 }
 
 const onSignIn = function (event) {
-  // $('#message').text('Sign In Successful')
+  $('#message').text('Sign In Successful')
   event.preventDefault()
   console.log('signed in')
   const data = getFormFields(event.target)
