@@ -3,6 +3,10 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
+const boxClick = function () {
+
+}
+
 const signUp = function (data) {
   console.log('api URL is', config.apiUrl)
   return $.ajax({
@@ -21,17 +25,17 @@ const signIn = function (data) {
   })
 }
 
-const passwordChange = function (data) {
-  // console.log('store in change password', store)
-  return $.ajax({
-    url: config.apiUrl + '/change-password',
-    method: 'PATCH',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    },
-    data: data
-  })
-}
+// const passwordChange = function (data) {
+//   // console.log('store in change password', store)
+//   return $.ajax({
+//     url: config.apiUrl + '/change-password',
+//     method: 'PATCH',
+//     headers: {
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data: data
+//   })
+// }
 
 const signOut = function () {
   // console.log('store in change password', store)
@@ -47,6 +51,6 @@ const signOut = function () {
 module.exports = {
   signUp,
   signIn,
-  passwordChange,
+  // passwordChange,
   signOut
 }

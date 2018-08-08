@@ -5,6 +5,22 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
+// const onBoxClick = function (event) {
+//   event.preventDefault()
+//   $(document).ready(function(){
+//     $("p").on("click", function () {
+//       $(this).hide();
+//       console.log(clickworked);
+//     }
+//   })
+// }
+const onClick = function (event) {
+  $('p').on('click', function () {
+    $(this).hide()
+    return onClick
+  })
+}
+
 const onSignUp = function (event) {
   event.preventDefault()
   $('#message').text('Sign Up Successful')
@@ -55,6 +71,7 @@ const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onPasswordChange)
   $('#sign-out').on('submit', onSignOut)
+
 }
 
 module.exports = {
