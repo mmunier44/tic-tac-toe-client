@@ -55,6 +55,35 @@ h1 {
   // text-align: center;
 }
 
+.scoreboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  // flex-basis: auto;
+  // background: $white;
+  // // padding: 5px;
+  // width: 200px;
+  // height: 150px;
+  // margin-top: 10px;
+  // line-height: 150px;
+  // color: white;
+  font-weight: bold;
+  // font-size: 3em;
+  // text-align: center;
+}
+
+h5 {
+  color: $white;
+}
+
+.message {
+  color: $white;
+}
+
+// .border {
+//   color: $white;
+// }
+
 .crud {
   align-items: center;
   border: 1px solid $white;

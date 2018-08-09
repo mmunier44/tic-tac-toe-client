@@ -2,7 +2,7 @@
 
 const store = require('../store.js')
 
-const signUpSuccess = function () {
+const signUpSuccess = function (data) {
   $('#message').text('Successful Signup')
   $('#message').removeClass()
   $('#message').addClass('success')
@@ -61,8 +61,9 @@ const signOutSuccess = function (response) {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#sign-in input').val('')
-  console.log('response is', response)
-  console.log('store', store)
+  console.log('signOutSucess ran')
+  // console.log('response is', response)
+  // console.log('store', store)
   // $('#timeout')
 }
 

@@ -3,9 +3,9 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
-const boxClick = function () {
-
-}
+// const boxClick = function () {
+//
+// }
 
 const signUp = function (data) {
   console.log('api URL is', config.apiUrl)
@@ -37,14 +37,15 @@ const signIn = function (data) {
 //   })
 // }
 
-const signOut = function () {
+const signOut = function (data) {
   // console.log('store in change password', store)
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
       'Authorization': 'Token token=' + store.user.token
-    }
+    },
+    data: data
   })
 }
 
