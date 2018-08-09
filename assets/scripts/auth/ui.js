@@ -2,6 +2,82 @@
 
 const store = require('../store.js')
 
+// const gameboard = function [
+//   {
+//     topLeft: topLeft,
+//     topMiddle: topMiddle,
+//     topRight: topRight,
+//     middleLeft: middleLeft,
+//     middleMiddle: middleMiddle,
+//     middleRight: middleRight,
+//     bottomLeft: bottomLeft,
+//     bottomMiddle: bottomMiddle,
+//     bottomRight: bottomRight,
+//   }
+// ]
+const markers = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
+
+// const markersImage = 'images/multpile_Tic_Tac_Toe.gif'
+
+// markerImage: "images/multpile_Tic_Tac_Toe.gif"
+//
+// markers()
+//
+
+// const markers = [
+//   markerImage = 'images/multpile_Tic_Tac_Toe.gif',
+//
+// ]
+
+const ticTacToe = function () {
+  this.ticTacToe = ticTacToe
+  this.newBoard = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+  ]
+  this.currentBoard = this.newBoard
+  this.player1 = 'X'
+  this.player2 = 'O'
+  this.gameOver = false
+  this.turn = 1
+}
+
+const flipMarkers = function () {
+// const markers = markers[markersID]
+  let markersID = this.getAttribute('data-id')
+  this.setAttribute('src', markers.markersImage)
+}
+
+const newBoard = function () {
+  for (let i = 0; i < markers.length; i++) {
+    let markersElement = document.createElement('img')
+    markersElement.setAttribute('src', 'images/multpile_Tic_Tac_Toe.gif')
+    markersElement.setAttribute('game-board', i)
+    markersElement.addEventListener('click', flipMarkers)
+    document.getElementById('game-board').appendChild(markersElement)
+  }
+}
+newBoard()
+
+// TicTacToe.prototype.boardState = function() {
+//   this.currentBoard
+// }
+//
+// TicTacToe.prototype.play = function (space) {
+//   this.state = this.currentBoard
+//   console.log(this.state)
+//
+// //   if(marker === 1{
+// //     this.
+// //   })
+// //
+// // }
+
 const signUpSuccess = function (data) {
   $('#message').text('Successful Signup')
   $('#message').removeClass()
