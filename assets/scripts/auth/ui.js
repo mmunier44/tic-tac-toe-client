@@ -15,11 +15,13 @@ const store = require('../store.js')
 //     bottomRight: bottomRight,
 //   }
 // ]
-const markers = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-]
+// const markers = [
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9]
+// ]
+
+// $ => (gameboard)
 
 // const markersImage = 'images/multpile_Tic_Tac_Toe.gif'
 
@@ -33,36 +35,36 @@ const markers = [
 //
 // ]
 
-const ticTacToe = function () {
-  this.ticTacToe = ticTacToe
-  this.newBoard = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-  ]
-  this.currentBoard = this.newBoard
-  this.player1 = 'X'
-  this.player2 = 'O'
-  this.gameOver = false
-  this.turn = 1
-}
-
-const flipMarkers = function () {
-// const markers = markers[markersID]
-  let markersID = this.getAttribute('data-id')
-  this.setAttribute('src', markers.markersImage)
-}
-
-const newBoard = function () {
-  for (let i = 0; i < markers.length; i++) {
-    let markersElement = document.createElement('img')
-    markersElement.setAttribute('src', 'images/multpile_Tic_Tac_Toe.gif')
-    markersElement.setAttribute('game-board', i)
-    markersElement.addEventListener('click', flipMarkers)
-    document.getElementById('game-board').appendChild(markersElement)
-  }
-}
-newBoard()
+// const ticTacToe = function () {
+//   this.ticTacToe = ticTacToe
+//   this.newBoard = [
+//     [1, 2, 3],
+//     [4, 5, 6],
+//     [7, 8, 9]
+//   ]
+//   this.currentBoard = this.newBoard
+//   this.player1 = 'X'
+//   this.player2 = 'O'
+//   this.gameOver = false
+//   this.turn = 1
+// }
+//
+// const flipMarkers = function () {
+// // const markers = markers[markersID]
+//   let markersID = this.getAttribute('data-id')
+//   this.setAttribute('src', markers.markersImage)
+// }
+//
+// const newBoard = function () {
+//   for (let i = 0; i < markers.length; i++) {
+//     let markersElement = document.createElement('img')
+//     markersElement.setAttribute('src', 'images/multpile_Tic_Tac_Toe.gif')
+//     markersElement.setAttribute('game-board', i)
+//     markersElement.addEventListener('click', flipMarkers)
+//     document.getElementById('game-board').appendChild(markersElement)
+//   }
+// }
+// newBoard()
 
 // TicTacToe.prototype.boardState = function() {
 //   this.currentBoard
@@ -175,5 +177,6 @@ module.exports = {
   signOutSuccess,
   signOutFail,
   // toggleLoginButton,
+  // drawBoard,
   store
 }
