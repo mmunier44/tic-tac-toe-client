@@ -18,10 +18,17 @@ body {
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+  font-size: 70px;
+  margin: auto;
 }
 
+tr {
+  height: 120px;
+}
+
+td {
+  width: 120px;
+}
 
 .box {
   align-items: center;

@@ -33,7 +33,7 @@
   </div>
 </div> -->
 
-      <div class="game-box">
+      <!-- <div class="game-box">
           <div class="top left square" id=0>0</div>
           <div class="top h-mid square" id=1>1</div>
           <div class="top right square" id=2>2</div>
@@ -43,7 +43,7 @@
           <div class="bottom left square" id=6>6</div>
           <div class="bottom h-mid square" id=7>7</div>
           <div class="bottom right square" id=8>8</div>
-      </div>
+      </div> -->
 
 <h5> Scoreboard </h5>
 
@@ -56,26 +56,47 @@
               </div>
 
       <br>
+<div class = "gameboard">
               <div class="row">
-                <div class="col-md-4 box grey">X</div>
-                <div class="col-md-4 box grey">O</div>
-                <div class="col-md-4 box grey">X</div>
+                <div class="col-md-4 box grey" id="0">X</div>
+                <div class="col-md-4 box grey" id="1">O</div>
+                <div class="col-md-4 box grey" id="2">X</div>
               </div>
       <br>
               <div class="row">
-                <div class="col-md-4 box black">X</div>
-                <div class="col-md-4 box balck">O</div>
-                <div class="col-md-4 box black">X</div>
+                <div class="col-md-4 box black" id="3">X</div>
+                <div class="col-md-4 box balck" id="4">O</div>
+                <div class="col-md-4 box black" id="5">X</div>
               </div>
       <br>
               <div class="row">
-                <div class="col-md-4 box blue">O</div>
-                <div class="col-md-4 box blue">O</div>
-                <div class="col-md-4 box blue">X</div>
+                <div class="col-md-4 box blue" id="6">O</div>
+                <div class="col-md-4 box blue" id="7">O</div>
+                <div class="col-md-4 box blue" id="8">X</div>
               </div>
       <br>
+</div>
 
-<!-- <div id="newBoard class="board clearfix"</div> -->
+<!-- <div  id='gameboard'>
+
+           <table id='theBoard'>
+             <tr class='row1' id='r1'>
+               <td class='col1' id=0></td>
+               <td class='col2' id=1></td>
+               <td class='col3' id=2></td>
+             </tr>
+             <tr class='row2' id='r2'>
+               <td class='col1' id=3></td>
+               <td class='col2' id=4></td>
+               <td class='col3' id=5></td>
+             </tr>
+             <tr class='row3' id='r3'>
+               <td class='col1' id=6></td>
+               <td class='col2' id=7></td>
+               <td class='col3' id=8></td>
+             </tr>
+           </table>
+         </div> -->
 
 <!-- <table id='gameboard'>
   <tr>
@@ -98,10 +119,12 @@
                 <div class="col-md-3 box">Reset</div>
               </div> -->
 
+
               <p id="myDiv">I am an event clicker</p>
-              <p> blah </p>
 <br>
-              <p id="message">Form Submit Message Here</p>
+              <p> 0 </p>
+<br>
+              <p id="message">Status Messages Show Here</p>
 <br>
 
                 <!-- <form id="sign-up" class="border">
@@ -128,7 +151,7 @@
                     <legend>Sign out!</legend>
                     <input type="submit" value="Sign out!">
                   </fieldset>
-                </form> --> -->
+                </form> -->
 
 
 
@@ -169,7 +192,7 @@
               <div>
                   <form id="create-game">
                     <fieldset>
-                      <legend>Create Games</legend>
+                      <legend>Create Game</legend>
                       <input type ="email" name="credentials[email]" placeholder="Email">
                       <input type ="password" name="credentials[password]" placeholder="Password">
                       <button type = "submit">Create Game</button>
