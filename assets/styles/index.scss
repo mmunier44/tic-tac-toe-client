@@ -17,6 +17,12 @@ body {
   text-align: center;
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
 .box {
   align-items: center;
   border: 1px solid $white;

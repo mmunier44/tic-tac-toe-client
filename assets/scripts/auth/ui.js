@@ -145,7 +145,7 @@ const signOutSuccess = function (response) {
   // $('#timeout')
 }
 
-const signOutFail = function () {
+const signOutFail = function (response) {
   $('#message').text('Sign Out Failed')
   $('#message').removeClass()
   $('#message').addClass('fail')
@@ -153,6 +153,71 @@ const signOutFail = function () {
   console.log('signoutFail ran')
 }
 
+const listGamesSuccess = function (response) {
+  $('#message').text('List Games Success')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#list-games input').val('')
+  console.log('listGamesSuccess ran')
+}
+
+const listGamesFail = function (response) {
+  $('#message').text('List Games Fail')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#list-games input').val('')
+  console.log('listGamesFail ran')
+}
+
+const createGameSuccess = function (response) {
+  $('#message').text('Create Game Success')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#create-games input').val('')
+  console.log('createGameSuccess ran')
+}
+
+const createGameFail = function (response) {
+  $('#message').text('Create Game Fail')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#create-games input').val('')
+  console.log('createGameFail ran')
+}
+
+const showGameSuccess = function (response) {
+  $('#message').text('Show Game Success')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#show-games input').val('')
+  console.log('showGameSuccess ran')
+}
+
+const showGameFail = function (response) {
+  $('#message').text('Show Games Fail')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#show-games input').val('')
+  console.log('showGameFail ran')
+}
+
+const joinGameSuccess = function (response) {
+  $('#message').text('Join Game Success')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#join-games input').val('')
+  console.log('joinGameSuccess ran')
+}
+
+const joinGameFail = function (response) {
+  $('#message').text('Join Game Fail')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#join-games input').val('')
+  console.log('joinGameFail ran')
+}
+
+//
 // const toggleLoginButton = function () {
 //   // let myToggle = document.getElementById('sign-in');
 //   // let displaySetting = myToggle.style.display;
@@ -178,5 +243,13 @@ module.exports = {
   signOutFail,
   // toggleLoginButton,
   // drawBoard,
+  listGamesSuccess,
+  listGamesFail,
+  createGameSuccess,
+  createGameFail,
+  showGameSuccess,
+  showGameFail,
+  joinGameSuccess,
+  joinGameFail,
   store
 }

@@ -72,6 +72,50 @@ const onSignOut = function (event) {
     .catch(ui.signOutFail)
 }
 
+const onListGames = function (event) {
+  $('#message').text('Games List Loaded')
+  event.preventDefault()
+  console.log('Games Shown')
+  const data = getFormFields(event.target)
+
+  api.listGames(data)
+    .then(ui.listGamesSuccess)
+    .catch(ui.listGamesFail)
+}
+
+const onCreateGame = function (event) {
+  $('message').text('New Game Created')
+  event.preventDefault()
+  console.log('New Game Created')
+  const data = getFormFields(event.target)
+
+  api.createGame(data)
+    .then(ui.createGameSuccess)
+    .catch(ui.createGameFail)
+}
+
+const onShowGame = function (event) {
+  $('message').text('Game Shown')
+  event.preventDefault()
+  console.log('Game Shown')
+  const data = getFormFields(event.target)
+
+  api.showGame(data)
+    .then(ui.showGameSuccess)
+    .catch(ui.showGameFail)
+}
+
+const onJoinGame = function (event) {
+  $('message').text('Game Joined')
+  event.preventDefault()
+  console.log('Game Joined')
+  const data = getFormFields(event.target)
+
+  api.joinGame(data)
+    .then(ui.joinGameSuccess)
+    .catch(ui.joinGameFail)
+}
+
 // $(() => {
 //  authEvents.addHandlers()
 //  $('#0').on('click', gameEvents.click)
@@ -90,6 +134,10 @@ const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onPasswordChange)
   $('#sign-out').on('submit', onSignOut)
+  $('#list-games').on('submit', onListGames)
+  $('#create-game').on('submit', onCreateGame)
+  $('#show-game').on('submit', onShowGame)
+  $('join-game').on('submit', onJoinGame)
 }
 
 module.exports = {

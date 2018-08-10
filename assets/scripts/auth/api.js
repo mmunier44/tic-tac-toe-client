@@ -49,9 +49,70 @@ const signOut = function (data) {
   })
 }
 
+const listGames = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+const createGame = function (data) {
+  return $.ajax({
+    url: config.apiurl + '/games',
+    method: 'POST',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data: data
+    // console.log('creategameSuccess')
+  })
+}
+
+const showGame = function (id, data) {
+  return $.ajax({
+    url: config.apiurl + '/games' + id,
+    method: 'GET',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+const joinGame = function (id, data) {
+  return $.ajax({
+    url: config.apiurl + '/games' + id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+// const markCell = function (id, data) {
+//   return $.ajax({
+//     url: config.apiurl = '/games' + id,
+//     method: 'PATCH',
+//     headers: {
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data: data.data
+//   })
+// }
+
 module.exports = {
   signUp,
   signIn,
   // passwordChange,
-  signOut
+  signOut,
+  createGame,
+  listGames,
+  showGame,
+  joinGame
+  // markCell
 }
