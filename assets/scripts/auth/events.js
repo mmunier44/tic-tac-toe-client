@@ -116,6 +116,17 @@ const onJoinGame = function (event) {
     .catch(ui.joinGameFail)
 }
 
+const onUpdateGame = function (event) {
+  $('message').text('Game Updated')
+  event.preventDefault()
+  console.log('Game Updated')
+  const data = getFormFields(event.target)
+
+  api.updateGame(data)
+    .then(ui.updateGameSuccess)
+    .catch(ui.updateGameFail)
+}
+
 // $(() => {
 //  authEvents.addHandlers()
 //  $('#0').on('click', gameEvents.click)
@@ -137,7 +148,8 @@ const addHandlers = function () {
   $('#list-games').on('submit', onListGames)
   $('#create-game').on('submit', onCreateGame)
   $('#show-game').on('submit', onShowGame)
-  $('join-game').on('submit', onJoinGame)
+  $('#join-game').on('submit', onJoinGame)
+  $('#gameboard').on('click', onUpdateGame)
 }
 
 module.exports = {

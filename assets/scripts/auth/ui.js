@@ -107,6 +107,22 @@ const createGameFail = function (response) {
   console.log('createGameFail ran')
 }
 
+// const updateGameSuccess = function (response) {
+//   $('#message').text('Update Game Success')
+//   $('#message').removeClass()
+//   $('#message').addClass('fail')
+//   $('#create-games input').val('')
+//   console.log('createGameSuccess ran')
+// }
+//
+// const updateGameFail = function (response) {
+//   $('#message').text('Create Game Fail')
+//   $('#message').removeClass()
+//   $('#message').addClass('fail')
+//   $('#create-games input').val('')
+//   console.log('createGameFail ran')
+// }
+
 const showGameSuccess = function (response) {
   $('#message').text('Show Game Success')
   $('#message').removeClass()

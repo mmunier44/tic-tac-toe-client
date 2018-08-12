@@ -62,7 +62,7 @@ const listGames = function () {
 
 const createGame = function () {
   return $.ajax({
-    url: config.apiurl + '/games',
+    url: config.apiurl + '/games/',
     method: 'POST',
     headers: {
       'Authorization': 'Token token=' + store.user.token
@@ -71,9 +71,9 @@ const createGame = function () {
   })
 }
 
-const updateGame = function (event, id) {
+const updateGame = function (data) {
   return $.ajax({
-    url: config.apiRUL + '/games/' + id,
+    url: config.apiRUL + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',
@@ -91,9 +91,9 @@ const updateGame = function (event, id) {
   })
 }
 
-const showGame = function (id) {
+const showGame = function () {
   return $.ajax({
-    url: config.apiurl + '/games/' + id,
+    url: config.apiurl + '/games',
     method: 'GET',
     headers: {
       'Authorization': 'Token token=' + store.user.token
