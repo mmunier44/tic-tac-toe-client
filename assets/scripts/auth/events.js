@@ -4,7 +4,8 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 
 const api = require('./api.js')
 const ui = require('./ui.js')
-const gamelogic = ('.gamelogic.js')
+// const gamelogic = ('/.gamelogic.js')
+const store = require('../store.js')
 
 // const onBoxClick = function (event) {
 //   event.preventDefault()
@@ -88,6 +89,8 @@ const onCreateGame = function (event) {
   $('#message').text('New Game Created')
   event.preventDefault()
   console.log('New Game Created')
+  // console.log(event)
+  // console.log(store.game)
   // const data = getFormFields(event.target)
 
   api.createGame()
@@ -121,6 +124,10 @@ const onUpdateGame = function (event) {
   $('#message').text('Game Updated')
   event.preventDefault()
   console.log('Game Updated')
+  // console.log(store.data)
+  console.log('store', store)
+  console.log(store.game.id)
+  // console.log(store.data)
   // const data = getFormFields(event.target)
 
   api.updateGame()

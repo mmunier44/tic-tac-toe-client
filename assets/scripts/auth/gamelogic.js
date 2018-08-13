@@ -1,5 +1,7 @@
 'use strict'
 
+const store = require('../store.js')
+
 // $(document).ready(function () {
 //   $('0').click(function () {
 //     alert('click worked!');
@@ -55,7 +57,10 @@ const ticTacToe = function () {
     ]
 
     $('#gameboard').click(function (event) {
-      ticTacToe.move(event.target.id)
+        let boxId = $(this.attr('id'))
+        console.log('check store', store)
+        store.game.id = boxId
+      // ticTacToe.move(event.target.id)
     })
   }
 }
@@ -130,9 +135,8 @@ const checkWinConditions = function () {
 }
 
 // $(document).ready(function () {
-//   console.log('ready steady!')
-//   ticTacToe.restartGame()
-// }
+console.log('ready steady!')
+ticTacToe.restartGame()
 
 // const gameboard = function [
 //   {
@@ -208,5 +212,6 @@ module.exports = {
   // boardArray2,
   winConditions,
   count,
-  gameboard
+  gameboard,
+  store
 }

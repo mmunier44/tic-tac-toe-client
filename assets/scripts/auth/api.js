@@ -50,7 +50,7 @@ const signOut = function () {
   })
 }
 
-const listGames = function () {
+const listGames = function (data) {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'GET',
@@ -61,30 +61,31 @@ const listGames = function () {
   })
 }
 
-const createGame = function () {
+const createGame = function (data) {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
     headers: {
       'Authorization': 'Token token=' + store.user.token
-    }
+    },
+    data: data
   })
 }
 
-const updateGame = function (data) {
+const updateGame = function (data, index, value, over) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
-      contentType: 'application/json',
       'Authorization': 'Token token=' + store.user.token
     },
     data: {
       game: {
         cell: {
-          // index: ${index},
-          // value: ${value}
-        }
+          index: index,
+          value: value
+        },
+        over: over
       }
     }
   })
