@@ -78,7 +78,7 @@ const signOutFail = function (response) {
 const listGamesSuccess = function (response) {
   $('#message').text('List Games Success')
   $('#message').removeClass()
-  $('#message').addClass('fail')
+  $('#message').addClass('success')
   $('#list-games input').val('')
   console.log('listGamesSuccess ran')
 }
@@ -94,7 +94,7 @@ const listGamesFail = function (response) {
 const createGameSuccess = function (response) {
   $('#message').text('Create Game Success')
   $('#message').removeClass()
-  $('#message').addClass('fail')
+  $('#message').addClass('success')
   $('#create-games input').val('')
   console.log('createGameSuccess ran')
 }
@@ -107,26 +107,26 @@ const createGameFail = function (response) {
   console.log('createGameFail ran')
 }
 
-// const updateGameSuccess = function (response) {
-//   $('#message').text('Update Game Success')
-//   $('#message').removeClass()
-//   $('#message').addClass('fail')
-//   $('#create-games input').val('')
-//   console.log('createGameSuccess ran')
-// }
-//
-// const updateGameFail = function (response) {
-//   $('#message').text('Create Game Fail')
-//   $('#message').removeClass()
-//   $('#message').addClass('fail')
-//   $('#create-games input').val('')
-//   console.log('createGameFail ran')
-// }
+const updateGameSuccess = function (response) {
+  $('#message').text('Update Game Success')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+  $('#create-games input').val('')
+  console.log('createGameSuccess ran')
+}
+
+const updateGameFail = function (response) {
+  $('#message').text('Create Game Fail')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#create-games input').val('')
+  console.log('createGameFail ran')
+}
 
 const showGameSuccess = function (response) {
   $('#message').text('Show Game Success')
   $('#message').removeClass()
-  $('#message').addClass('fail')
+  $('#message').addClass('success')
   $('#show-games input').val('')
   console.log('showGameSuccess ran')
 }
@@ -189,5 +189,7 @@ module.exports = {
   showGameFail,
   joinGameSuccess,
   joinGameFail,
+  updateGameSuccess,
+  updateGameFail,
   store
 }

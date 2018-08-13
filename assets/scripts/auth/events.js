@@ -4,6 +4,7 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 
 const api = require('./api.js')
 const ui = require('./ui.js')
+const gamelogic = ('.gamelogic.js')
 
 // const onBoxClick = function (event) {
 //   event.preventDefault()
@@ -76,68 +77,68 @@ const onListGames = function (event) {
   $('#message').text('Games List Loaded')
   event.preventDefault()
   console.log('Games Shown')
-  const data = getFormFields(event.target)
+  // const data = getFormFields(event.target)
 
-  api.listGames(data)
+  api.listGames()
     .then(ui.listGamesSuccess)
     .catch(ui.listGamesFail)
 }
 
 const onCreateGame = function (event) {
-  $('message').text('New Game Created')
+  $('#message').text('New Game Created')
   event.preventDefault()
   console.log('New Game Created')
-  const data = getFormFields(event.target)
+  // const data = getFormFields(event.target)
 
-  api.createGame(data)
+  api.createGame()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFail)
 }
 
 const onShowGame = function (event) {
-  $('message').text('Game Shown')
+  $('#message').text('Game Shown')
   event.preventDefault()
   console.log('Game Shown')
-  const data = getFormFields(event.target)
+  // const data = getFormFields(event.target)
 
-  api.showGame(data)
+  api.showGame()
     .then(ui.showGameSuccess)
     .catch(ui.showGameFail)
 }
 
-const onJoinGame = function (event) {
-  $('message').text('Game Joined')
-  event.preventDefault()
-  console.log('Game Joined')
-  const data = getFormFields(event.target)
-
-  api.joinGame(data)
-    .then(ui.joinGameSuccess)
-    .catch(ui.joinGameFail)
-}
+// const onJoinGame = function (event) {
+//   $('#message').text('Game Joined')
+//   event.preventDefault()
+//   console.log('Game Joined')
+//   // const data = getFormFields(event.target)
+//
+//   api.joinGame()
+//     .then(ui.joinGameSuccess)
+//     .catch(ui.joinGameFail)
+// }
 
 const onUpdateGame = function (event) {
-  $('message').text('Game Updated')
+  $('#message').text('Game Updated')
   event.preventDefault()
   console.log('Game Updated')
-  const data = getFormFields(event.target)
+  // const data = getFormFields(event.target)
 
-  api.updateGame(data)
+  api.updateGame()
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFail)
 }
 
 // $(() => {
 //  authEvents.addHandlers()
-//  $('#0').on('click', gameEvents.click)
-//  $('#1').on('click', gameEvents.click)
-//  $('#2').on('click', gameEvents.click)
-//  $('#3').on('click', gameEvents.click)
-//  $('#4').on('click', gameEvents.click)
-//  $('#5').on('click', gameEvents.click)
-//  $('#6').on('click', gameEvents.click)
-//  $('#7').on('click', gameEvents.click)
-//  $('#8').on('click', gameEvents.click)
+//  $('#0').on('click', gamelogic.click)
+//  $('#1').on('click', gamelogic.click)
+//  $('#2').on('click', gamelogic.click)
+//  $('#3').on('click', gamelogic.click)
+//  $('#4').on('click', gamelogic.click)
+//  $('#5').on('click', gamelogic.click)
+//  $('#6').on('click', gamelogic.click)
+//  $('#7').on('click', gamelogic.click)
+//  $('#8').on('click', gamelogic.click)
 // })
 
 const addHandlers = function () {
@@ -148,7 +149,7 @@ const addHandlers = function () {
   $('#list-games').on('submit', onListGames)
   $('#create-game').on('submit', onCreateGame)
   $('#show-game').on('submit', onShowGame)
-  $('#join-game').on('submit', onJoinGame)
+  // $('#join-game').on('submit', onJoinGame)
   $('#gameboard').on('click', onUpdateGame)
 }
 

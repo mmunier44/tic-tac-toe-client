@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Tic Tac Toe</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-      <link rel="stylesheet" type="text/scss" href="assets/styles/index.scss">
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <body>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/scss" href="assets/styles/index.scss">
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
 
-      <!-- <img src="images/Tic_Tac_Toe_Color.png";
+<body>
+
+  <!-- <img src="images/Tic_Tac_Toe_Color.png";
         alt = "color tic tac toe"> -->
 
-      <h1>Tic Tac Toe</h1>
+  <h1>Tic Tac Toe</h1>
 
-      <!-- <div id="win-message" class="modalBox"></div> -->
+  <!-- <div id="win-message" class="modalBox"></div> -->
 
-<!-- <div class="bar">
+  <!-- <div class="bar">
   <div class="scoreboard">
     <ul>
       <li id="x"><div>x:<div class="score"></div></div></li>
@@ -32,7 +33,7 @@
   </div>
 </div> -->
 
-      <!-- <div class="game-box">
+  <!-- <div class="game-box">
           <div class="top left square" id=0>0</div>
           <div class="top h-mid square" id=1>1</div>
           <div class="top right square" id=2>2</div>
@@ -43,42 +44,46 @@
           <div class="bottom h-mid square" id=7>7</div>
           <div class="bottom right square" id=8>8</div>
       </div> -->
-
-<h5> Scoreboard </h5>
-
-      <br>
-              <div class="scoreboard">
-                <div class="col-sm-3 box grey">X Tally</div>
-                <div class="col-sm-3 box grey">O Tally</div>
-                <div class="col-sm-3 box grey">Tie Tally</div>
-                <div class="col-sm-3 box grey">New Game</div>
-              </div>
-
-      <br>
-<section>
-<div class = "gameboard" id="gameboard">
-              <div class="top row">
-                <div class="col-md-4 box grey" id="0">X</div>
-                <div class="col-md-4 box grey" id="1">O</div>
-                <div class="col-md-4 box grey" id="2">X</div>
-              </div>
-      <br>
-              <div class="middle row">
-                <div class="col-md-4 box black" id="3">X</div>
-                <div class="col-md-4 box balck" id="4">O</div>
-                <div class="col-md-4 box black" id="5">X</div>
-              </div>
-      <br>
-              <div class="bottom row">
-                <div class="col-md-4 box blue" id="6">O</div>
-                <div class="col-md-4 box blue" id="7">O</div>
-                <div class="col-md-4 box blue" id="8">X</div>
-              </div>
-      <br>
+<div id ="scoreboard">
+<form>
+  <!-- <h5> Scoreboard </h5> -->
+<button type="submit"> Scoreboard </button>
+</form>
 </div>
-</section>
 
-<!-- <div  id='gameboard'>
+  <br>
+  <div class="Tally">
+    <div class="col-sm-3 box grey">X Tally</div>
+    <div class="col-sm-3 box grey">O Tally</div>
+    <div class="col-sm-3 box grey">Tie Tally</div>
+    <!-- <div class="col-sm-3 box grey">New Game</div> -->
+  </div>
+
+  <br>
+  <section>
+    <div class="gameboard" id="gameboard">
+      <div class="top row">
+        <div class="col-md-4 box grey" id="marker0"></div>
+        <div class="col-md-4 box grey" id="marker1"></div>
+        <div class="col-md-4 box grey" id="marker2"></div>
+      </div>
+      <br>
+      <div class="middle row">
+        <div class="col-md-4 box black" id="marker3"></div>
+        <div class="col-md-4 box balck" id="marker4"></div>
+        <div class="col-md-4 box black" id="marker5"></div>
+      </div>
+      <br>
+      <div class="bottom row">
+        <div class="col-md-4 box blue" id="marker6"></div>
+        <div class="col-md-4 box blue" id="marker7"></div>
+        <div class="col-md-4 box blue" id="marker8"></div>
+      </div>
+      <br>
+    </div>
+  </section>
+
+  <!-- <div  id='gameboard'>
 
            <table id='theBoard'>
              <tr class='row1' id='r1'>
@@ -99,7 +104,7 @@
            </table>
          </div> -->
 
-<!-- <table id='gameboard'>
+  <!-- <table id='gameboard'>
   <tr>
     <td></td><td></td><td></td>
   </tr>
@@ -111,7 +116,7 @@
   </tr>
 </table> -->
 
-<!-- <div id='game'></div>
+  <!-- <div id='game'></div>
 
               <div class="crud">
                 <div class="col-md-3 box">Sign Up</div>
@@ -121,14 +126,14 @@
               </div> -->
 
 
-              <p id="myDiv">I am an event clicker</p>
-<br>
-              <p> 0 </p>
-<br>
-              <p id="message">Status Messages Show Here</p>
-<br>
+  <!-- <p id="myDiv">I am an event clicker</p>
+  <br>
+  <p> 0 </p> -->
+  <br>
+  <p id="message">Status Messages Show Here</p>
+  <br>
 
-                <!-- <form id="sign-up" class="border">
+  <!-- <form id="sign-up" class="border">
                   <fieldset>
                     <legend>Sign up!</legend>
                     <input type="text" name="credentials[email]" placeholder="Email">
@@ -153,55 +158,66 @@
                     <input type="submit" value="Sign out!">
                   </fieldset>
                 </form> -->
-
-
-
-              <div>
-                <form id="sign-up">
-                  <fieldset>
-                    <legend>Sign Up</legend>
-                    <input type ="email" name="credentials[email]" placeholder="Email">
-                    <input type ="password" name="credentials[password]" placeholder="Password">
-                    <input type ="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-                    <button type = "submit">Sign Up</button>
-                  </fieldset>
-                </form>
-              </div>
-
-              <div>
-                  <form id="sign-in">
-                    <fieldset>
-                      <legend>Sign In</legend>
-                      <input type ="email" name="credentials[email]" placeholder="Email">
-                      <input type ="password" name="credentials[password]" placeholder="Password">
-                      <button type = "submit">Sign In</button>
-                    </fieldset>
-                </form>
-              </div>
-
-              <div>
-                  <form id="list-games">
-                    <fieldset>
-                      <legend>List Games</legend>
-                      <input type ="email" name="credentials[email]" placeholder="Email">
-                      <input type ="password" name="credentials[password]" placeholder="Password">
-                      <button type = "submit">List Games</button>
-                    </fieldset>
-                </form>
-              </div>
-
-              <div>
-                  <form id="create-game">
-                    <fieldset>
-                      <legend>Create Game</legend>
-                      <input type ="email" name="credentials[email]" placeholder="Email">
-                      <input type ="password" name="credentials[password]" placeholder="Password">
-                      <button type = "submit">Create Game</button>
-                    </fieldset>
-                </form>
-              </div>
-
-              <div>
+<br>
+  <div>
+  <form id="new-game">
+    <button type="submit">New Game</button>
+</form>
+  </div>
+<br>
+<br>
+  <div>
+  <form id="play-again">
+    <button type="submit">Play Again</button>
+</form>
+  </div>
+<br>
+  <div>
+    <form id="sign-up">
+      <fieldset>
+        <legend>Sign Up</legend>
+        <input type="email" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+        <button type="submit">Sign Up</button>
+      </fieldset>
+    </form>
+  </div>
+<br>
+  <div>
+    <form id="sign-in">
+      <fieldset>
+        <legend>Sign In</legend>
+        <input type="email" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <button type="submit">Sign In</button>
+      </fieldset>
+    </form>
+  </div>
+<br>
+  <div>
+    <form id="list-games">
+      <fieldset>
+        <legend>List Games</legend>
+        <input type="email" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <button type="submit">List Games</button>
+      </fieldset>
+    </form>
+  </div>
+<br>
+  <div>
+    <form id="create-game">
+      <fieldset>
+        <legend>Create Game</legend>
+        <input type="email" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <button type="submit">Create Game</button>
+      </fieldset>
+    </form>
+  </div>
+<br>
+  <!-- <div>
                   <form id="join-game">
                     <fieldset>
                       <legend>Join Game</legend>
@@ -210,10 +226,10 @@
                       <button type = "submit">Join Game</button>
                     </fieldset>
                 </form>
-              </div>
+              </div> -->
 
 
-              <!-- <div>
+  <!-- <div>
                 <form id="change-password">
                   <fieldset>
                     <legend>Password Change</legend>
@@ -224,17 +240,17 @@
               </form>
               </div> -->
 
-              <div>
-                <form id="sign-out">
-                  <fieldset>
-                    <legend>Sign Out</legend>
-                    <button type = "submit">Sign Out</button>
-                  </fieldset>
-              </form>
-              </div>
+  <div>
+    <form id="sign-out">
+      <fieldset>
+        <legend>Sign Out</legend>
+        <button type="submit">Sign Out</button>
+      </fieldset>
+    </form>
+  </div>
 
 
 
-    </body>
+</body>
 
 </html>

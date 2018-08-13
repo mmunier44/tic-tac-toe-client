@@ -2,6 +2,7 @@
 
 const config = require('../config.js')
 const store = require('../store.js')
+// const gamelogic = ('./gamelogic.js')
 
 // const boxClick = function () {
 //
@@ -62,18 +63,17 @@ const listGames = function () {
 
 const createGame = function () {
   return $.ajax({
-    url: config.apiurl + '/games/',
+    url: config.apiUrl + '/games',
     method: 'POST',
     headers: {
       'Authorization': 'Token token=' + store.user.token
     }
-    // data: data
   })
 }
 
 const updateGame = function (data) {
   return $.ajax({
-    url: config.apiRUL + '/games/' + store.game.id,
+    url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',
@@ -82,9 +82,8 @@ const updateGame = function (data) {
     data: {
       game: {
         cell: {
-          index: store.index,
-          value: store.player
-
+          // index: ${index},
+          // value: ${value}
         }
       }
     }
@@ -93,7 +92,7 @@ const updateGame = function (data) {
 
 const showGame = function () {
   return $.ajax({
-    url: config.apiurl + '/games',
+    url: config.apiUrl + '/games',
     method: 'GET',
     headers: {
       'Authorization': 'Token token=' + store.user.token
@@ -104,7 +103,7 @@ const showGame = function () {
 
 const joinGame = function (id, data) {
   return $.ajax({
-    url: config.apiurl + '/games/' + id,
+    url: config.apiUrl + '/games/' + id,
     method: 'PATCH',
     headers: {
       'Authorization': 'Token token=' + store.user.token
@@ -115,7 +114,7 @@ const joinGame = function (id, data) {
 
 // const markCell = function (id, data) {
 //   return $.ajax({
-//     url: config.apiurl = '/games' + id,
+//     url: config.apiUrl = '/games' + id,
 //     method: 'PATCH',
 //     headers: {
 //       'Authorization': 'Token token=' + store.user.token

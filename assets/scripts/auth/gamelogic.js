@@ -21,6 +21,13 @@
 //   [3, 4, 5],
 //   [6, 7, 8]
 // ]
+const gameboard = [
+  '', '', '',
+  '', '', '',
+  '', '', ''
+]
+
+// const space = ('#' + id)
 
 const ticTacToe = function () {
   // this.ticTacToe = ticTacToe
@@ -33,54 +40,58 @@ const ticTacToe = function () {
   // this.currentBoard = this.newBoard
   this.player1 = 'X'
   this.player2 = 'O'
-  this.checkWinConditions = false
+  this.winConditions = false
   this.turn = 0
+  this.count = 0
 
-const restartGame = function () {
+  const restartGame = function () {
+    $('#gameboard').html(gameboard)
+    $('#scoreboard').hide()
 
-  $('#gameboard').html(gameboard)
-  $('#scoreboard').hide()
+    this.newBoard = [
+      '', '', '',
+      '', '', '',
+      '', '', ''
+    ]
 
-  this.newBoard = [
-    '', '', '',
-    '', '', '',
-    '', '', ''
-  ]
-
-  $('#gameboard').click(function () {
-    this.move(marker.id)
-  })
+    $('#gameboard').click(function (event) {
+      ticTacToe.move(event.target.id)
+    })
+  }
 }
 
-const move = function(id) {
-  let space = $('#' + id)
-  let marker = id.replace(' ', '#')
+const move = function (id) {
+  const space = $('#' + id)
+  const marker = id.replace('marker', '')
+
   if (!this.gameboard[marker] && !this.winConditions) {
-    marker.html(this.turn)
+    space.html(this.turn)
     this.gameboard[marker] = this.turn
     this.nextTurn()
   }
 }
 
 const nextTurn = function () {
-  this.turn = (this.turn === '0') ? 'X' : 'O'
-  this.win = this.checkWinConditions()
-  if (this.win) {
+  this.turn = (this.turn === 0) ? 'X' : 'O'
+  this.winConditions = this.checkWinConditions()
+  if (this.winConditions) {
     this.endGame()
   }
 }
 
 const endGame = function () {
   if (this.winConditions === 'player1') {
-    $('#scoreboard').html('player1 game.')
+    $('#scoreboard').html('player1 wins!')
+  } else {
+    $('#scoreboard').html(this.winConditions + 'player2 wins!')
   }
-  else {
-    $('#scoreboard').html(this.win + 'player2 wins!')
-  }
+  // $('#scoreboard').append('<form id='play-again;>Play Again</form>
 
   // $('#scoreboard').newgame
 
-  $('#new-game').click(function () {ticTacToe.newBoard()})
+  $('#new-game').click(function () {
+    ticTacToe.restartGame()
+  })
   $('#scoreboard').show()
   this.winConditions = false
 }
@@ -98,22 +109,30 @@ const winConditions = [
 
 const checkWinConditions = function () {
   for (check in this.winConditions) {
-    let winCombo = this.winConditions[check]
-      let win = this.gameboard[check[0]] + this.gameboard[check[1]] + this.gameboard[check[2]]
-        if (win == 'XXX') {
-          return 'player1 won'
-        } else if (win == 'OOO') {
-          return 'player2 won'
-        }
-        }
+    const winCombo = this.winConditions[check]
+    const winner = this.gameboard[winCombo[0]] + this.gameboard[winCombo[1]] + this.gameboard[winCombo[2]]
+    if (winner === 'XXX') {
+      return 'player1 won'
+    } else if (winner === 'OOO') {
+      return 'player2 won'
+    }
   }
 
-$(document).ready(function() {
-  console.log('ready steady!')
-  ticTacToe.restartGame()
+  let count = 0
+  for (space in this.gameboard) {
+    if (this.gameboard[space]) {
+      count += 1
+    }
+    if (count === 9) {
+      return 'player1'
+    }
+  }
 }
 
-
+// $(document).ready(function () {
+//   console.log('ready steady!')
+//   ticTacToe.restartGame()
+// }
 
 // const gameboard = function [
 //   {
@@ -177,6 +196,7 @@ $(document).ready(function() {
 // //   })
 // //
 // // }
+
 module.exports = {
   checkWinConditions,
   endGame,
@@ -186,5 +206,7 @@ module.exports = {
   ticTacToe,
   // boardArray,
   // boardArray2,
-  winConditions
+  winConditions,
+  count,
+  gameboard
 }
