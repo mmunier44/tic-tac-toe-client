@@ -4,7 +4,7 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 
 const api = require('./api.js')
 const ui = require('./ui.js')
-// const gamelogic = ('/.gamelogic.js')
+// const gamelogic = require('/.gamelogic.js')
 const store = require('../store.js')
 
 // const onBoxClick = function (event) {
@@ -46,6 +46,7 @@ const onSignIn = function (event) {
   event.preventDefault()
   console.log('signed in')
   const data = getFormFields(event.target)
+  console.log('sign in data', data)
 
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -85,11 +86,12 @@ const onListGames = function (event) {
     .catch(ui.listGamesFail)
 }
 
-const onCreateGame = function (event) {
+const onCreateGame = function (event, data) {
   $('#message').text('New Game Created')
   event.preventDefault()
   console.log('New Game Created')
-  // console.log(event)
+  console.log(event)
+  console.log(data)
   // console.log(store.game)
   // const data = getFormFields(event.target)
 
@@ -120,32 +122,35 @@ const onShowGame = function (event) {
 //     .catch(ui.joinGameFail)
 // }
 
-const onUpdateGame = function (event) {
+const onUpdateGame = function (data) {
   $('#message').text('Game Updated')
   event.preventDefault()
   console.log('Game Updated')
   // console.log(store.data)
   console.log('store', store)
+  console.log(event.target.id)
+  console.log(event.user.id)
   console.log(store.game.id)
+  // console.log(store.user.token)
+  // console.log(store.game)
   // console.log(store.data)
   // const data = getFormFields(event.target)
 
-  api.updateGame()
+  api.updateGame(data)
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFail)
 }
 
+// const onMarker1 = function(event) {
+//   event.preventDefault()
+//   // if ($('#marker1').text() === '' && !winConditions) {
+//   //   $('#marker1').text(currentUser)
+//     gameboard[1] = currentUser
+//     api.updateGame(1, currentUser)
+//   }
+
 // $(() => {
 //  authEvents.addHandlers()
-//  $('#0').on('click', gamelogic.click)
-//  $('#1').on('click', gamelogic.click)
-//  $('#2').on('click', gamelogic.click)
-//  $('#3').on('click', gamelogic.click)
-//  $('#4').on('click', gamelogic.click)
-//  $('#5').on('click', gamelogic.click)
-//  $('#6').on('click', gamelogic.click)
-//  $('#7').on('click', gamelogic.click)
-//  $('#8').on('click', gamelogic.click)
 // })
 
 const addHandlers = function () {
@@ -158,6 +163,18 @@ const addHandlers = function () {
   $('#show-game').on('submit', onShowGame)
   // $('#join-game').on('submit', onJoinGame)
   $('#gameboard').on('click', onUpdateGame)
+  $('#marker0').on('click', onUpdateGame)
+  $('#marker1').on('click', onUpdateGame)
+  $('#marker2').on('click', onUpdateGame)
+  $('#marker3').on('click', onUpdateGame)
+  $('#marker4').on('click', onUpdateGame)
+  $('#marker5').on('click', onUpdateGame)
+  $('#marker6').on('click', onUpdateGame)
+  $('#marker7').on('click', onUpdateGame)
+  $('#marker8').on('click', onUpdateGame)
+  // $('#markertest').on('click', gamelogicClick)
+
+  // $('#blah').on('click', alert('blah is clicked'))
 }
 
 module.exports = {

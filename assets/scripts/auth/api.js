@@ -2,7 +2,7 @@
 
 const config = require('../config.js')
 const store = require('../store.js')
-// const gamelogic = ('./gamelogic.js')
+// const gamelogic = require('/.gamelogic.js')
 
 // const boxClick = function () {
 //
@@ -72,11 +72,12 @@ const createGame = function (data) {
   })
 }
 
-const updateGame = function (data, index, value, over) {
+const updateGame = function (store, data, index, value, over, events, id) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
+      contentType: 'application/json',
       'Authorization': 'Token token=' + store.user.token
     },
     data: {

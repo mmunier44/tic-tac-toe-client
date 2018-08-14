@@ -1,7 +1,5 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
-// @import '~bootstrap/scss/bootstrap';
-
+@import '~bootstrap-sass/assets/stylesheets/bootstrap'; // @import '~bootstrap/scss/bootstrap';
 $background-color: #919ade;
 $font-color: #dfdfdf;
 $white: #fff;
@@ -23,7 +21,15 @@ table {
 }
 
 p {
-  font-color: $white;
+  color: $white;
+}
+
+legend {
+  color: $white;
+}
+
+h2 {
+  color: $white;
 }
 
 tr {
@@ -39,8 +45,9 @@ td {
   border: 1px solid $white;
   color: $font-color;
   display: flex;
-  height: 80px;
+  height: 140px;
   justify-content: center;
+  width: 140px;
 }
 
 .grey {
@@ -89,6 +96,10 @@ h1 {
   // text-align: center;
 }
 
+.gameboard {
+  // display: flex;
+}
+
 h5 {
   color: $white;
 }
@@ -96,7 +107,6 @@ h5 {
 .message {
   color: $white;
 }
-
 // .border {
 //   color: $white;
 // }

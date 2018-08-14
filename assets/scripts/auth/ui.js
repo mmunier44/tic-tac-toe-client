@@ -91,12 +91,14 @@ const listGamesFail = function (response) {
   console.log('listGamesFail ran')
 }
 
-const createGameSuccess = function (response) {
+const createGameSuccess = function (data) {
   $('#message').text('Create Game Success')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#create-games input').val('')
   console.log('createGameSuccess ran')
+  console.log('store', store)
+  store.game = data.game
 }
 
 const createGameFail = function (response) {
@@ -107,12 +109,13 @@ const createGameFail = function (response) {
   console.log('createGameFail ran')
 }
 
-const updateGameSuccess = function (response) {
+const updateGameSuccess = function (data) {
   $('#message').text('Update Game Success')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#create-games input').val('')
   console.log('createGameSuccess ran')
+  store.game = data.game
 }
 
 const updateGameFail = function (response) {
