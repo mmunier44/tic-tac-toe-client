@@ -20,6 +20,7 @@ And yes I am now very very familiar that an array starts at 0.
 
 ![Wireframe] https://imgur.com/a/kNw1ZUc "WaarGames Tic Tac Toe"
 
+
 ##### Speedy API CRUD and then the THUD of a really big Bork hitting the modal box
 
 My basic approach to tackling this project was setting up all of the API calls first.
@@ -44,7 +45,7 @@ Yeah, it worked out exactly as well as you everybody that has ever written a sin
 
 After getting the CRUD setup and a very basic Bootstrap layout a deep dive into the game logic seemed to be the next path since all of the CRUD based API calls were all showing successful console.logs I could go back and fix all of the little errors later.
 
-####### let mildConfidenceLevelBecauseCrudWorked = (store.brain >= awesome) ? truthy or falsy : WRONG
+###### let mildConfidenceLevelBecauseCrudWorked = (store.brain >= awesome) ? truthy or falsy : WRONG
 
 After thinking that I had gotten most of the game logic done it was time to start testing.
 
