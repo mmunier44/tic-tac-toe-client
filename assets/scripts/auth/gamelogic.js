@@ -327,7 +327,7 @@ const endGame = function () {
   this.winConditions = false
 }
 
-// NOTE:  Add check for blanks
+// NOTE: Talking Point Add check for blanks
 const checkWinConditions = function () {
   for (check in this.winConditions) {
     const winCombo = this.winConditions[check]
