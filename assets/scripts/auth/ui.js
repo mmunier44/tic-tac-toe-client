@@ -39,22 +39,22 @@ const signInFail = function () {
   console.log('signInFail ran')
 }
 
-// const passwordChangeSuccess = function (response) {
-//   $('#message').text('Successful Password Change')
-//   $('#message').removeClass()
-//   $('#message').addClass('success')
-//   $('#sign-in input').val('')
-//   console.log('response is', response)
-//   console.log('store', store)
-//   // $('#timeout')
-// }
-//
-// const passwordChangeFail = function () {
-//   $('#message').text('Password Change Failed')
-//   $('#message').removeClass()
-//   $('#message').addClass('fail')
-//   $('#sign-in input').val('')
-// }
+const passwordChangeSuccess = function (response) {
+  $('#message').text('Successful Password Change')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+  $('#sign-in input').val('')
+  console.log('response is', response)
+  console.log('store', store)
+  // $('#timeout')
+}
+
+const passwordChangeFail = function () {
+  $('#message').text('Password Change Failed')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#sign-in input').val('')
+}
 
 const signOutSuccess = function (response) {
   $('#message').text('Successful Sign Out')
@@ -98,14 +98,15 @@ const createGameSuccess = function (data) {
   $('#create-games input').val('')
   console.log('createGameSuccess ran')
   console.log('store', store)
-  store.game = data.game
+
+  // store.game = data.game
 }
 
 const createGameFail = function (response) {
   $('#message').text('Create Game Fail')
   $('#message').removeClass()
   $('#message').addClass('fail')
-  $('#create-games input').val('')
+  $('#create-game input').val('')
   console.log('createGameFail ran')
 }
 
@@ -113,9 +114,13 @@ const updateGameSuccess = function (data) {
   $('#message').text('Update Game Success')
   $('#message').removeClass()
   $('#message').addClass('success')
-  $('#create-games input').val('')
+  // $('#create-games input').val('')
+  console.log('store', store)
+  console.log('updated game', data)
+  console.log('game', store.game.id)
+  // console.log('user', user)
   console.log('createGameSuccess ran')
-  store.game = data.game
+  // store.game = data.game
 }
 
 const updateGameFail = function (response) {
@@ -178,8 +183,8 @@ module.exports = {
   signUpFail,
   signInSuccess,
   signInFail,
-  // passwordChangeSuccess,
-  // passwordChangeFail,
+  passwordChangeSuccess,
+  passwordChangeFail,
   signOutSuccess,
   signOutFail,
   // toggleLoginButton,

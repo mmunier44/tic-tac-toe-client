@@ -26,15 +26,26 @@ const signIn = function (data) {
   })
 }
 
+const passwordChange = function (data) {
+  console.log('store in change password', store)
+  return $.ajax({
+    url: config.apiUrl + '/change-password',
+    method: 'PATCH',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
 // const passwordChange = function (data) {
-//   // console.log('store in change password', store)
 //   return $.ajax({
 //     url: config.apiUrl + '/change-password',
-//     method: 'PATCH',s
+//     method: 'PATCH',
 //     headers: {
 //       'Authorization': 'Token token=' + store.user.token
 //     },
-//     data: data
+//     data
 //   })
 // }
 
@@ -72,25 +83,57 @@ const createGame = function (data) {
   })
 }
 
-const updateGame = function (store, data, index, value, over, events, id) {
+const updateGame = function (data) {
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.game.id,
+    url: config.apiUrl + '/games/' + store.user.id,
     method: 'PATCH',
     headers: {
-      contentType: 'application/json',
-      'Authorization': 'Token token=' + store.user.token
+      Authorization: 'Token token=' + store.user.token
     },
-    data: {
-      game: {
-        cell: {
-          index: index,
-          value: value
-        },
-        over: over
-      }
-    }
+    data
   })
 }
+//
+// const updateGame = function (data, id) {
+//   console.log(data)
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + id,
+//     method: 'PATCH',
+//     headers: {
+//       // contentType: 'application/json',
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data: {
+//       game: {
+//         cell: {
+//           index: index,
+//           value: value
+//         },
+//         over: false
+//       }
+//     }
+//   })
+// }
+
+// const updateGame = function (store, data, index, value, over, events, id) {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + data.id,
+//     method: 'PATCH',
+//     headers: {
+//       contentType: 'application/json',
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data: {
+//       game: {
+//         cell: {
+//           index: index,
+//           value: value
+//         },
+//         over: over
+//       }
+//     }
+//   })
+// }
 
 const showGame = function () {
   return $.ajax({
@@ -114,26 +157,26 @@ const joinGame = function (id, data) {
   })
 }
 
-// const markCell = function (id, data) {
-//   return $.ajax({
-//     url: config.apiUrl = '/games' + id,
-//     method: 'PATCH',
-//     headers: {
-//       'Authorization': 'Token token=' + store.user.token
-//     },
-//     data: data.data
-//   })
-// }
+const markCell = function (id, data) {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 
 module.exports = {
   signUp,
   signIn,
-  // passwordChange,
+  passwordChange,
   signOut,
   createGame,
   listGames,
   showGame,
   joinGame,
-  updateGame
-  // markCell
+  updateGame,
+  markCell
 }

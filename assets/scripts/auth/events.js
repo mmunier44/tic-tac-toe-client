@@ -7,6 +7,14 @@ const ui = require('./ui.js')
 // const gamelogic = require('/.gamelogic.js')
 const store = require('../store.js')
 
+// let onClick = function (boxId, currentPlayer) {
+//   if (currentPlayer == 0) {
+//     $('#' + boxId).html('X')
+//   } else {
+//     $('#' + boxId).html('O')
+//   }
+// }
+
 // const onBoxClick = function (event) {
 //   event.preventDefault()
 //   $(document).ready(function(){
@@ -92,10 +100,12 @@ const onCreateGame = function (event, data) {
   console.log('New Game Created')
   console.log(event)
   console.log(data)
-  // console.log(store.game)
+  // console.log(store)
+  // console.log('auth, sign in', store.user.token)
+  // console.log(store.user.token)
   // const data = getFormFields(event.target)
 
-  api.createGame()
+  api.createGame(data)
     .then(ui.createGameSuccess)
     .catch(ui.createGameFail)
 }
@@ -128,12 +138,20 @@ const onUpdateGame = function (data) {
   console.log('Game Updated')
   // console.log(store.data)
   console.log('store', store)
-  console.log(event.target.id)
-  console.log(event.user.id)
-  console.log(store.game.id)
+  console.log('data', data)
+  console.log('event', event)
+  console.log('blah', store.game)
+  // console.log('id', id)
+  // console.log('user', user)
+  // console.log('id', id)
+  // console.log('store', store.user.token)
+  // console.log(store.user.data)
   // console.log(store.user.token)
-  // console.log(store.game)
+  // console.log(store.game.id)
+  // console.log(store.user.token)
+  // console.log(store.game.id)
   // console.log(store.data)
+  // console.log(data.id)
   // const data = getFormFields(event.target)
 
   api.updateGame(data)
@@ -162,15 +180,15 @@ const addHandlers = function () {
   $('#create-game').on('submit', onCreateGame)
   $('#show-game').on('submit', onShowGame)
   // $('#join-game').on('submit', onJoinGame)
-  $('#gameboard').on('click', onUpdateGame)
-  $('#marker0').on('click', onUpdateGame)
-  $('#marker1').on('click', onUpdateGame)
-  $('#marker2').on('click', onUpdateGame)
-  $('#marker3').on('click', onUpdateGame)
-  $('#marker4').on('click', onUpdateGame)
-  $('#marker5').on('click', onUpdateGame)
-  $('#marker6').on('click', onUpdateGame)
-  $('#marker7').on('click', onUpdateGame)
+  // $('#gameboard').on('click', onUpdateGame)
+  // $('#marker0').on('click', onMarkCell)
+  // $('#marker1').on('click', onUpdateGame)
+  // $('#marker2').on('click', onUpdateGame)
+  // $('#marker3').on('click', onUpdateGame)
+  // $('#marker4').on('click', onUpdateGame)
+  // $('#marker5').on('click', onUpdateGame)
+  // $('#marker6').on('click', onUpdateGame)
+  // $('#marker7').on('click', onUpdateGame)
   $('#marker8').on('click', onUpdateGame)
   // $('#markertest').on('click', gamelogicClick)
 
@@ -179,4 +197,5 @@ const addHandlers = function () {
 
 module.exports = {
   addHandlers
+  // onClick
 }
