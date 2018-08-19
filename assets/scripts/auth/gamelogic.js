@@ -15,49 +15,49 @@ const api = require('./api.js')
 
 // const currentUser = player1
 
-const gameboard = [
-  '', '', '',
-  '', '', '',
-  '', '', ''
-]
+
+
 
 // const space = ('#' + id)
 
-const ticTacToe = function () {
-  // this.ticTacToe = ticTacToe
-  this.gameboard = [
-    '', '', '',
-    '', '', '',
-    '', '', ''
-  ]
+// const ticTacToe = function () {
+//   // this.ticTacToe = ticTacToe
+//   this.gameboard = [
+//     '', '', '',
+//     '', '', '',
+//     '', '', ''
+//   ]
+//
+//   this.player1 = 'X'
+//   this.player2 = 'O'
+//   this.winConditions = false
+//   this.turn = 0
+//   this.count = 0
+//   // this.currentUser = player1
+// }
+//
+//   const restartGame = function () {
+//     // $('#gameboard').html(gameboard)
+//     // $('#scoreboard').hide()
+//
+//     this.newBoard = [
+//       '', '', '',
+//       '', '', '',
+//       '', '', ''
+//     ]
+//   }
+//
+//   const winConditions = [
+//       [0, 1, 2],
+//       [3, 4, 5],
+//     [6, 7, 8],
+//       [0, 3, 6],
+//       [1, 4, 7],
+//       [2, 5, 8],
+//       [0, 4, 8],
+//       [2, 4, 6]
+//     ]
 
-  this.player1 = 'X'
-  this.player2 = 'O'
-  this.winConditions = false
-  this.turn = 0
-  this.count = 0
-  // this.currentUser = player1
-
-  const restartGame = function () {
-    // $('#gameboard').html(gameboard)
-    // $('#scoreboard').hide()
-
-    this.newBoard = [
-      '', '', '',
-      '', '', '',
-      '', '', ''
-    ]
-
-    const winConditions = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6]
-    ]
 
 module.exports = {
   checkWinConditions,
@@ -107,18 +107,18 @@ module.exports = {
 //   ticTacToe.move(event.target.id)
 // })
 
-const onMarker0 = function(event) {
-  event.preventDefault()
-  if ($('#marker0').text() === '' && !winConditions) {
-    $('#marker0').text(currentUser)
-    gameboard[0] = currentUser
-    api.updateGame(0, currentUser)
-    checkWinConditions()
-    nextTurn()
-  } else {
-    $('#message').text('Try another Square')
-  }
-}
+// const onMarker0 = function(event) {
+//   event.preventDefault()
+//   if ($('#marker0').text() === '' && !winConditions) {
+//     $('#marker0').text(currentUser)
+//     gameboard[0] = currentUser
+//     api.updateGame(0, currentUser)
+//     checkWinConditions()
+//     nextTurn()
+//   } else {
+//     $('#message').text('Try another Square')
+//   }
+// }
 //
 // const onMarker1 = function(event) {
 //   event.preventDefault()

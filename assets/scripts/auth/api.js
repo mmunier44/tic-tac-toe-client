@@ -27,7 +27,7 @@ const signIn = function (data) {
 }
 
 const passwordChange = function (data) {
-  console.log('store in change password', store)
+  // console.log('store in change password', store)
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
@@ -83,16 +83,45 @@ const createGame = function (data) {
   })
 }
 
-const updateGame = function (data) {
+// const updateGame = function (data) {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + store.game.id,
+//     method: 'PATCH',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data: data
+//   })
+// }
+
+const updateMove = function () {
+  console.log('store.user check', store.user)
+  console.log('store.game check', store.game)
+  // console.log('store.game.event check', store.game.event)
+  // console.log('store.game.id check' game.id)
+  const gameData = {}
+  gameData.game = store.game
+  console.log('gameData.game check', gameData.game)
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.user.id,
     method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game.id,
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: gameData
   })
 }
+
+const newGame = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
 //
 // const updateGame = function (data, id) {
 //   console.log(data)
@@ -157,16 +186,16 @@ const joinGame = function (id, data) {
   })
 }
 
-const markCell = function (id, data) {
-  return $.ajax({
-    url: config.apiUrl + '/games/' + store.game.id,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data
-  })
-}
+// const markCell = function (id, data) {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + store.game.id,
+//     method: 'PATCH',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data
+//   })
+// }
 
 module.exports = {
   signUp,
@@ -177,6 +206,8 @@ module.exports = {
   listGames,
   showGame,
   joinGame,
-  updateGame,
-  markCell
+  // updateGame,
+  // markCell,
+  updateMove,
+  newGame
 }

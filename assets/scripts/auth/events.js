@@ -7,6 +7,41 @@ const ui = require('./ui.js')
 // const gamelogic = require('/.gamelogic.js')
 const store = require('../store.js')
 
+let currentPlayer = 'X'
+
+const switchPlayer = function () {
+  if (currentPlayer === 'X') {
+    currentPlayer = 'O'
+    $('#player').html('X is Playing')
+  } else {
+    currentPlayer = 'X'
+    $('#player').html('O is Playing')
+  }
+  return currentPlayer
+}
+
+const gameboard = [
+  '', '', '',
+  '', '', '',
+  '', '', ''
+]
+
+const onClick = function (event) {
+  if (gameboard[1] === 'X' || 'O') {
+  }
+}
+
+const winCombos = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [6, 4, 2]
+]
+
 // let onClick = function (boxId, currentPlayer) {
 //   if (currentPlayer == 0) {
 //     $('#' + boxId).html('X')
@@ -42,7 +77,7 @@ const onSignUp = function (event) {
   console.log('submitted the form')
   console.log('event.target:', event.target)
   const data = getFormFields(event.target)
-  console.log('data from the form:', data)
+  // console.log('data from the form:', data)
 
   api.signUp(data)
     .then(ui.signUpSuccess)
@@ -99,10 +134,10 @@ const onCreateGame = function (event, data) {
   event.preventDefault()
   console.log('New Game Created')
   console.log(event)
-  console.log(data)
+  // console.log(data)
   // console.log(store)
   // console.log('auth, sign in', store.user.token)
-  // console.log(store.user.token)
+  console.log(store.user.token)
   // const data = getFormFields(event.target)
 
   api.createGame(data)
@@ -132,43 +167,201 @@ const onShowGame = function (event) {
 //     .catch(ui.joinGameFail)
 // }
 
-const onUpdateGame = function (data) {
-  $('#message').text('Game Updated')
+const onUpdateMove = function (event) {
   event.preventDefault()
-  console.log('Game Updated')
-  // console.log(store.data)
-  console.log('store', store)
-  console.log('data', data)
-  console.log('event', event)
-  console.log('blah', store.game)
-  // console.log('id', id)
-  // console.log('user', user)
-  // console.log('id', id)
-  // console.log('store', store.user.token)
-  // console.log(store.user.data)
-  // console.log(store.user.token)
-  // console.log(store.game.id)
-  // console.log(store.user.token)
-  // console.log(store.game.id)
-  // console.log(store.data)
-  // console.log(data.id)
-  // const data = getFormFields(event.target)
-
-  api.updateGame(data)
-    .then(ui.updateGameSuccess)
-    .catch(ui.updateGameFail)
+  console.log('move updated')
+  api.updateMove()
+    .then(ui.updateMoveSuccess)
+    .catch(ui.updateMoveFail)
+  console.log(gameboard)
 }
+
+const onNewGame = function (event) {
+  event.preventDefault()
+  console.log('newgameworking?')
+  $('#message').text('New Game!')
+  api.newGame()
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFail)
+
+  gameboard[0] = ''
+  gameboard[1] = ''
+  gameboard[2] = ''
+  gameboard[3] = ''
+  gameboard[4] = ''
+  gameboard[5] = ''
+  gameboard[6] = ''
+  gameboard[7] = ''
+  gameboard[8] = ''
+  $('.cell').html('')
+  console.log(gameboard)
+}
+
+const onGameboard = function (event) {
+  gameboard.splice(event.target.id, 1, currentPlayer)
+  console.log(gameboard)
+  $(this).text(currentPlayer)
+  checkWin()
+  switchPlayer()
+  onClick()
+}
+
+const checkWin = function () {
+  if (gameboard[0] === 'X' &&
+      gameboard[1] === 'X' &&
+      gameboard[2] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[3] === 'X' &&
+      gameboard[4] === 'X' &&
+      gameboard[5] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[6] === 'X' &&
+      gameboard[7] === 'X' &&
+      gameboard[8] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[0] === 'X' &&
+      gameboard[3] === 'X' &&
+      gameboard[6] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[1] === 'X' &&
+      gameboard[4] === 'X' &&
+      gameboard[7] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[2] === 'X' &&
+      gameboard[5] === 'X' &&
+      gameboard[8] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[0] === 'X' &&
+      gameboard[4] === 'X' &&
+      gameboard[8] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[6] === 'X' &&
+      gameboard[4] === 'X' &&
+      gameboard[2] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+    // NOTE: switch to O
+  } else if (
+      gameboard[0] === 'O' &&
+      gameboard[1] === 'O' &&
+      gameboard[2] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[3] === 'O' &&
+      gameboard[4] === 'O' &&
+      gameboard[5] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[6] === 'O' &&
+      gameboard[7] === 'O' &&
+      gameboard[8] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[0] === 'O' &&
+      gameboard[3] === 'O' &&
+      gameboard[6] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[1] === 'O' &&
+      gameboard[4] === 'O' &&
+      gameboard[7] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[2] === 'O' &&
+      gameboard[5] === 'O' &&
+      gameboard[8] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[0] === 'O' &&
+      gameboard[4] === 'O' &&
+      gameboard[8] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[6] === 'O' &&
+      gameboard[4] === 'O' &&
+      gameboard[2] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  }
+}
+
+// const onUpdateGame = function (event) {
+//   $('#message').text('Game Updated')
+//   event.preventDefault()
+//   console.log('Game Updated')
+//   const data = {
+//     game: {
+//       cell: {
+//         index: store.index,
+//         value: store.value
+//       },
+//       over: store.over
+//     }
+//   }
+//   // console.log(store.data)
+//   // console.log('store', store)
+//   // console.log('data', data)
+//   // console.log('event', event)
+//   // console.log('blah', store.game)
+//   // console.log('id', id)
+//   // console.log('user', user)
+//   // console.log('id', id)
+//   // console.log('store', store.user.token)
+//   // console.log(store.user.data)
+//   // console.log(store.user.token)
+//   // console.log(store.game.id)
+//   // console.log(store.user.token)
+//   // console.log(store.game.id)
+//   // console.log(store.data)
+//   // console.log(data.id)
+//   // const data = getFormFields(event.target)
+//
+//   api.updateGame(data)
+//     .then(ui.updateGameSuccess)
+//     .catch(ui.updateGameFail)
+// }
 
 // const onMarker1 = function(event) {
 //   event.preventDefault()
 //   // if ($('#marker1').text() === '' && !winConditions) {
 //   //   $('#marker1').text(currentUser)
-//     gameboard[1] = currentUser
-//     api.updateGame(1, currentUser)
-//   }
-
-// $(() => {
-//  authEvents.addHandlers()
 // })
 
 const addHandlers = function () {
@@ -179,6 +372,10 @@ const addHandlers = function () {
   $('#list-games').on('submit', onListGames)
   $('#create-game').on('submit', onCreateGame)
   $('#show-game').on('submit', onShowGame)
+  $('.cell').on('click,onGameboard')
+  $('#new-game').on('click', onNewGame)
+  $('.cell').on('click', onUpdateMove)
+  $('#myModal').modal({backdrop: 'static'})
   // $('#join-game').on('submit', onJoinGame)
   // $('#gameboard').on('click', onUpdateGame)
   // $('#marker0').on('click', onMarkCell)
@@ -189,13 +386,18 @@ const addHandlers = function () {
   // $('#marker5').on('click', onUpdateGame)
   // $('#marker6').on('click', onUpdateGame)
   // $('#marker7').on('click', onUpdateGame)
-  $('#marker8').on('click', onUpdateGame)
+  // $('#marker8').on('click', onUpdateGame)
   // $('#markertest').on('click', gamelogicClick)
 
   // $('#blah').on('click', alert('blah is clicked'))
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  onUpdateMove,
+  winCombos,
+  onGameboard,
+  onNewGame,
+  onClick
   // onClick
 }

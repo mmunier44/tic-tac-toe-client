@@ -8,100 +8,87 @@ $teal: rgb(0, 156, 161);
 $black: #000;
 $blue: rgb(65, 105, 225);
 $red: rgb(240, 128, 128);
+$boardgamecolor: $red;
+
+html {
+  min-height: 100%;
+  position: relative;
+}
 
 body {
   align-content: center;
-  background-color: $black;
+  background-color: $grey;
+  margin-bottom: 60px;
+  min-height: 100%;
   text-align: center;
 }
 
+.header {
+  background-color: $red;
+  color: $black;
+  padding: 10px 16px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
+.footer {
+  background-color: $red;
+  bottom: 0;
+  color: $black;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.container {
+  max-width: 680px;
+  padding: 0 15px;
+  width: auto;
+}
 table {
-  font-size: 70px;
-  margin: auto;
-}
-
-p {
-  color: $white;
-}
-
-legend {
-  color: $white;
-}
-
-h2 {
-  color: $white;
-}
-
-tr {
-  height: 120px;
+  border: 50px $black;
+  border-collapse: collapse;
+  left: 50%;
+  margin-bottom: 125px;
+  margin-left: -230px;
+  margin-top: 125px;
+  padding: 10px;
+  position: absolute;
+  top: 100px;
 }
 
 td {
-  width: 120px;
+  border: 5px solid $boardgamecolor;
+  height: 150px;
+  width: 150px;
 }
 
-.box {
-  align-items: center;
-  border: 1px solid $white;
-  color: $font-color;
-  display: flex;
-  height: 140px;
-  justify-content: center;
-  width: 140px;
+table tr:first-child td {
+  border-top: 0;
 }
 
-.grey {
-  background-color: grey;
+table tr:last-child td {
+  border-bottom: 0;
 }
 
-.blue {
-  background-color: $blue;
+table tr td:first-child {
+  border-left: 0;
 }
 
-h1 {
-  font: $white;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  // flex-basis: auto;
-  // background: tomato;
-  // // padding: 5px;
-  // width: 200px;
-  // height: 150px;
-  // margin-top: 10px;
-  // line-height: 150px;
-  // color: white;
-  font-weight: bold;
-  // font-size: 3em;
-  // text-align: center;
-}
-
-.scoreboard {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  // flex-basis: auto;
-  // background: $white;
-  // // padding: 5px;
-  // width: 200px;
-  // height: 150px;
-  // margin-top: 10px;
-  // line-height: 150px;
-  // color: white;
-  font-weight: bold;
-  // font-size: 3em;
-  // text-align: center;
-}
-
-.gameboard {
-  // display: flex;
-}
-
-h5 {
-  color: $white;
+table tr td:last-child {
+  border-right: 0;
 }
 
 .message {
@@ -111,11 +98,104 @@ h5 {
 //   color: $white;
 // }
 
-.crud {
-  align-items: center;
-  border: 1px solid $white;
-  color: $font-color;
-  display: flex;
-  height: 80px;
-  justify-content: center;
-}
+// .crud {
+//   align-items: center;
+//   border: 1px solid $white;
+//   color: $font-color;
+//   display: flex;
+//   height: 80px;
+//   justify-content: center;
+// }
+
+// .page-wrap {
+//   margin-bottom: -142px;
+//   min-height: 100%;
+//   ::after {
+//     content: '';
+//     display: block;
+//     height: 142px;
+//   }
+// }
+//
+// .site-footer {
+//   background: #ffa500;
+//   height: 142px;
+// }
+
+
+
+// p {
+//   color: $white;
+// }
+//
+// legend {
+//   color: $white;
+// }
+//
+// h2 {
+//   color: $white;
+// }
+
+// .box {
+//   align-items: center;
+//   border: 1px solid $white;
+//   color: $font-color;
+//   display: flex;
+//   height: 140px;
+//   justify-content: center;
+//   width: 140px;
+// }
+//
+// .grey {
+//   background-color: $grey;
+// }
+//
+// .blue {
+//   background-color: $blue;
+// }
+//
+// h1 {
+//   font: $white;
+// }
+//
+// .row {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   // flex-basis: auto;
+//   // background: tomato;
+//   // // padding: 5px;
+//   // width: 200px;
+//   // height: 150px;
+//   // margin-top: 10px;
+//   // line-height: 150px;
+//   // color: white;
+//   font-weight: bold;
+//   // font-size: 3em;
+//   // text-align: center;
+// }
+//
+// .scoreboard {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   // flex-basis: auto;
+//   // background: $white;
+//   // // padding: 5px;
+//   // width: 200px;
+//   // height: 150px;
+//   // margin-top: 10px;
+//   // line-height: 150px;
+//   // color: white;
+//   font-weight: bold;
+//   // font-size: 3em;
+//   // text-align: center;
+// }
+//
+// .gameboard {
+//   // display: flex;
+// }
+//
+// h5 {
+//   color: $white;
+// }
