@@ -72,16 +72,16 @@ const listGames = function (data) {
   })
 }
 
-const createGame = function (data) {
-  return $.ajax({
-    url: config.apiUrl + '/games',
-    method: 'POST',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    },
-    data: data
-  })
-}
+// const createGame = function () {
+//   return $.ajax({
+//     url: config.apiUrl + '/games',
+//     method: 'POST',
+//     headers: {
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data
+//   })
+// }
 
 // const updateGame = function (data) {
 //   return $.ajax({
@@ -94,23 +94,34 @@ const createGame = function (data) {
 //   })
 // }
 
-const updateMove = function () {
-  console.log('store.user check', store.user)
-  console.log('store.game check', store.game)
-  // console.log('store.game.event check', store.game.event)
-  // console.log('store.game.id check' game.id)
-  const gameData = {}
-  gameData.game = store.game
-  console.log('gameData.game check', gameData.game)
+const updateMove = function (data) {
   return $.ajax({
+    url: config.apiUrl + '/games/' + store.gameboard,
     method: 'PATCH',
-    url: config.apiUrl + '/games/' + store.game.id,
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      'Authorization': 'Token token=' + store.user.token
     },
-    data: gameData
+    data
   })
 }
+
+// const updateMove = function () {
+//   console.log('store.user check', store.user)
+//   console.log('store.game check', store.game)
+//   // console.log('store.game.event check', store.game.event)
+//   // console.log('store.game.id check' game.id)
+//   const gameData = {}
+//   gameData.game = store.game
+//   console.log('gameData.game check', gameData.game)
+//   return $.ajax({
+//     method: 'PATCH',
+//     url: config.apiUrl + '/games/' + store.game.id,
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data: gameData
+//   })
+// }
 
 const newGame = function () {
   return $.ajax({
@@ -202,7 +213,7 @@ module.exports = {
   signIn,
   passwordChange,
   signOut,
-  createGame,
+  // createGame,
   listGames,
   showGame,
   joinGame,

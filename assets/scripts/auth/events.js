@@ -28,6 +28,9 @@ const gameboard = [
 
 const onClick = function (event) {
   if (gameboard[1] === 'X' || 'O') {
+    console.log('chck store', store)
+    console.log('event click check', event)
+    console.log(gameboard)
   }
 }
 
@@ -167,18 +170,28 @@ const onShowGame = function (event) {
 //     .catch(ui.joinGameFail)
 // }
 
-const onUpdateMove = function (event) {
+const onUpdateMove = function (event, store) {
   event.preventDefault()
   console.log('move updated')
-  api.updateMove()
+  console.log('event logged', event)
+  // const data = store.game.id
+  // const data = store.gameUpdate
+  // console.log(store.game.id)
+  console.log(gameboard)
+  console.log(store)
+  // console.log(data)
+  // console.log(game.id)
+
+  api.updateMove(gameboard)
     .then(ui.updateMoveSuccess)
     .catch(ui.updateMoveFail)
-  console.log(gameboard)
 }
 
-const onNewGame = function (event) {
+const onNewGame = function (data) {
   event.preventDefault()
+  // console.log('check store game id', game.id)
   console.log('newgameworking?')
+  console.log('check data', data)
   $('#message').text('New Game!')
   api.newGame()
     .then(ui.newGameSuccess)
@@ -195,6 +208,8 @@ const onNewGame = function (event) {
   gameboard[8] = ''
   $('.cell').html('')
   console.log(gameboard)
+  console.log(store)
+  // console.log(gameUpdate)
 }
 
 const onGameboard = function (event) {
@@ -398,6 +413,7 @@ module.exports = {
   winCombos,
   onGameboard,
   onNewGame,
-  onClick
+  onClick,
+
   // onClick
 }

@@ -232,7 +232,6 @@ module.exports = {
 
 // const markerTest = function() {
 //   $('marker0').append('X')
-}
 
 // const gamelogicClick = function(event) {
 //   event.preventDefault()

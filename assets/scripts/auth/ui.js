@@ -38,6 +38,8 @@ const signInSuccess = function (response) {
   $('#sign-up').addClass('hide')
   $('#sign-in').addClass('hide')
   $('#new-game').removeClass('hide')
+  $('#list-games').removeClass('hide')
+  $('#join-games').removeClass('hide')
   // $('#timeout')
 }
 
@@ -127,15 +129,18 @@ const newGameSuccess = function (data) {
   $('o-winner-message').html('')
   // $('#change-password').addClass('hide')
 
-  store.game = data.games
-  console.log(data.game)
+  console.log('new game store', store)
+  // store.game = data.games
+  console.log('newgame data game', data.game)
+  // console.log('storegameid', .id)
+  // console.log(gameboard)
 }
 
 const newGameFail = function (data) {
 }
 
-const updateMove = function (data) {
-}
+// const updateMove = function (data) {
+// }
 
 const createGameFail = function (response) {
   $('#message').text('Create Game Fail')
@@ -254,6 +259,6 @@ module.exports = {
   updateGameFail,
   newGameSuccess,
   newGameFail,
-  updateMove,
+  // updateMove,
   store
 }
