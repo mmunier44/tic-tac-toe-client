@@ -8,8 +8,12 @@ const store = require('../store.js')
 //
 // }
 
-const signUp = function (data) {
+const signUp = function (data, event) {
   console.log('api URL is', config.apiUrl)
+  console.log('data', data)
+  console.log('event', event)
+  console.log('store', store)
+  console.log('config', config)
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
@@ -19,6 +23,10 @@ const signUp = function (data) {
 
 const signIn = function (data) {
   console.log('api URL is', config.apiUrl)
+  console.log('data', data)
+  console.log('event', event)
+  console.log('store', store)
+  console.log('config', config)
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -94,7 +102,14 @@ const listGames = function (data) {
 //   })
 // }
 
-const updateMove = function (data) {
+const updateMove = function (data, event) {
+  console.log('data', data)
+  console.log('event', event)
+  console.log('store', store)
+  console.log('config', config)
+  console.log('gameboard', gameboard)
+  console.log('game', game)
+  console.log('id', id)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.gameboard,
     method: 'PATCH',
@@ -104,7 +119,6 @@ const updateMove = function (data) {
     data
   })
 }
-
 // const updateMove = function () {
 //   console.log('store.user check', store.user)
 //   console.log('store.game check', store.game)
@@ -123,7 +137,12 @@ const updateMove = function (data) {
 //   })
 // }
 
-const newGame = function () {
+const newGame = function (data) {
+  console.log('data', data)
+  console.log('event', event)
+  console.log('store', store)
+  console.log('config', config)
+  console.log()
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',

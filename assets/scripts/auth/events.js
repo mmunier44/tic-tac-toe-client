@@ -28,7 +28,7 @@ const gameboard = [
 
 const onClick = function (event) {
   if (gameboard[1] === 'X' || 'O') {
-    console.log('chck store', store)
+    console.log('check store', store)
     console.log('event click check', event)
     console.log(gameboard)
   }
@@ -116,6 +116,7 @@ const onSignOut = function (event) {
   console.log('Signed Out')
   const data = getFormFields(event.target)
 
+
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFail)
@@ -170,7 +171,7 @@ const onShowGame = function (event) {
 //     .catch(ui.joinGameFail)
 // }
 
-const onUpdateMove = function (event, store) {
+const onUpdateMove = function (event, store, data) {
   event.preventDefault()
   console.log('move updated')
   console.log('event logged', event)
@@ -179,10 +180,11 @@ const onUpdateMove = function (event, store) {
   // console.log(store.game.id)
   console.log(gameboard)
   console.log(store)
+  console.log(data)
   // console.log(data)
   // console.log(game.id)
 
-  api.updateMove(gameboard)
+  api.updateMove(gameboard.id)
     .then(ui.updateMoveSuccess)
     .catch(ui.updateMoveFail)
 }

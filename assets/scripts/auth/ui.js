@@ -28,11 +28,14 @@ const signInSuccess = function (response) {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#sign-in input').val('')
+  $('#change-password input').val('')
   store.user = response.user
   console.log(response.user)
   console.log('response is', response)
   console.log('store', store)
+  // console.log('gameboard', gameboard)
   console.log('signInSuccess ran')
+  console.log('storegamebord', store.gameboard)
   $('#change-password').removeClass('hide')
   $('#sign-out').removeClass('hide')
   $('#sign-up').addClass('hide')
@@ -40,6 +43,7 @@ const signInSuccess = function (response) {
   $('#new-game').removeClass('hide')
   $('#list-games').removeClass('hide')
   $('#join-games').removeClass('hide')
+  $('table').removeClass('hide')
   // $('#timeout')
 }
 
@@ -81,6 +85,7 @@ const signOutSuccess = function (response) {
   $('#new-game').addClass('hide')
   $('#sign-in').removeClass('hide')
   $('#sign-out').addClass('hide')
+  $('table').addClass('hide')
   // console.log('response is', response)
   // console.log('store', store)
   // $('#timeout')
@@ -132,6 +137,7 @@ const newGameSuccess = function (data) {
   console.log('new game store', store)
   // store.game = data.games
   console.log('newgame data game', data.game)
+  console.log('storegame', store.game)
   // console.log('storegameid', .id)
   // console.log(gameboard)
 }
