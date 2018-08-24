@@ -15,6 +15,17 @@ const gameboard = [
 //
 // }
 
+const apiIndex = function () {
+  console.log('api index')
+  return $.ajax({
+    method: 'GET',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    url: config.apiUrl + 'games'
+  })
+}
+
 const signUp = function (data, event) {
   console.log('api URL is', config.apiUrl)
   console.log('data', data)
@@ -76,16 +87,29 @@ const signOut = function () {
   })
 }
 
-const listGames = function (data) {
+const listGames = function (id) {
+  console.log('games api create')
+  console.log(id)
   return $.ajax({
-    url: config.apiUrl + '/games',
     method: 'GET',
     headers: {
       'Authorization': 'Token token=' + store.user.token
-    }
-    // data: data
+    },
+    url: config.apiUrl + 'games/' + id
   })
 }
+
+// const listGames = function (id) {
+//   console.log(id)
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + id
+//     method: 'GET',
+//     headers: {
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     // data: data
+//   })
+// }
 
 // const createGame = function () {
 //   return $.ajax({
@@ -249,5 +273,6 @@ module.exports = {
   // updateGame,
   // markCell,
   updateMove,
-  newGame
+  newGame,
+  apiIndex
 }
