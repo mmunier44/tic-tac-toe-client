@@ -124,7 +124,7 @@ const newGame = function (data) {
   })
 }
 
-const updateMove = function (user, game, id, data, gameboard, store, event) {
+const updateMove = function (data, event) {
   console.log('data', data)
   console.log('event', event)
   console.log('store', store)
@@ -136,7 +136,7 @@ const updateMove = function (user, game, id, data, gameboard, store, event) {
   // console.log('game', game)
   // console.log('id', id)
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.game.id,
+    url: config.apiUrl + '/games/' + data.id,
     method: 'PATCH',
     headers: {
       'Authorization': 'Token token=' + store.user.token

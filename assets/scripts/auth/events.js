@@ -6,6 +6,15 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 // const gamelogic = require('/.gamelogic.js')
 
+const Game = function (game = {cells: ['', '', '', '', '','', '', ' ', ''], over: false}) {
+  if (game) {
+    game.id = game.id
+    game.cells = game.cells
+    game.over = game.over
+  }
+  game.currentPlayer = 'X'
+}
+
 let currentPlayer = 'X'
 
 const switchPlayer = function () {
@@ -176,12 +185,13 @@ const onShowGame = function (event) {
 //     .catch(ui.joinGameFail)
 // }
 
-const onUpdateMove = function (event, store, data, game, id) {
+const onUpdateMove = function (event) {
   event.preventDefault()
   console.log('move updated')
   console.log('event logged', event)
-  console.log('id', id)
-  console.log('game', game)
+  // console.log('id', id)
+  // console.log('game', game)
+  const data = getFormFields(event.target)
   // console.log('game.id', game.id)
   // console.log('store.game.id', store.game.id)
   // console.log('store.gameboard', store.gameboard)
@@ -198,26 +208,26 @@ const onUpdateMove = function (event, store, data, game, id) {
   // console.log(game.id)
   // note store.gameboard causes looped preporty error cant read gameboard
   // note store.gameboard here and api line 201
-  api.updateMove(store.data)
+  api.updateMove(data)
     .then(ui.updateMoveSuccess)
     .catch(ui.updateMoveFail)
 }
 
-const onNewGame = function (data, game, event, id) {
+const onNewGame = function () {
   // event.preventDefault()
-  console.log('move updated')
-  console.log('event logged', event)
-  console.log('id', id)
-  console.log('game', game)
+  // console.log('move updated')
+  // console.log('event logged', event)
+  // console.log('id', id)
+  // console.log('game', game)
   // console.log('game.id', game.id)
   // console.log('store.game.id', store.game.id)
-  console.log('store.gameboard', store.gameboard)
-  console.log('gameboardnewcheck', gameboard)
-  console.log('store check', store)
-  console.log('data check', data)
+  // console.log('store.gameboard', store.gameboard)
+  // console.log('gameboardnewcheck', gameboard)
+  // console.log('store check', store)
+  // console.log('data check', data)
   // console.log('check store game id', game.id)
-  console.log('newgameworking?')
-  console.log('check data', data)
+  // console.log('newgameworking?')
+  // console.log('check data', data)
   $('#message').text('New Game!')
   api.newGame()
     .then(ui.newGameSuccess)
