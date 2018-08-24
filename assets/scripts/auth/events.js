@@ -1,11 +1,10 @@
 'use strict'
 
 const getFormFields = require('../../../lib/get-form-fields.js')
-
+const store = require('../store.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 // const gamelogic = require('/.gamelogic.js')
-const store = require('../store.js')
 
 let currentPlayer = 'X'
 
@@ -27,12 +26,19 @@ const gameboard = [
 ]
 
 const onClick = function (event) {
-  if (gameboard[1] === 'X' || 'O') {
-    console.log('check store', store)
-    console.log('event click check', event)
-    console.log(gameboard)
-  }
+  // if (gameboard[1] === 'X' || 'O') {
+  console.log('check store', store)
+  console.log('event click check', event)
+  console.log(gameboard)
+  console.log('move updated')
+  console.log('event logged', event)
+  // console.log('id', id)
+  // console.log('game', game)
+  // console.log('game.id', game.id)
+  console.log('store.game.id', store.game.id)
+  console.log('store.gameboard', store.gameboard)
 }
+// }
 
 const winCombos = [
   [0, 1, 2],
@@ -116,7 +122,6 @@ const onSignOut = function (event) {
   console.log('Signed Out')
   const data = getFormFields(event.target)
 
-
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFail)
@@ -171,26 +176,45 @@ const onShowGame = function (event) {
 //     .catch(ui.joinGameFail)
 // }
 
-const onUpdateMove = function (event, store, data) {
+const onUpdateMove = function (event, store, data, game, id) {
   event.preventDefault()
   console.log('move updated')
   console.log('event logged', event)
+  console.log('id', id)
+  console.log('game', game)
+  // console.log('game.id', game.id)
+  // console.log('store.game.id', store.game.id)
+  // console.log('store.gameboard', store.gameboard)
   // const data = store.game.id
   // const data = store.gameUpdate
   // console.log(store.game.id)
-  console.log(gameboard)
-  console.log(store)
-  console.log(data)
+  console.log('gameboard check', gameboard)
+  console.log('store check', store)
+  console.log('data check', data)
+  console.log('gameboard.data', gameboard.data)
+  // console.log('store.gameboard', store.gameboard)
+  // console.log('store.gameboard.data', store.gameboard.data)
   // console.log(data)
   // console.log(game.id)
-
-  api.updateMove(gameboard.id)
+  // note store.gameboard causes looped preporty error cant read gameboard
+  // note store.gameboard here and api line 201
+  api.updateMove(store.data)
     .then(ui.updateMoveSuccess)
     .catch(ui.updateMoveFail)
 }
 
-const onNewGame = function (data) {
-  event.preventDefault()
+const onNewGame = function (data, game, event, id) {
+  // event.preventDefault()
+  console.log('move updated')
+  console.log('event logged', event)
+  console.log('id', id)
+  console.log('game', game)
+  // console.log('game.id', game.id)
+  // console.log('store.game.id', store.game.id)
+  console.log('store.gameboard', store.gameboard)
+  console.log('gameboardnewcheck', gameboard)
+  console.log('store check', store)
+  console.log('data check', data)
   // console.log('check store game id', game.id)
   console.log('newgameworking?')
   console.log('check data', data)
@@ -214,7 +238,14 @@ const onNewGame = function (data) {
   // console.log(gameUpdate)
 }
 
-const onGameboard = function (event) {
+const onGameboard = function (event, data, id, game) {
+  console.log('data', data)
+  console.log('event', event)
+  console.log('store', store)
+  console.log('game', game)
+  console.log('id', id)
+  // console(log)
+  // console.log('config', config)
   gameboard.splice(event.target.id, 1, currentPlayer)
   console.log(gameboard)
   $(this).text(currentPlayer)
@@ -393,6 +424,7 @@ const addHandlers = function () {
   $('#new-game').on('click', onNewGame)
   $('.cell').on('click', onUpdateMove)
   $('#myModal').modal({backdrop: 'static'})
+  $('#on-click').on('click, onclick')
   // $('#join-game').on('submit', onJoinGame)
   // $('#gameboard').on('click', onUpdateGame)
   // $('#marker0').on('click', onMarkCell)
@@ -415,7 +447,7 @@ module.exports = {
   winCombos,
   onGameboard,
   onNewGame,
-  onClick,
+  onClick
 
   // onClick
 }

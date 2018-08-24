@@ -2,7 +2,14 @@
 
 const config = require('../config.js')
 const store = require('../store.js')
+const events = require('./events.js')
 // const gamelogic = require('/.gamelogic.js')
+
+const gameboard = [
+  '', '', '',
+  '', '', '',
+  '', '', ''
+]
 
 // const boxClick = function () {
 //
@@ -102,16 +109,34 @@ const listGames = function (data) {
 //   })
 // }
 
-const updateMove = function (data, event) {
+const newGame = function (data) {
+  console.log('data', data)
+  console.log('event', event)
+  console.log('store', store)
+  console.log('config', config)
+  console.log()
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
+const updateMove = function (user, game, id, data, gameboard, store, event) {
   console.log('data', data)
   console.log('event', event)
   console.log('store', store)
   console.log('config', config)
   console.log('gameboard', gameboard)
-  console.log('game', game)
-  console.log('id', id)
+  // console.log('user', currentUser)
+  // data = store.gameboard
+  // console.log('store.gameboard', store.gameboard)
+  // console.log('game', game)
+  // console.log('id', id)
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.gameboard,
+    url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
       'Authorization': 'Token token=' + store.user.token
@@ -136,21 +161,6 @@ const updateMove = function (data, event) {
 //     data: gameData
 //   })
 // }
-
-const newGame = function (data) {
-  console.log('data', data)
-  console.log('event', event)
-  console.log('store', store)
-  console.log('config', config)
-  console.log()
-  return $.ajax({
-    url: config.apiUrl + '/games',
-    method: 'POST',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    }
-  })
-}
 
 //
 // const updateGame = function (data, id) {
