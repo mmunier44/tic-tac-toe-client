@@ -88,7 +88,7 @@ const signOut = function () {
 }
 
 const listGames = function (id) {
-  console.log('games api create')
+  console.log('games list create')
   console.log(id)
   return $.ajax({
     method: 'GET',
@@ -228,9 +228,11 @@ const updateMove = function (data, event) {
 //   })
 // }
 
-const showGame = function () {
+const showGame = function (id) {
+  console.log('show game id')
+  console.log('showgameId', id)
   return $.ajax({
-    url: config.apiUrl + '/games',
+    url: config.apiUrl + '/games' + id,
     method: 'GET',
     headers: {
       'Authorization': 'Token token=' + store.user.token

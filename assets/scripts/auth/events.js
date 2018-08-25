@@ -6,7 +6,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 // const gamelogic = require('/.gamelogic.js')
 
-const Game = function (game = {cells: ['', '', '', '', '','', '', ' ', ''], over: false}) {
+const Game = function (game = {cells: ['', '', '', '', '', '', '', ' ', ''], over: false}) {
   if (game) {
     game.id = game.id
     game.cells = game.cells
@@ -167,9 +167,11 @@ const onShowGame = function (event) {
   $('#message').text('Game Shown')
   event.preventDefault()
   console.log('Game Shown')
+  let id
+  id = getFormFields(event.target).id
   // const data = getFormFields(event.target)
 
-  api.showGame()
+  api.showGame(id)
     .then(ui.showGameSuccess)
     .catch(ui.showGameFail)
 }
