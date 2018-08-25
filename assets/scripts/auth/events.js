@@ -36,16 +36,16 @@ const gameboard = [
 
 const onClick = function (event) {
   // if (gameboard[1] === 'X' || 'O') {
-  console.log('check store', store)
-  console.log('event click check', event)
-  console.log(gameboard)
-  console.log('move updated')
-  console.log('event logged', event)
+  // console.log('check store', store)
+  // console.log('event click check', event)
+  // console.log(gameboard)
+  // console.log('move updated')
+  // console.log('event logged', event)
   // console.log('id', id)
   // console.log('game', game)
   // console.log('game.id', game.id)
-  console.log('store.game.id', store.game.id)
-  console.log('store.gameboard', store.gameboard)
+  // console.log('store.game.id', store.game.id)
+  // console.log('store.gameboard', store.gameboard)
 }
 // }
 
@@ -60,40 +60,11 @@ const winCombos = [
   [6, 4, 2]
 ]
 
-// let onClick = function (boxId, currentPlayer) {
-//   if (currentPlayer == 0) {
-//     $('#' + boxId).html('X')
-//   } else {
-//     $('#' + boxId).html('O')
-//   }
-// }
-
-// const onBoxClick = function (event) {
-//   event.preventDefault()
-//   $(document).ready(function(){
-//     $("p").on("click", function () {
-//       $(this).hide();
-//       console.log(clickworked);
-//     }
-//   })
-// }
-// const onClick = function (event) {
-//   $('p').on('click', function () {
-//     $(this).hide()
-//     return onClick
-//   })
-// }
-//
-// const element = document.createElement('div')
-// element.id = 'myDiv'
-// element.innerHTML = 'Hello World!'
-// document.body.appendChild(element)
-
 const onSignUp = function (event) {
   event.preventDefault()
   $('#message').text('Sign Up Successful')
-  console.log('submitted the form')
-  console.log('event.target:', event.target)
+  // console.log('submitted the form')
+  // console.log('event.target:', event.target)
   const data = getFormFields(event.target)
   // console.log('data from the form:', data)
 
@@ -105,9 +76,9 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   $('#message').text('Sign In Successful')
   event.preventDefault()
-  console.log('signed in')
+  // console.log('signed in')
   const data = getFormFields(event.target)
-  console.log('sign in data', data)
+  // console.log('sign in data', data)
 
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -115,9 +86,9 @@ const onSignIn = function (event) {
 }
 
 const onPasswordChange = function (event) {
-  $('#message').text('Password change Successful')
+  $('#message').text('Password Changed')
   event.preventDefault()
-  console.log('password changed')
+  // console.log('password changed')
   const data = getFormFields(event.target)
 
   api.passwordChange(data)
@@ -128,7 +99,7 @@ const onPasswordChange = function (event) {
 const onSignOut = function (event) {
   $('#message').text('Sign Out Successful')
   event.preventDefault()
-  console.log('Signed Out')
+  // console.log('Signed Out')
   const data = getFormFields(event.target)
 
   api.signOut(data)
@@ -139,7 +110,7 @@ const onSignOut = function (event) {
 const onListGames = function (event) {
   $('#message').text('Games List Loaded')
   event.preventDefault()
-  console.log('Games Shown')
+  // console.log('Games Shown')
   // const data = getFormFields(event.target)
 
   api.listGames()
@@ -150,12 +121,13 @@ const onListGames = function (event) {
 const onCreateGame = function (event, data) {
   $('#message').text('New Game Created')
   event.preventDefault()
-  console.log('New Game Created')
-  console.log(event)
+  // console.log('New Game Created')
+  // console.log(event)
   // console.log(data)
   // console.log(store)
   // console.log('auth, sign in', store.user.token)
-  console.log(store.user.token)
+  // console.log(store.user.token)
+  // console.log(data.game)
   // const data = getFormFields(event.target)
 
   api.createGame(data)
@@ -166,9 +138,9 @@ const onCreateGame = function (event, data) {
 const onShowGame = function (event) {
   $('#message').text('Game Shown')
   event.preventDefault()
-  console.log('Game Shown')
+  // console.log('Game Shown')
   let id
-  id = getFormFields(event.target).id
+  // id = getFormFields(event.target).id
   // const data = getFormFields(event.target)
 
   api.showGame(id)
@@ -176,21 +148,10 @@ const onShowGame = function (event) {
     .catch(ui.showGameFail)
 }
 
-// const onJoinGame = function (event) {
-//   $('#message').text('Game Joined')
-//   event.preventDefault()
-//   console.log('Game Joined')
-//   // const data = getFormFields(event.target)
-//
-//   api.joinGame()
-//     .then(ui.joinGameSuccess)
-//     .catch(ui.joinGameFail)
-// }
-
 const onUpdateMove = function (event) {
   event.preventDefault()
-  console.log('move updated')
-  console.log('event logged', event)
+  // console.log('move updated')
+  // console.log('event logged', event)
   // console.log('id', id)
   // console.log('game', game)
   const data = getFormFields(event.target)
@@ -200,10 +161,11 @@ const onUpdateMove = function (event) {
   // const data = store.game.id
   // const data = store.gameUpdate
   // console.log(store.game.id)
-  console.log('gameboard check', gameboard)
-  console.log('store check', store)
-  console.log('data check', data)
-  console.log('gameboard.data', gameboard.data)
+  // console.log('gameboard check', gameboard)
+  // console.log('store check', store)
+  // console.log('data check', data)
+  // console.log('gameboard.data', gameboard.data)
+  // console.log('data.game', data.game)
   // console.log('store.gameboard', store.gameboard)
   // console.log('store.gameboard.data', store.gameboard.data)
   // console.log(data)
@@ -215,8 +177,9 @@ const onUpdateMove = function (event) {
     .catch(ui.updateMoveFail)
 }
 
-const onNewGame = function () {
-  // event.preventDefault()
+const onNewGame = function (event) {
+  event.preventDefault()
+  // console.log('onNewGameClick', event)
   // console.log('move updated')
   // console.log('event logged', event)
   // console.log('id', id)
@@ -232,6 +195,13 @@ const onNewGame = function () {
   // console.log('check data', data)
   $('#message').text('New Game!')
   api.newGame()
+    // .then(function (response) {
+    //   store.game = new Game(response.game)
+    //   console.log('game in new game', store.game)
+    //   console.log(store.game)
+    //   console.log(store.game.cells)
+    //   console.log('create game object')
+    // })
     .then(ui.newGameSuccess)
     .catch(ui.newGameFail)
 
@@ -245,21 +215,21 @@ const onNewGame = function () {
   gameboard[7] = ''
   gameboard[8] = ''
   $('.cell').html('')
-  console.log(gameboard)
-  console.log(store)
+  // console.log(gameboard)
+  // console.log(store)
   // console.log(gameUpdate)
 }
 
 const onGameboard = function (event, data, id, game) {
-  console.log('data', data)
-  console.log('event', event)
-  console.log('store', store)
-  console.log('game', game)
-  console.log('id', id)
+  // console.log('data', data)
+  // console.log('event', event)
+  // console.log('store', store)
+  // console.log('game', game)
+  // console.log('id', id)
   // console(log)
   // console.log('config', config)
   gameboard.splice(event.target.id, 1, currentPlayer)
-  console.log(gameboard)
+  // console.log(gameboard)
   $(this).text(currentPlayer)
   checkWin()
   switchPlayer()
@@ -382,6 +352,86 @@ const checkWin = function () {
   }
 }
 
+const addHandlers = function () {
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
+  $('#change-password').on('submit', onPasswordChange)
+  $('#sign-out').on('submit', onSignOut)
+  $('#list-games').on('submit', onListGames)
+  $('#create-game').on('submit', onCreateGame)
+  $('#show-game').on('submit', onShowGame)
+  $('.cell').on('click,onGameboard')
+  $('#new-game').on('click', onNewGame)
+  $('.cell').on('click', onUpdateMove)
+  $('#myModal').modal({backdrop: 'static'})
+  $('#on-click').on('click, onclick')
+  // $('#join-game').on('submit', onJoinGame)
+  // $('#gameboard').on('click', onUpdateGame)
+  // $('#marker0').on('click', onMarkCell)
+  // $('#marker1').on('click', onUpdateGame)
+  // $('#marker2').on('click', onUpdateGame)
+  // $('#marker3').on('click', onUpdateGame)
+  // $('#marker4').on('click', onUpdateGame)
+  // $('#marker5').on('click', onUpdateGame)
+  // $('#marker6').on('click', onUpdateGame)
+  // $('#marker7').on('click', onUpdateGame)
+  // $('#marker8').on('click', onUpdateGame)
+  // $('#markertest').on('click', gamelogicClick)
+
+  // $('#blah').on('click', alert('blah is clicked'))
+}
+
+module.exports = {
+  addHandlers,
+  onUpdateMove,
+  winCombos,
+  onGameboard,
+  onNewGame,
+  onClick
+
+  // onClick
+}
+// store.game = data.game
+
+// game >> store
+// let onClick = function (boxId, currentPlayer) {
+//   if (currentPlayer == 0) {
+//     $('#' + boxId).html('X')
+//   } else {
+//     $('#' + boxId).html('O')
+//   }
+// }
+
+// const onBoxClick = function (event) {
+//   event.preventDefault()
+//   $(document).ready(function(){
+//     $("p").on("click", function () {
+//       $(this).hide();
+//       console.log(clickworked);
+//     }
+//   })
+// }
+// const onClick = function (event) {
+//   $('p').on('click', function () {
+//     $(this).hide()
+//     return onClick
+//   })
+// }
+//
+// const element = document.createElement('div')
+// element.id = 'myDiv'
+// element.innerHTML = 'Hello World!'
+// document.body.appendChild(element)
+// const onJoinGame = function (event) {
+//   $('#message').text('Game Joined')
+//   event.preventDefault()
+//   console.log('Game Joined')
+//   // const data = getFormFields(event.target)
+//
+//   api.joinGame()
+//     .then(ui.joinGameSuccess)
+//     .catch(ui.joinGameFail)
+// }
 // const onUpdateGame = function (event) {
 //   $('#message').text('Game Updated')
 //   event.preventDefault()
@@ -423,43 +473,3 @@ const checkWin = function () {
 //   // if ($('#marker1').text() === '' && !winConditions) {
 //   //   $('#marker1').text(currentUser)
 // })
-
-const addHandlers = function () {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
-  $('#change-password').on('submit', onPasswordChange)
-  $('#sign-out').on('submit', onSignOut)
-  $('#list-games').on('submit', onListGames)
-  $('#create-game').on('submit', onCreateGame)
-  $('#show-game').on('submit', onShowGame)
-  $('.cell').on('click,onGameboard')
-  $('#new-game').on('click', onNewGame)
-  $('.cell').on('click', onUpdateMove)
-  $('#myModal').modal({backdrop: 'static'})
-  $('#on-click').on('click, onclick')
-  // $('#join-game').on('submit', onJoinGame)
-  // $('#gameboard').on('click', onUpdateGame)
-  // $('#marker0').on('click', onMarkCell)
-  // $('#marker1').on('click', onUpdateGame)
-  // $('#marker2').on('click', onUpdateGame)
-  // $('#marker3').on('click', onUpdateGame)
-  // $('#marker4').on('click', onUpdateGame)
-  // $('#marker5').on('click', onUpdateGame)
-  // $('#marker6').on('click', onUpdateGame)
-  // $('#marker7').on('click', onUpdateGame)
-  // $('#marker8').on('click', onUpdateGame)
-  // $('#markertest').on('click', gamelogicClick)
-
-  // $('#blah').on('click', alert('blah is clicked'))
-}
-
-module.exports = {
-  addHandlers,
-  onUpdateMove,
-  winCombos,
-  onGameboard,
-  onNewGame,
-  onClick
-
-  // onClick
-}

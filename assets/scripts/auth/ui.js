@@ -7,7 +7,7 @@ const signUpSuccess = function (data) {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#sign-up input').val('')
-  console.log('signUpSuccess ran')
+  // console.log('signUpSuccess ran')
   // $('#change-password').removeClass('hide')
   // $('#sign-out').removeClass('hide')
   $('#sign-up').addClass('hide')
@@ -20,7 +20,7 @@ const signUpFail = function () {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#sign-up input').val('')
-  console.log('signUpFail ran')
+  // console.log('signUpFail ran')
 }
 
 const signInSuccess = function (response) {
@@ -30,12 +30,12 @@ const signInSuccess = function (response) {
   $('#sign-in input').val('')
   $('#change-password input').val('')
   store.user = response.user
-  console.log(response.user)
-  console.log('response is', response)
-  console.log('store', store)
+  // console.log(response.user)
+  // console.log('response is', response)
+  // console.log('store', store)
   // console.log('gameboard', gameboard)
-  console.log('signInSuccess ran')
-  console.log('storegamebord', store.gameboard)
+  // console.log('signInSuccess ran')
+  // console.log('storegamebord', store.gameboard)
   $('#change-password').removeClass('hide')
   $('#sign-out').removeClass('hide')
   $('#sign-up').addClass('hide')
@@ -44,6 +44,9 @@ const signInSuccess = function (response) {
   $('#list-games').removeClass('hide')
   $('#join-games').removeClass('hide')
   $('table').removeClass('hide')
+  $('play-count').removeClass('hide')
+  $('x-win count').removeClass('hide')
+  $('o-win count').removeClass('hide')
   // $('#timeout')
 }
 
@@ -52,7 +55,7 @@ const signInFail = function () {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#sign-in input').val('')
-  console.log('signInFail ran')
+  // console.log('signInFail ran')
   // $('#change-password').removeClass('hide')
 }
 
@@ -61,8 +64,8 @@ const passwordChangeSuccess = function (response) {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#sign-in input').val('')
-  console.log('response is', response)
-  console.log('store', store)
+  // console.log('response is', response)
+  // console.log('store', store)
   $('#change-password').addClass('hide')
   // $('#timeout')
 }
@@ -79,13 +82,16 @@ const signOutSuccess = function (response) {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#sign-in input').val('')
-  console.log('signOutSucess ran')
+  // console.log('signOutSucess ran')
   $('#change-password').addClass('hide')
   $('#sign-up').removeClass('hide')
   $('#new-game').addClass('hide')
   $('#sign-in').removeClass('hide')
   $('#sign-out').addClass('hide')
   $('table').addClass('hide')
+  $('play-count').addClass('hide')
+  $('x-win count').addClass('hide')
+  $('o-win count').addClass('hide')
   // console.log('response is', response)
   // console.log('store', store)
   // $('#timeout')
@@ -96,7 +102,7 @@ const signOutFail = function (response) {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#sign-in input').val('')
-  console.log('signoutFail ran')
+  // console.log('signoutFail ran')
 }
 
 const listGamesSuccess = function (response) {
@@ -104,7 +110,7 @@ const listGamesSuccess = function (response) {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#list-games input').val('')
-  console.log('listGamesSuccess ran')
+  // console.log('listGamesSuccess ran')
 }
 
 const listGamesFail = function (response) {
@@ -112,7 +118,7 @@ const listGamesFail = function (response) {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#list-games input').val('')
-  console.log('listGamesFail ran')
+  // console.log('listGamesFail ran')
 }
 
 const createGameSuccess = function (data) {
@@ -120,7 +126,7 @@ const createGameSuccess = function (data) {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#create-games input').val('')
-  console.log('createGameSuccess ran')
+  // console.log('createGameSuccess ran')
   $('#change-password').addClass('hide')
   // console.log('store', store)
 
@@ -133,11 +139,19 @@ const newGameSuccess = function (data) {
   $('x-winner-message').html('')
   $('o-winner-message').html('')
   // $('#change-password').addClass('hide')
-
-  console.log('new game store', store)
-  // store.game = data.games
-  console.log('newgame data game', data.game)
-  console.log('storegame', store.game)
+  // console.log('new game store', store)
+  // console.log('new game data', data)
+  // console.log('game', game)
+  // console.log('newgame data game', data.game)
+  // console.log('store.data', store.data)
+  // console.log('store.id', store.id)
+  // // console.log('storegame', store.game)
+  // console.log('data.id', data.id)
+  // console.log('store.data.id', store.data.id)
+  // console.log('store.game.id', store.game.id)
+  // console.log('data', data)
+  // console.log('newgamestore', store)
+  // console.log('store.data.game', store.data.game)
   // console.log('storegameid', .id)
   // console.log(gameboard)
 }
@@ -153,7 +167,7 @@ const createGameFail = function (response) {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#create-game input').val('')
-  console.log('createGameFail ran')
+  // console.log('createGameFail ran')
 }
 
 const updateGameSuccess = function (data) {
@@ -161,11 +175,11 @@ const updateGameSuccess = function (data) {
   $('#message').removeClass()
   $('#message').addClass('success')
   // $('#create-games input').val('')
-  console.log('store', store)
-  console.log('updated game', data)
-  console.log('game', store.game.id)
+  // console.log('store', store)
+  // console.log('updated game', data)
+  // console.log('game', store.game.id)
   // console.log('user', user)
-  console.log('createGameSuccess ran')
+  // console.log('createGameSuccess ran')
   // store.game = data.game
 }
 
@@ -174,7 +188,7 @@ const updateGameFail = function (response) {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#create-games input').val('')
-  console.log('createGameFail ran')
+  // console.log('createGameFail ran')
 }
 
 const showGameSuccess = function (response) {
@@ -182,7 +196,7 @@ const showGameSuccess = function (response) {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#show-games input').val('')
-  console.log('showGameSuccess ran')
+  // console.log('showGameSuccess ran')
 }
 
 const showGameFail = function (response) {
@@ -190,7 +204,7 @@ const showGameFail = function (response) {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#show-games input').val('')
-  console.log('showGameFail ran')
+  // console.log('showGameFail ran')
 }
 
 const joinGameSuccess = function (response) {
@@ -198,7 +212,7 @@ const joinGameSuccess = function (response) {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#join-games input').val('')
-  console.log('joinGameSuccess ran')
+  // console.log('joinGameSuccess ran')
 }
 
 const joinGameFail = function (response) {
@@ -206,9 +220,35 @@ const joinGameFail = function (response) {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#join-games input').val('')
-  console.log('joinGameFail ran')
+  // console.log('joinGameFail ran')
 }
 
+module.exports = {
+  signUpSuccess,
+  signUpFail,
+  signInSuccess,
+  signInFail,
+  passwordChangeSuccess,
+  passwordChangeFail,
+  signOutSuccess,
+  signOutFail,
+  // toggleLoginButton,
+  // drawBoard,
+  listGamesSuccess,
+  listGamesFail,
+  createGameSuccess,
+  createGameFail,
+  showGameSuccess,
+  showGameFail,
+  joinGameSuccess,
+  joinGameFail,
+  updateGameSuccess,
+  updateGameFail,
+  newGameSuccess,
+  newGameFail,
+  // updateMove,
+  store
+}
 // window.onscroll = function () {
 //   myFunction()
 // }
@@ -241,30 +281,3 @@ const joinGameFail = function (response) {
 //     signInButton.innerHTML = 'Hide signInButton'
 //   }
 // }
-
-module.exports = {
-  signUpSuccess,
-  signUpFail,
-  signInSuccess,
-  signInFail,
-  passwordChangeSuccess,
-  passwordChangeFail,
-  signOutSuccess,
-  signOutFail,
-  // toggleLoginButton,
-  // drawBoard,
-  listGamesSuccess,
-  listGamesFail,
-  createGameSuccess,
-  createGameFail,
-  showGameSuccess,
-  showGameFail,
-  joinGameSuccess,
-  joinGameFail,
-  updateGameSuccess,
-  updateGameFail,
-  newGameSuccess,
-  newGameFail,
-  // updateMove,
-  store
-}

@@ -11,12 +11,8 @@ const gameboard = [
   '', '', ''
 ]
 
-// const boxClick = function () {
-//
-// }
-
 const apiIndex = function () {
-  console.log('api index')
+  // console.log('api index')
   return $.ajax({
     method: 'GET',
     headers: {
@@ -27,11 +23,11 @@ const apiIndex = function () {
 }
 
 const signUp = function (data, event) {
-  console.log('api URL is', config.apiUrl)
-  console.log('data', data)
-  console.log('event', event)
-  console.log('store', store)
-  console.log('config', config)
+  // console.log('api URL is', config.apiUrl)
+  // console.log('data', data)
+  // console.log('event', event)
+  // console.log('store', store)
+  // console.log('config', config)
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
@@ -40,11 +36,11 @@ const signUp = function (data, event) {
 }
 
 const signIn = function (data) {
-  console.log('api URL is', config.apiUrl)
-  console.log('data', data)
-  console.log('event', event)
-  console.log('store', store)
-  console.log('config', config)
+  // console.log('api URL is', config.apiUrl)
+  // console.log('data', data)
+  // console.log('event', event)
+  // console.log('store', store)
+  // console.log('config', config)
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -64,17 +60,6 @@ const passwordChange = function (data) {
   })
 }
 
-// const passwordChange = function (data) {
-//   return $.ajax({
-//     url: config.apiUrl + '/change-password',
-//     method: 'PATCH',
-//     headers: {
-//       'Authorization': 'Token token=' + store.user.token
-//     },
-//     data
-//   })
-// }
-
 const signOut = function () {
   // console.log('store in change password', store)
   return $.ajax({
@@ -88,8 +73,8 @@ const signOut = function () {
 }
 
 const listGames = function (id) {
-  console.log('games list create')
-  console.log(id)
+  // console.log('games list create')
+  // console.log(id)
   return $.ajax({
     method: 'GET',
     headers: {
@@ -99,6 +84,95 @@ const listGames = function (id) {
   })
 }
 
+const newGame = function () {
+  // event.preventDefault()
+  // console.log('data', data)
+  // console.log('event', event)
+  // console.log('store', store)
+  // console.log('config', config)
+  // console.log('data.id', data.id)
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
+const updateMove = function (data, event) {
+  // console.log('data', data)
+  // console.log('event', event)
+  // console.log('store', store)
+  // console.log('config', config)
+  // console.log('gameboard', gameboard)
+  data.game = store.game
+  // console.log('user', currentUser)
+  // data = store.gameboard
+  // console.log('store.gameboard', store.gameboard)
+  // console.log('game', game)
+  // console.log('id', id)
+  return $.ajax({
+    url: config.apiUrl + '/games/' + data.game,
+    method: 'PATCH',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+const showGame = function (id) {
+  // console.log('show game id')
+  // console.log('showgameId', id)
+  return $.ajax({
+    url: config.apiUrl + '/games' + id,
+    method: 'GET',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+    // data: data
+  })
+}
+
+const joinGame = function (id, data) {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+module.exports = {
+  signUp,
+  signIn,
+  passwordChange,
+  signOut,
+  // createGame,
+  listGames,
+  showGame,
+  joinGame,
+  // updateGame,
+  // markCell,
+  updateMove,
+  newGame,
+  apiIndex
+}
+// const boxClick = function () {
+//
+// }
+// const passwordChange = function (data) {
+//   return $.ajax({
+//     url: config.apiUrl + '/change-password',
+//     method: 'PATCH',
+//     headers: {
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data
+//   })
+// }
 // const listGames = function (id) {
 //   console.log(id)
 //   return $.ajax({
@@ -132,42 +206,6 @@ const listGames = function (id) {
 //     data: data
 //   })
 // }
-
-const newGame = function (data) {
-  console.log('data', data)
-  console.log('event', event)
-  console.log('store', store)
-  console.log('config', config)
-  console.log()
-  return $.ajax({
-    url: config.apiUrl + '/games',
-    method: 'POST',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    }
-  })
-}
-
-const updateMove = function (data, event) {
-  console.log('data', data)
-  console.log('event', event)
-  console.log('store', store)
-  console.log('config', config)
-  console.log('gameboard', gameboard)
-  // console.log('user', currentUser)
-  // data = store.gameboard
-  // console.log('store.gameboard', store.gameboard)
-  // console.log('game', game)
-  // console.log('id', id)
-  return $.ajax({
-    url: config.apiUrl + '/games/' + data.id,
-    method: 'PATCH',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    },
-    data
-  })
-}
 // const updateMove = function () {
 //   console.log('store.user check', store.user)
 //   console.log('store.game check', store.game)
@@ -227,31 +265,6 @@ const updateMove = function (data, event) {
 //     }
 //   })
 // }
-
-const showGame = function (id) {
-  console.log('show game id')
-  console.log('showgameId', id)
-  return $.ajax({
-    url: config.apiUrl + '/games' + id,
-    method: 'GET',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    }
-    // data: data
-  })
-}
-
-const joinGame = function (id, data) {
-  return $.ajax({
-    url: config.apiUrl + '/games/' + id,
-    method: 'PATCH',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    },
-    data: data
-  })
-}
-
 // const markCell = function (id, data) {
 //   return $.ajax({
 //     url: config.apiUrl + '/games/' + store.game.id,
@@ -262,19 +275,3 @@ const joinGame = function (id, data) {
 //     data
 //   })
 // }
-
-module.exports = {
-  signUp,
-  signIn,
-  passwordChange,
-  signOut,
-  // createGame,
-  listGames,
-  showGame,
-  joinGame,
-  // updateGame,
-  // markCell,
-  updateMove,
-  newGame,
-  apiIndex
-}
