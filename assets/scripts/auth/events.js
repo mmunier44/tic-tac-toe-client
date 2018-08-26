@@ -4,66 +4,72 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 const store = require('../store.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
-// const gamelogic = require('/.gamelogic.js')
+const gamelogic = require('/.gamelogic.js')
 
-const Game = function (game = {cells: ['', '', '', '', '', '', '', ' ', ''], over: false}) {
-  if (game) {
-    game.id = game.id
-    game.cells = game.cells
-    game.over = game.over
-  }
-  game.currentPlayer = 'X'
-}
-
-// console.log('data', data)
-// console.log('game', game)
-// console.log('store', store)
-// console.log('id', id)
-
-let currentPlayer = 'X'
-
-const switchPlayer = function () {
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
-    $('#player').html('X is Playing')
-  } else {
-    currentPlayer = 'X'
-    $('#player').html('O is Playing')
-  }
-  return currentPlayer
-}
-
-const gameboard = [
-  '', '', '',
-  '', '', '',
-  '', '', ''
-]
-
-const onClick = function (event) {
-  // if (gameboard[1] === 'X' || 'O') {
-  // console.log('check store', store)
-  // console.log('event click check', event)
-  // console.log(gameboard)
-  // console.log('move updated')
-  // console.log('event logged', event)
-  // console.log('id', id)
-  // console.log('game', game)
-  // console.log('game.id', game.id)
-  // console.log('store.game.id', store.game.id)
-  // console.log('store.gameboard', store.gameboard)
-}
+// DRAGONS
+// const Game = function (game = {cells: ['', '', '', '', '', '', '', ' ', ''], over: false}) {
+//   if (game) {
+//     game.id = game.id
+//     game.cells = game.cells
+//     game.over = game.over
+//   }
+//   game.currentPlayer = 'X'
 // }
+//
+// // console.log('data', data)
+// // console.log('game', game)
+// // console.log('store', store)
+// // console.log('id', id)
+//
+// let currentPlayer = 'X'
+//
+// const switchPlayer = function () {
+//   if (currentPlayer === 'X') {
+//     currentPlayer = 'O'
+//     $('#player').html('X is Playing')
+//   } else {
+//     currentPlayer = 'X'
+//     $('#player').html('O is Playing')
+//   }
+//   return currentPlayer
+// }
+//
+// const gameboard = [
+//   '', '', '',
+//   '', '', '',
+//   '', '', ''
+// ]
+//
+// const onClick = function (event) {
+//   // if (gameboard[1] === 'X' || 'O') {
+//   // console.log('check store', store)
+//   // console.log('event click check', event)
+//   // console.log(gameboard)
+//   // console.log('move updated')
+//   // console.log('event logged', event)
+//   // console.log('id', id)
+//   // console.log('game', game)
+//   // console.log('game.id', game.id)
+//   // console.log('store.game.id', store.game.id)
+//   // console.log('store.gameboard', store.gameboard)
+// }
+// // }
+//
+// const winCombos = [
+//   [0, 1, 2],
+//   [3, 4, 5],
+//   [6, 7, 8],
+//   [0, 3, 6],
+//   [1, 4, 7],
+//   [2, 5, 8],
+//   [0, 4, 8],
+//   [6, 4, 2]
+// ]
+// NOTE Dragons
 
-const winCombos = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [6, 4, 2]
-]
+const clickHandler = function (event) {
+  gamelogic.clickEvent(event)
+}
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -165,7 +171,7 @@ const onUpdateMove = function (event) {
     .catch(ui.updateMoveFail)
 }
 
-const onNewGame = function (data) {
+const onNewGame = function (data, event) {
   event.preventDefault()
   console.log('onNewGameClick', event)
   console.log('move updated')
@@ -194,153 +200,155 @@ const onNewGame = function (data) {
     })
     .then(ui.newGameSuccess)
     .catch(ui.newGameFail)
-
-  gameboard[0] = ''
-  gameboard[1] = ''
-  gameboard[2] = ''
-  gameboard[3] = ''
-  gameboard[4] = ''
-  gameboard[5] = ''
-  gameboard[6] = ''
-  gameboard[7] = ''
-  gameboard[8] = ''
-  $('.cell').html('')
-  // console.log(gameboard)
-  // console.log(store)
-  // console.log(gameUpdate)
 }
-
-const onGameboard = function (event, data, id, game) {
-  // console.log('data', data)
-  // console.log('event', event)
-  // console.log('store', store)
-  // console.log('game', game)
-  // console.log('id', id)
-  // console(log)
-  // console.log('config', config)
-  gameboard.splice(event.target.id, 1, currentPlayer)
-  // console.log(gameboard)
-  $(this).text(currentPlayer)
-  checkWin()
-  switchPlayer()
-  onClick()
-}
-console.log('checkeventsline221')
-const checkWin = function () {
-  if (gameboard[0] === 'X' &&
-      gameboard[1] === 'X' &&
-      gameboard[2] === 'X'
-  ) {
-    $('#x-win-count').html(function (i, val) { return +val + 1 })
-    $('#x-winner-message').html('X is Winner')
-  } else if (
-      gameboard[3] === 'X' &&
-      gameboard[4] === 'X' &&
-      gameboard[5] === 'X'
-  ) {
-    $('#x-win-count').html(function (i, val) { return +val + 1 })
-    $('#x-winner-message').html('X is Winner')
-  } else if (
-      gameboard[6] === 'X' &&
-      gameboard[7] === 'X' &&
-      gameboard[8] === 'X'
-  ) {
-    $('#x-win-count').html(function (i, val) { return +val + 1 })
-    $('#x-winner-message').html('X is Winner')
-  } else if (
-      gameboard[0] === 'X' &&
-      gameboard[3] === 'X' &&
-      gameboard[6] === 'X'
-  ) {
-    $('#x-win-count').html(function (i, val) { return +val + 1 })
-    $('#x-winner-message').html('X is Winner')
-  } else if (
-      gameboard[1] === 'X' &&
-      gameboard[4] === 'X' &&
-      gameboard[7] === 'X'
-  ) {
-    $('#x-win-count').html(function (i, val) { return +val + 1 })
-    $('#x-winner-message').html('X is Winner')
-  } else if (
-      gameboard[2] === 'X' &&
-      gameboard[5] === 'X' &&
-      gameboard[8] === 'X'
-  ) {
-    $('#x-win-count').html(function (i, val) { return +val + 1 })
-    $('#x-winner-message').html('X is Winner')
-  } else if (
-      gameboard[0] === 'X' &&
-      gameboard[4] === 'X' &&
-      gameboard[8] === 'X'
-  ) {
-    $('#x-win-count').html(function (i, val) { return +val + 1 })
-    $('#x-winner-message').html('X is Winner')
-  } else if (
-      gameboard[6] === 'X' &&
-      gameboard[4] === 'X' &&
-      gameboard[2] === 'X'
-  ) {
-    $('#x-win-count').html(function (i, val) { return +val + 1 })
-    $('#x-winner-message').html('X is Winner')
-    // NOTE: switch to O
-  } else if (
-      gameboard[0] === 'O' &&
-      gameboard[1] === 'O' &&
-      gameboard[2] === 'O'
-  ) {
-    $('#o-win-count').html(function (i, val) { return +val + 1 })
-    $('#o-winner-message').html('O is Winner')
-  } else if (
-      gameboard[3] === 'O' &&
-      gameboard[4] === 'O' &&
-      gameboard[5] === 'O'
-  ) {
-    $('#o-win-count').html(function (i, val) { return +val + 1 })
-    $('#o-winner-message').html('O is Winner')
-  } else if (
-      gameboard[6] === 'O' &&
-      gameboard[7] === 'O' &&
-      gameboard[8] === 'O'
-  ) {
-    $('#o-win-count').html(function (i, val) { return +val + 1 })
-    $('#o-winner-message').html('O is Winner')
-  } else if (
-      gameboard[0] === 'O' &&
-      gameboard[3] === 'O' &&
-      gameboard[6] === 'O'
-  ) {
-    $('#o-win-count').html(function (i, val) { return +val + 1 })
-    $('#o-winner-message').html('O is Winner')
-  } else if (
-      gameboard[1] === 'O' &&
-      gameboard[4] === 'O' &&
-      gameboard[7] === 'O'
-  ) {
-    $('#o-win-count').html(function (i, val) { return +val + 1 })
-    $('#o-winner-message').html('O is Winner')
-  } else if (
-      gameboard[2] === 'O' &&
-      gameboard[5] === 'O' &&
-      gameboard[8] === 'O'
-  ) {
-    $('#o-win-count').html(function (i, val) { return +val + 1 })
-    $('#o-winner-message').html('O is Winner')
-  } else if (
-      gameboard[0] === 'O' &&
-      gameboard[4] === 'O' &&
-      gameboard[8] === 'O'
-  ) {
-    $('#o-win-count').html(function (i, val) { return +val + 1 })
-    $('#o-winner-message').html('O is Winner')
-  } else if (
-      gameboard[6] === 'O' &&
-      gameboard[4] === 'O' &&
-      gameboard[2] === 'O'
-  ) {
-    $('#o-win-count').html(function (i, val) { return +val + 1 })
-    $('#o-winner-message').html('O is Winner')
-  }
-}
+// //NOTE Dragons
+//   gameboard[0] = ''
+//   gameboard[1] = ''
+//   gameboard[2] = ''
+//   gameboard[3] = ''
+//   gameboard[4] = ''
+//   gameboard[5] = ''
+//   gameboard[6] = ''
+//   gameboard[7] = ''
+//   gameboard[8] = ''
+//   $('.cell').html('')
+//   // console.log(gameboard)
+//   // console.log(store)
+//   // console.log(gameUpdate)
+// }
+//
+// const onGameboard = function (event, data, id, game) {
+//   // console.log('data', data)
+//   // console.log('event', event)
+//   // console.log('store', store)
+//   // console.log('game', game)
+//   // console.log('id', id)
+//   // console(log)
+//   // console.log('config', config)
+//   gameboard.splice(event.target.id, 1, currentPlayer)
+//   // console.log(gameboard)
+//   $(this).text(currentPlayer)
+//   checkWin()
+//   switchPlayer()
+//   onClick()
+// }
+// console.log('checkeventsline221')
+// const checkWin = function () {
+//   if (gameboard[0] === 'X' &&
+//       gameboard[1] === 'X' &&
+//       gameboard[2] === 'X'
+//   ) {
+//     $('#x-win-count').html(function (i, val) { return +val + 1 })
+//     $('#x-winner-message').html('X is Winner')
+//   } else if (
+//       gameboard[3] === 'X' &&
+//       gameboard[4] === 'X' &&
+//       gameboard[5] === 'X'
+//   ) {
+//     $('#x-win-count').html(function (i, val) { return +val + 1 })
+//     $('#x-winner-message').html('X is Winner')
+//   } else if (
+//       gameboard[6] === 'X' &&
+//       gameboard[7] === 'X' &&
+//       gameboard[8] === 'X'
+//   ) {
+//     $('#x-win-count').html(function (i, val) { return +val + 1 })
+//     $('#x-winner-message').html('X is Winner')
+//   } else if (
+//       gameboard[0] === 'X' &&
+//       gameboard[3] === 'X' &&
+//       gameboard[6] === 'X'
+//   ) {
+//     $('#x-win-count').html(function (i, val) { return +val + 1 })
+//     $('#x-winner-message').html('X is Winner')
+//   } else if (
+//       gameboard[1] === 'X' &&
+//       gameboard[4] === 'X' &&
+//       gameboard[7] === 'X'
+//   ) {
+//     $('#x-win-count').html(function (i, val) { return +val + 1 })
+//     $('#x-winner-message').html('X is Winner')
+//   } else if (
+//       gameboard[2] === 'X' &&
+//       gameboard[5] === 'X' &&
+//       gameboard[8] === 'X'
+//   ) {
+//     $('#x-win-count').html(function (i, val) { return +val + 1 })
+//     $('#x-winner-message').html('X is Winner')
+//   } else if (
+//       gameboard[0] === 'X' &&
+//       gameboard[4] === 'X' &&
+//       gameboard[8] === 'X'
+//   ) {
+//     $('#x-win-count').html(function (i, val) { return +val + 1 })
+//     $('#x-winner-message').html('X is Winner')
+//   } else if (
+//       gameboard[6] === 'X' &&
+//       gameboard[4] === 'X' &&
+//       gameboard[2] === 'X'
+//   ) {
+//     $('#x-win-count').html(function (i, val) { return +val + 1 })
+//     $('#x-winner-message').html('X is Winner')
+//     // NOTE: switch to O
+//   } else if (
+//       gameboard[0] === 'O' &&
+//       gameboard[1] === 'O' &&
+//       gameboard[2] === 'O'
+//   ) {
+//     $('#o-win-count').html(function (i, val) { return +val + 1 })
+//     $('#o-winner-message').html('O is Winner')
+//   } else if (
+//       gameboard[3] === 'O' &&
+//       gameboard[4] === 'O' &&
+//       gameboard[5] === 'O'
+//   ) {
+//     $('#o-win-count').html(function (i, val) { return +val + 1 })
+//     $('#o-winner-message').html('O is Winner')
+//   } else if (
+//       gameboard[6] === 'O' &&
+//       gameboard[7] === 'O' &&
+//       gameboard[8] === 'O'
+//   ) {
+//     $('#o-win-count').html(function (i, val) { return +val + 1 })
+//     $('#o-winner-message').html('O is Winner')
+//   } else if (
+//       gameboard[0] === 'O' &&
+//       gameboard[3] === 'O' &&
+//       gameboard[6] === 'O'
+//   ) {
+//     $('#o-win-count').html(function (i, val) { return +val + 1 })
+//     $('#o-winner-message').html('O is Winner')
+//   } else if (
+//       gameboard[1] === 'O' &&
+//       gameboard[4] === 'O' &&
+//       gameboard[7] === 'O'
+//   ) {
+//     $('#o-win-count').html(function (i, val) { return +val + 1 })
+//     $('#o-winner-message').html('O is Winner')
+//   } else if (
+//       gameboard[2] === 'O' &&
+//       gameboard[5] === 'O' &&
+//       gameboard[8] === 'O'
+//   ) {
+//     $('#o-win-count').html(function (i, val) { return +val + 1 })
+//     $('#o-winner-message').html('O is Winner')
+//   } else if (
+//       gameboard[0] === 'O' &&
+//       gameboard[4] === 'O' &&
+//       gameboard[8] === 'O'
+//   ) {
+//     $('#o-win-count').html(function (i, val) { return +val + 1 })
+//     $('#o-winner-message').html('O is Winner')
+//   } else if (
+//       gameboard[6] === 'O' &&
+//       gameboard[4] === 'O' &&
+//       gameboard[2] === 'O'
+//   ) {
+//     $('#o-win-count').html(function (i, val) { return +val + 1 })
+//     $('#o-winner-message').html('O is Winner')
+//   }
+// }
+// // NOTE Dragons
 
 const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
