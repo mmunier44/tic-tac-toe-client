@@ -121,7 +121,7 @@ const listGamesFail = function (response) {
   // console.log('listGamesFail ran')
 }
 
-const createGameSuccess = function (data) {
+const createGameSuccess = (data) => {
   store.game = data.game
   console.log('newstoregame', store.game)
   console.log('newdatagame', data.game)

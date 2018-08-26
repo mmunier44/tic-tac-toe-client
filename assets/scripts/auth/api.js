@@ -2,25 +2,26 @@
 
 const config = require('../config.js')
 const store = require('../store.js')
-const events = require('./events.js')
+// const events = require('./events.js')
 // const gamelogic = require('/.gamelogic.js')
 
-const game = function (game = {cells: ['', '', '', '', '', '', '', ' ', ''], over: false}) {
-  if (game) {
-    game.id = game.id
-    game.cells = game.cells
-    game.over = game.over
-  }
-  game.currentPlayer = 'X'
-}
-
-let currentPlayer = 'X'
-
-const gameboard = [
-  '', '', '',
-  '', '', '',
-  '', '', ''
-]
+// NOTE DRAGONS
+//   const game = function (game = {cells: ['', '', '', '', '', '', '', ' ', ''], over: false}) {
+//   if (game) {
+//     game.id = game.id
+//     game.cells = game.cells
+//     game.over = game.over
+//   }
+//   game.currentPlayer = 'X'
+// }
+//
+// let currentPlayer = 'X'
+//
+// const gameboard = [
+//   '', '', '',
+//   '', '', '',
+//   '', '', ''
+// ]
 
 const apiIndex = function () {
   // console.log('api index')
@@ -112,65 +113,120 @@ const listGames = function (id) {
 //     }
 //   })
 // }
+// note changed newGame, showGame, updateMove added get all games
 
-const newGame = function (data) {
+const newGame = () => {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
+    data: {},
     headers: {
-      'Authorization': 'Token token=' + store.user.token
-    },
-    data: data
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
-const showGame = function (id) {
-  // console.log('games id', game.id)
-  console.log('store.game.id', store.game.id)
-  // console.log('show game id')
-  // console.log('showgameId', id)
+const updateMove = (index, value, over) => {
+  console.log('updatemovedata', data)
   return $.ajax({
-    url: config.apiUrl + '/games' + id,
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    data: {
+      'game': {
+        'cell': {
+          'index': `${index}`,
+          'value': `${value}`,
+          'over': `${over}`
+        }
+      }
+    },
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const showGame = (data) => {
+  return $.ajax({
+    url: config.apiUrl + '/games' + store.user.games.id,
     method: 'GET',
     headers: {
-      'Authorization': 'Token token=' + store.user.token
+      Authorization: 'Token token=' + store.user.token,
+      data
     }
-    // data: data
   })
 }
 
-const updateMove = function (data, event) {
-  // console.log('data', data)
-  // console.log('event', event)
-  console.log('store', store)
-  // console.log('config', config)
-  // console.log('gameboard', gameboard)
-  // store.game = data.game
-  // console.log('user', currentUser)
-  // data = store.gameboard
-  console.log('store.gameboard', store.gameboard)
-  // console.log('game', game)
-  // console.log('id', id)
+const showAllGames = () => {
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.data,
-    method: 'PATCH',
+    url: config.apiUrl + '/games',
+    method: 'GET',
     headers: {
-      'Authorization': 'Token token=' + store.user.token
-    },
-    data
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
-const joinGame = function (id, data) {
-  return $.ajax({
-    url: config.apiUrl + '/games/' + id,
-    method: 'PATCH',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    },
-    data: data
-  })
-}
+// const newGame = function (data) {
+//   return $.ajax({
+//     url: config.apiUrl + '/games',
+//     method: 'POST',
+//     headers: {
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data: data
+//   })
+// }
+//
+// const showGame = function (id) {
+//   // console.log('games id', game.id)
+//   console.log('store.game.id', store.game.id)
+//   // console.log('show game id')
+//   // console.log('showgameId', id)
+//   return $.ajax({
+//     url: config.apiUrl + '/games' + id,
+//     method: 'GET',
+//     headers: {
+//       'Authorization': 'Token token=' + store.user.token
+//     }
+//     // data: data
+//   })
+// }
+//
+// const updateMove = function (data, event) {
+//   // console.log('data', data)
+//   // console.log('event', event)
+//   console.log('store', store)
+//   // console.log('config', config)
+//   // console.log('gameboard', gameboard)
+//   // store.game = data.game
+//   // console.log('user', currentUser)
+//   // data = store.gameboard
+//   console.log('store.gameboard', store.gameboard)
+//   // console.log('game', game)
+//   // console.log('id', id)
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + store.data,
+//     method: 'PATCH',
+//     headers: {
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data
+//   })
+// }
+//
+// const joinGame = function (id, data) {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + id,
+//     method: 'PATCH',
+//     headers: {
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data: data
+//   })
+// }
+
+// NOTE DRAGONS
 
 module.exports = {
   signUp,
@@ -180,7 +236,8 @@ module.exports = {
   // createGame,
   listGames,
   showGame,
-  joinGame,
+  showAllGames,
+  // joinGame,
   // updateGame,
   // markCell,
   updateMove,
