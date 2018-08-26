@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const game = require('./events.js')
 
 const signUpSuccess = function (data) {
   $('#message').text('Successful Signup')
@@ -121,10 +122,15 @@ const listGamesFail = function (response) {
   // console.log('listGamesFail ran')
 }
 
+// NOTE refactored createGameSuccess
 const createGameSuccess = (data) => {
+  console.log('Game ID: ', data.game.id)
   store.game = data.game
+  console.log('store', store)
+  console.log('data.game.id', data.game.id)
   console.log('newstoregame', store.game)
   console.log('newdatagame', data.game)
+  console.log('game', game)
   $('#message').text('Create Game Success')
   $('#message').removeClass()
   $('#message').addClass('success')
@@ -226,8 +232,13 @@ const joinGameFail = function (response) {
   // console.log('joinGameFail ran')
 }
 
+const updateGame = (data) => {
+  console.log('store.game', store.game)
+}
+
 module.exports = {
   signUpSuccess,
+  updateGame,
   signUpFail,
   signInSuccess,
   signInFail,
