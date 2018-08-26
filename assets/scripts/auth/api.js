@@ -5,6 +5,17 @@ const store = require('../store.js')
 const events = require('./events.js')
 // const gamelogic = require('/.gamelogic.js')
 
+const game = function (game = {cells: ['', '', '', '', '', '', '', ' ', ''], over: false}) {
+  if (game) {
+    game.id = game.id
+    game.cells = game.cells
+    game.over = game.over
+  }
+  game.currentPlayer = 'X'
+}
+
+let currentPlayer = 'X'
+
 const gameboard = [
   '', '', '',
   '', '', '',
@@ -85,10 +96,10 @@ const listGames = function (id) {
 }
 
 const newGame = function () {
-  // event.preventDefault()
+  event.preventDefault()
   // console.log('data', data)
   // console.log('event', event)
-  // console.log('store', store)
+  console.log('store', store)
   // console.log('config', config)
   // console.log('data.id', data.id)
   return $.ajax({
@@ -100,28 +111,9 @@ const newGame = function () {
   })
 }
 
-const updateMove = function (data, event) {
-  // console.log('data', data)
-  // console.log('event', event)
-  // console.log('store', store)
-  // console.log('config', config)
-  // console.log('gameboard', gameboard)
-  data.game = store.game
-  // console.log('user', currentUser)
-  // data = store.gameboard
-  // console.log('store.gameboard', store.gameboard)
-  // console.log('game', game)
-  // console.log('id', id)
-  return $.ajax({
-    url: config.apiUrl + '/games/' + data.game,
-    method: 'PATCH',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    },
-    data
-  })
-}
 const showGame = function (id) {
+  console.log('games id', game.id)
+  console.log('store.game.id', store.game.id)
   // console.log('show game id')
   // console.log('showgameId', id)
   return $.ajax({
@@ -131,6 +123,28 @@ const showGame = function (id) {
       'Authorization': 'Token token=' + store.user.token
     }
     // data: data
+  })
+}
+
+const updateMove = function (data, event) {
+  // console.log('data', data)
+  // console.log('event', event)
+  console.log('store', store)
+  // console.log('config', config)
+  console.log('gameboard', gameboard)
+  // store.game = data.game
+  // console.log('user', currentUser)
+  // data = store.gameboard
+  console.log('store.gameboard', store.gameboard)
+  // console.log('game', game)
+  // console.log('id', id)
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    data
   })
 }
 

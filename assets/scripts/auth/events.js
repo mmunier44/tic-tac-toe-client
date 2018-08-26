@@ -118,23 +118,6 @@ const onListGames = function (event) {
     .catch(ui.listGamesFail)
 }
 
-const onCreateGame = function (event, data) {
-  $('#message').text('New Game Created')
-  event.preventDefault()
-  // console.log('New Game Created')
-  // console.log(event)
-  // console.log(data)
-  // console.log(store)
-  // console.log('auth, sign in', store.user.token)
-  // console.log(store.user.token)
-  // console.log(data.game)
-  // const data = getFormFields(event.target)
-
-  api.createGame(data)
-    .then(ui.createGameSuccess)
-    .catch(ui.createGameFail)
-}
-
 const onShowGame = function (event) {
   $('#message').text('Game Shown')
   event.preventDefault()
@@ -179,29 +162,29 @@ const onUpdateMove = function (event) {
 
 const onNewGame = function (event) {
   event.preventDefault()
-  // console.log('onNewGameClick', event)
-  // console.log('move updated')
-  // console.log('event logged', event)
+  console.log('onNewGameClick', event)
+  console.log('move updated')
+  console.log('event logged', event)
   // console.log('id', id)
   // console.log('game', game)
-  // console.log('game.id', game.id)
   // console.log('store.game.id', store.game.id)
-  // console.log('store.gameboard', store.gameboard)
-  // console.log('gameboardnewcheck', gameboard)
-  // console.log('store check', store)
+  // console.log('store.game.id', store.game.id)
+  console.log('store.gameboard', store.gameboard)
+  console.log('gameboardnewcheck', gameboard)
+  console.log('store check', store)
   // console.log('data check', data)
   // console.log('check store game id', game.id)
-  // console.log('newgameworking?')
+  console.log('newgameworking?')
   // console.log('check data', data)
   $('#message').text('New Game!')
   api.newGame()
-    // .then(function (response) {
-    //   store.game = new Game(response.game)
-    //   console.log('game in new game', store.game)
-    //   console.log(store.game)
-    //   console.log(store.game.cells)
-    //   console.log('create game object')
-    // })
+    .then(function (response) {
+      store.game = new Game(response.game)
+      console.log('game in new game', store.game)
+      console.log(store.game)
+      console.log(store.game.cells)
+      console.log('create game object')
+    })
     .then(ui.newGameSuccess)
     .catch(ui.newGameFail)
 
@@ -235,7 +218,7 @@ const onGameboard = function (event, data, id, game) {
   switchPlayer()
   onClick()
 }
-
+console.log('checkeventsline221')
 const checkWin = function () {
   if (gameboard[0] === 'X' &&
       gameboard[1] === 'X' &&
@@ -358,7 +341,7 @@ const addHandlers = function () {
   $('#change-password').on('submit', onPasswordChange)
   $('#sign-out').on('submit', onSignOut)
   $('#list-games').on('submit', onListGames)
-  $('#create-game').on('submit', onCreateGame)
+  $('#create-game').on('submit', onNewGame)
   $('#show-game').on('submit', onShowGame)
   $('.cell').on('click,onGameboard')
   $('#new-game').on('click', onNewGame)

@@ -339,7 +339,6 @@ module.exports = {
 //   }
 // }
 
-
 // $(document).ready(function() {
 //       console.log('ready steady!')
 //       ticTacToe.restartGame()
