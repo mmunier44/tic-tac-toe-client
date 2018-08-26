@@ -15,6 +15,11 @@ const Game = function (game = {cells: ['', '', '', '', '', '', '', ' ', ''], ove
   game.currentPlayer = 'X'
 }
 
+// console.log('data', data)
+// console.log('game', game)
+// console.log('store', store)
+// console.log('id', id)
+
 let currentPlayer = 'X'
 
 const switchPlayer = function () {
@@ -122,7 +127,7 @@ const onShowGame = function (event) {
   $('#message').text('Game Shown')
   event.preventDefault()
   // console.log('Game Shown')
-  let id
+  // let id
   // id = getFormFields(event.target).id
   // const data = getFormFields(event.target)
 
@@ -160,11 +165,12 @@ const onUpdateMove = function (event) {
     .catch(ui.updateMoveFail)
 }
 
-const onNewGame = function (event) {
+const onNewGame = function (data) {
   event.preventDefault()
   console.log('onNewGameClick', event)
   console.log('move updated')
   console.log('event logged', event)
+  // store.game = data.game
   // console.log('id', id)
   // console.log('game', game)
   // console.log('store.game.id', store.game.id)
@@ -178,13 +184,13 @@ const onNewGame = function (event) {
   // console.log('check data', data)
   $('#message').text('New Game!')
   api.newGame()
-    .then(function (response) {
-      store.game = new Game(response.game)
-      console.log('game in new game', store.game)
-      console.log(store.game)
-      console.log(store.game.cells)
-      console.log('create game object')
-    })
+    // .then(function (response) {
+    //   store.game = new Game(response.game)
+    //   console.log('game in new game', store.game)
+    //   console.log(store.game)
+    //   console.log(store.game.cells)
+    //   console.log('create game object')
+    // })
     .then(ui.newGameSuccess)
     .catch(ui.newGameFail)
 

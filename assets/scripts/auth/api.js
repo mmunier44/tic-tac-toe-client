@@ -99,12 +99,14 @@ const newGame = function () {
   event.preventDefault()
   // console.log('data', data)
   // console.log('event', event)
-  console.log('store', store)
+  // console.log('data', data)
+  // console.log('store', store)
   // console.log('config', config)
   // console.log('data.id', data.id)
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
+    data: {},
     headers: {
       'Authorization': 'Token token=' + store.user.token
     }
@@ -112,7 +114,7 @@ const newGame = function () {
 }
 
 const showGame = function (id) {
-  console.log('games id', game.id)
+  // console.log('games id', game.id)
   console.log('store.game.id', store.game.id)
   // console.log('show game id')
   // console.log('showgameId', id)
@@ -131,7 +133,7 @@ const updateMove = function (data, event) {
   // console.log('event', event)
   console.log('store', store)
   // console.log('config', config)
-  console.log('gameboard', gameboard)
+  // console.log('gameboard', gameboard)
   // store.game = data.game
   // console.log('user', currentUser)
   // data = store.gameboard

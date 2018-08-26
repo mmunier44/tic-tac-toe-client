@@ -122,6 +122,9 @@ const listGamesFail = function (response) {
 }
 
 const createGameSuccess = function (data) {
+  store.game = data.game
+  console.log('newstoregame', store.game)
+  console.log('newdatagame', data.game)
   $('#message').text('Create Game Success')
   $('#message').removeClass()
   $('#message').addClass('success')

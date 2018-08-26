@@ -3,6 +3,7 @@
 const store = require('../store.js')
 const api = require('./api.js')
 
+
 // $('#marker0').on('click', gamelogic.Click)
 // $('#marker1').on('click', gamelogic.Click)
 // $('#marker2').on('click', gamelogic.Click)
@@ -59,43 +60,43 @@ const api = require('./api.js')
 //     ]
 
 
-module.exports = {
-  checkWinConditions,
-  endGame,
-  nextTurn,
-  move,
-  restartGame,
-  ticTacToe,
-  // boardArray,
-  // boardArray2,
-  winConditions,
-  checkWinConditionsLong,
-  checkTie,
-  count,
-  gameboard,
-  store,
-  marker0,
-  marker1,
-  marker2,
-  marker3,
-  marker4,
-  marker5,
-  marker6,
-  marker7,
-  marker8,
-  onMarker0,
-  onMarker1,
-  onMarker2,
-  onMarker3,
-  onMarker4,
-  onMarker5,
-  onMarker6,
-  onMarker7,
-  onMarker8,
-  gamelogicClick,
-  markerTest,
-  onClick
-}
+// module.exports = {
+//   checkWinConditions,
+//   endGame,
+//   nextTurn,
+//   move,
+//   restartGame,
+//   ticTacToe,
+//   // boardArray,
+//   // boardArray2,
+//   winConditions,
+//   checkWinConditionsLong,
+//   checkTie,
+//   count,
+//   gameboard,
+//   store,
+//   marker0,
+//   marker1,
+//   marker2,
+//   marker3,
+//   marker4,
+//   marker5,
+//   marker6,
+//   marker7,
+//   marker8,
+//   onMarker0,
+//   onMarker1,
+//   onMarker2,
+//   onMarker3,
+//   onMarker4,
+//   onMarker5,
+//   onMarker6,
+//   onMarker7,
+//   onMarker8,
+//   gamelogicClick,
+//   markerTest,
+//   onClick
+// }
 
 
 // const authEvents = require('./auth/events.js')
