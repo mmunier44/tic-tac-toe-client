@@ -95,21 +95,32 @@ const listGames = function (id) {
   })
 }
 
-const newGame = function () {
-  event.preventDefault()
-  // console.log('data', data)
-  // console.log('event', event)
-  // console.log('data', data)
-  // console.log('store', store)
-  // console.log('config', config)
-  // console.log('data.id', data.id)
+// const newGame = function () {
+//   event.preventDefault()
+//   // console.log('data', data)
+//   console.log('event', event)
+//   // console.log('data', data)
+//   console.log('store', store)
+//   // console.log('config', config)
+//   // console.log('data.id', data.id)
+//   return $.ajax({
+//     url: config.apiUrl + '/games',
+//     method: 'POST',
+//     data: {},
+//     headers: {
+//       'Authorization': 'Token token=' + store.user.token
+//     }
+//   })
+// }
+
+const newGame = function (data) {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
-    data: {},
     headers: {
       'Authorization': 'Token token=' + store.user.token
-    }
+    },
+    data: data
   })
 }
 
@@ -141,7 +152,7 @@ const updateMove = function (data, event) {
   // console.log('game', game)
   // console.log('id', id)
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.game.id,
+    url: config.apiUrl + '/games/' + store.data,
     method: 'PATCH',
     headers: {
       'Authorization': 'Token token=' + store.user.token

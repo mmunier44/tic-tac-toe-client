@@ -184,13 +184,14 @@ const onNewGame = function (data) {
   // console.log('check data', data)
   $('#message').text('New Game!')
   api.newGame()
-    // .then(function (response) {
-    //   store.game = new Game(response.game)
-    //   console.log('game in new game', store.game)
-    //   console.log(store.game)
-    //   console.log(store.game.cells)
-    //   console.log('create game object')
-    // })
+    .then(function (response) {
+      store.game = new Game(response.game)
+      console.log('game in new game', store.game)
+      console.log(store.game)
+      console.log(store.game.cells)
+      console.log(store.game.id)
+      console.log('create game object')
+    })
     .then(ui.newGameSuccess)
     .catch(ui.newGameFail)
 
