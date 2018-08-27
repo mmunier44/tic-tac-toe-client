@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/scss" href="assets/styles/index.scss">
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+</head>
+
+<body>
+
+  <h4 id="name">Bork Bork Tic Tac Toe</h4>
+
+  <div class='header' id='myHeader'>
+    <h5 id="message">Welcome Stranger!</h5>
+    <div>
+      <p id='player'></p>
+    </div>
+
+    <div>
+      <button id='new-game' class='hide'>New Game</button>
+    </div>
+
+    <h6> Total Games Played:</h6>
+    <p id='play-count'></p>
+    <h6> Win X:</h6>
+    <p id='x-win-count'></p>
+    <h6> Win O:</h6>
+    <p id='o-win-count'></p>
+
+  </div>
+
+
+  <div class='container'>
+
+    <table id='table' class='hide'>
+      <tr class='row1' id='r1'>
+        <td class='cell' id='marker0'></td>
+        <td class='cell' id='marker1'></td>
+        <td class='cell' id='marker2'></td>
+      </tr>
+      <tr class='row2' id='r2'>
+        <td class='cell' id='marker3'></td>
+        <td class='cell' id='marker4'></td>
+        <td class='cell' id='marker5'></td>
+      </tr>
+      <tr class='row3' id='r3'>
+        <td class='cell' id='marker6'></td>
+        <td class='cell' id='marker7'></td>
+        <td class='cell' id='marker8'></td>
+      </tr>
+    </table>
+  </div class='panel-body'>
+
+  <footer class='site-footer'>
+    <div class='footer'>
+
+      <div>
+        <form id="sign-up" class>
+          <fieldset>
+            <legend>Sign Up</legend>
+            <input type="email" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            <button type="submit" class='btn btn-primary'>Sign Up</button>
+          </fieldset>
+        </form>
+      </div>
+      <div>
+        <form id="sign-in">
+          <fieldset>
+            <legend>Sign In</legend>
+            <input type="email" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <button type="submit" class='btn btn-primary'>Sign In</button>
+          </fieldset>
+        </form>
+      </div>
+      <div>
+        <form id="change-password" class="hide">
+          <fieldset>
+            <legend>Password Change</legend>
+            <input type="password" name="passwords[old]" placeholder="Old Password">
+            <input type="password" name="passwords[new]" placeholder="New Password">
+            <button type="submit" class='btn btn-primary'>Change Password</button>
+          </fieldset>
+        </form>
+      </div>
+
+      <div>
+        <form id="sign-out" class='hide'>
+          <fieldset>
+            <legend>Sign Out</legend>
+            <button type="submit" class='btn btn-primary'>Sign Out</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
+
+<!-- <img src="images/Tic_Tac_Toc_Color.png";
+      alt = "color tic tac toe"> -->
+
+<!-- <div id="win-message" class="modalBox"></div> -->
+
+<!-- <div class="bar">
+      <div class="scoreboard">
+        <ul>
+          <li id="x"><div>x:<div class="score"></div></div></li>
+          <li id="o"><div>o:<div class="score"></div></div></li>
+          <li id="tie"><div>tie:<div class="score"></div></div></li>
+          <li><div id="new-game">New Game</div></li>
+        </ul>
+      </div>
+    </div> -->
+
+<!-- <div class="game-box">
+              <div class="top left square" id=0>0</div>
+              <div class="top h-mid square" id=1>1</div>
+              <div class="top right square" id=2>2</div>
+              <div class="v-mid left square" id=3>3</div>
+              <div class="v-mid h-mid square" id=4>4</div>
+              <div class="v-mid right square" id=5>5</div>
+              <div class="bottom left square" id=6>6</div>
+              <div class="bottom h-mid square" id=7>7</div>
+              <div class="bottom right square" id=8>8</div>
+          </div> -->
+<!-- <div id="scoreboard">
+        <form>
+          <h5> Scoreboard </h5>
+          <button type="submit"> Scoreboard </button>
+        </form>
+      </div>
+
+      <br>
+      <div class="Tally">
+        <div class="col-sm-3 box grey">X Tally</div>
+        <div class="col-sm-3 box grey">O Tally</div>
+        <div class="col-sm-3 box grey">Tie Tally</div> -->
+<!-- <div class="col-sm-3 box grey">New Game</div>
+      </div> -->
+
+<!-- <br>
+      <section>
+        <div class="gameboard" id="gameboard">
+          <div class="top row">
+            <div class="col-md-4 box grey" id="marker0"></div>
+            <div class="col-md-4 box grey" id="marker1"></div>
+            <div class="col-md-4 box grey" id="marker2"></div>
+          </div>
+          <br>
+          <div class="middle row">
+            <div class="col-md-4 box black" id="marker3"></div>
+            <div class="col-md-4 box balck" id="marker4"></div>
+            <div class="col-md-4 box black" id="marker5"></div>
+          </div>
+          <br>
+          <div class="bottom row">
+            <div class="col-md-4 box blue" id="marker6"></div>
+            <div class="col-md-4 box blue" id="marker7"></div>
+            <div class="col-md-4 box blue" id="marker8"></div>
+          </div>
+          <br>
+        </div>
+      </section> -->
+
+<!-- </div> -->
+
+<!-- <table id='gameboard'>
+        <tr>
+          <td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td>
+        </tr>
+      </table> -->
+
+<!-- <div id='game'></div>
+
+                    <div class="crud">
+                      <div class="col-md-3 box">Sign Up</div>
+                      <div class="col-md-3 box">Login</div>
+                      <div class="col-md-3 box">Start Game</div>
+                      <div class="col-md-3 box">Reset</div>
+                    </div> -->
+
+
+<!-- <p id="myDiv">I am an event clicker</p>
+        <br>
+        <p> 0 </p> -->
+<!-- <div id="blah">CLICK ME</div> -->
+
+<!-- <form id="sign-up" class="border">
+                        <fieldset>
+                          <legend>Sign up!</legend>
+                          <input type="text" name="credentials[email]" placeholder="Email">
+                          <input type="password" name="credentials[password]" placeholder="Password">
+                          <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                          <input type="submit" value="Sign up!">
+                        </fieldset>
+                      </form>
+
+                      <form id="sign-in" class="border">
+                        <fieldset>
+                          <legend>Sign in!</legend>
+                          <input type="text" name="credentials[email]" placeholder="Email">
+                          <input type="password" name="credentials[password]" placeholder="Password">
+                          <input type="submit" value="Sign in!">
+                        </fieldset>
+                      </form>
+
+                      <form id="sign-out" class="border">
+                        <fieldset>
+                          <legend>Sign out!</legend>
+                          <input type="submit" value="Sign out!">
+                        </fieldset>
+                      </form> -->
+
+<!-- <div>
+                      <form id="new-game">
+                        <button type="submit">New Game</button>
+                      </form>
+                    </div>
+                    <br>
+                    <br> -->
+<!-- <div>
+                    <form id="play-again">
+                      <button type="submit">Play Again</button>
+                  </form>
+                    </div> -->
+
+
+<!-- <div>
+                      <form id="create-game">
+                        <fieldset>
+                          <legend>Create Game</legend>
+                          <input type="email" name="credentials[email]" placeholder="Email">
+                          <input type="password" name="credentials[password]" placeholder="Password">
+                          <button type="submit" class='btn btn-primary'>Create Game</button>
+                        </fieldset>
+                      </form>
+                    </div> -->
+
+<!-- <div id='myModal' class = 'modal' tabindex='-1' role = 'dialog'>
+                      <div class = 'modal-dialog' role = 'document'>
+                        <div class = 'model-content'>
+                        <div class = 'modal-footer'>
+                          <h5 class='modal-title'>Sign Up To Play</h5> -->
+<!-- <div>
+                            <form id="on-click">
+                              <fieldset>
+                                <legend>ON CLICK</legend>
+                                <button type="CLICK" class='btn btn-primary'>On Click </button>
+                              </fieldset>
+                            </form>
+                          </div> -->
+<!-- <div id='score-board'>
+                            <h6 id='sb-title'>Score</h6>
+                       -->
+<!-- <div class ='panel panel-default' id='gameboard'> -->
+<!-- <div>
+                             <form id="join-games" class='hide'>
+                               <fieldset>
+                                 <legend>Join Games</legend>
+                                 <input type="email" name="credentials[email]" placeholder="Email">
+                                 <input type="password" name="credentials[password]" placeholder="Password">
+                                 <button type="submit" class='btn btn-primary'>Join Game</button>
+                               </fieldset>
+                             </form>
+                                                           </div> -->
+
+
+<!-- <div>
+                             <form id="list-games" class='hide'>
+                               <fieldset>
+                                 <legend>List Games</legend>
+                                 <input type="email" name="credentials[email]" placeholder="Email">
+                                 <input type="password" name="credentials[password]" placeholder="Password">
+                                 <button type="submit" class='btn btn-primary'>List Games</button>
+                               </fieldset>
+                             </form>
+                           </div>
+                         </div> -->
+
+<!--
+                                               <div>
+                                                 <form id="list-games">
+                                                   <fieldset>
+                                                     <legend>List Games</legend>
+                                                     <input type="email" name="credentials[email]" placeholder="Email">
+                                                     <input type="password" name="credentials[password]" placeholder="Password">
+                                                     <button type="submit">List Games</button>
+                                                   </fieldset>
+                                                 </form>
+                                               </div> -->
