@@ -5,68 +5,6 @@ const store = require('../store.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 const gamelogic = require('./gamelogic.js')
-// const gamelogic = require('/.gamelogic.js')
-
-// DRAGONS
-// const Game = function (game = {cells: ['', '', '', '', '', '', '', ' ', ''], over: false}) {
-//   if (game) {
-//     game.id = game.id
-//     game.cells = game.cells
-//     game.over = game.over
-//   }
-//   game.currentPlayer = 'X'
-// }
-//
-// // console.log('data', data)
-// // console.log('game', game)
-// // console.log('store', store)
-// // console.log('id', id)
-//
-// let currentPlayer = 'X'
-//
-// const switchPlayer = function () {
-//   if (currentPlayer === 'X') {
-//     currentPlayer = 'O'
-//     $('#player').html('X is Playing')
-//   } else {
-//     currentPlayer = 'X'
-//     $('#player').html('O is Playing')
-//   }
-//   return currentPlayer
-// }
-//
-// const gameboard = [
-//   '', '', '',
-//   '', '', '',
-//   '', '', ''
-// ]
-//
-// const onClick = function (event) {
-//   // if (gameboard[1] === 'X' || 'O') {
-//   // console.log('check store', store)
-//   // console.log('event click check', event)
-//   // console.log(gameboard)
-//   // console.log('move updated')
-//   // console.log('event logged', event)
-//   // console.log('id', id)
-//   // console.log('game', game)
-//   // console.log('game.id', game.id)
-//   // console.log('store.game.id', store.game.id)
-//   // console.log('store.gameboard', store.gameboard)
-// }
-// // }
-//
-// const winCombos = [
-//   [0, 1, 2],
-//   [3, 4, 5],
-//   [6, 7, 8],
-//   [0, 3, 6],
-//   [1, 4, 7],
-//   [2, 5, 8],
-//   [0, 4, 8],
-//   [6, 4, 2]
-// ]
-// NOTE Dragons
 
 const clickHandler = function (event) {
   gamelogic.clickEvent(event)
@@ -145,25 +83,25 @@ const onShowGame = function (event) {
 
 const onUpdateMove = function (event) {
   event.preventDefault()
-  // console.log('move updated')
-  // console.log('event logged', event)
+  console.log('move updated')
+  console.log('event logged', event)
   // console.log('id', id)
   // console.log('game', game)
   const data = getFormFields(event.target)
   // console.log('game.id', game.id)
-  // console.log('store.game.id', store.game.id)
+  console.log('store.game.id', store.game.id)
   // console.log('store.gameboard', store.gameboard)
   // const data = store.game.id
   // const data = store.gameUpdate
-  // console.log(store.game.id)
+  console.log(store.game.id)
   // console.log('gameboard check', gameboard)
-  // console.log('store check', store)
-  // console.log('data check', data)
+  console.log('store check', store)
+  console.log('data check', data)
   // console.log('gameboard.data', gameboard.data)
-  // console.log('data.game', data.game)
+  console.log('data.game', data.game)
   // console.log('store.gameboard', store.gameboard)
   // console.log('store.gameboard.data', store.gameboard.data)
-  // console.log(data)
+  console.log(data)
   // console.log(game.id)
   // note store.gameboard causes looped preporty error cant read gameboard
   // note store.gameboard here and api line 201
@@ -173,18 +111,19 @@ const onUpdateMove = function (event) {
 }
 
 const onNewGame = function (data, event) {
-  event.preventDefault()
-  console.log('onNewGameClick', event)
-  console.log('move updated')
-  console.log('event logged', event)
+  $('table').removeClass('hide')
+  // event.preventDefault()
+  // console.log('onNewGameClick', event)
+  // console.log('move updated')
+  // console.log('event logged', event)
   // store.game = data.game
   // console.log('id', id)
   // console.log('game', game)
   // console.log('store.game.id', store.game.id)
   // console.log('store.game.id', store.game.id)
-  console.log('store.gameboard', store.gameboard)
+  // console.log('store.gameboard', store.gameboard)
   // console.log('gameboardnewcheck', gameboard)
-  console.log('store check', store)
+  // console.log('store check', store)
   // console.log('data check', data)
   // console.log('check store game id', game.id)
   console.log('newgameworking?')
@@ -202,6 +141,53 @@ const onNewGame = function (data, event) {
     .then(ui.newGameSuccess)
     .catch(ui.newGameFail)
 }
+// let currentPlayer = 'X'
+// let marker = 'text'
+// const onClickEvent = function (event) {
+//     if (currentPlayer === 'X') {
+//       $('#' + marker).html('X')
+//   } else {
+//       $('#' + marker).html('O')
+//     }
+//   }
+
+const addHandlers = function () {
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
+  $('#change-password').on('submit', onPasswordChange)
+  $('#sign-out').on('submit', onSignOut)
+  $('#list-games').on('submit', onListGames)
+  $('#create-game').on('submit', onNewGame)
+  $('#show-game').on('submit', onShowGame)
+  // $('.cell').on('click,onGameboard')
+  $('#new-game').on('click', onNewGame)
+  $('.cell').on('click', gamelogic.onClickEvent)
+  // $('#myModal').modal({backdrop: 'static'})
+  // $('#on-click').on('click, onclick')
+  // $('#join-game').on('submit', onJoinGame)
+  // $('#table').on('click', gamelogic.onClickEvent)
+  $('#marker0').on('click', gamelogic.onClickEvent)
+  $('#marker1').on('click', gamelogic.onClickEvent)
+  $('#marker2').on('click', gamelogic.onClickEvent)
+  $('#marker3').on('click', gamelogic.onClickEvent)
+  $('#marker4').on('click', gamelogic.onClickEvent)
+  $('#marker5').on('click', gamelogic.onClickEvent)
+  $('#marker6').on('click', gamelogic.onClickEvent)
+  $('#marker7').on('click', gamelogic.onClickEvent)
+  $('#marker8').on('click', gamelogic.onClickEvent)
+  // $('#markertest').on('click', gamelogicClick)
+
+  // $('#blah').on('click', alert('blah is clicked'))
+}
+
+module.exports = {
+  addHandlers,
+  onUpdateMove,
+  // winCombos,
+  // onGameboard,
+  // onClick,
+  onNewGame
+
 // //NOTE Dragons
 //   gameboard[0] = ''
 //   gameboard[1] = ''
@@ -234,159 +220,10 @@ const onNewGame = function (data, event) {
 //   onClick()
 // }
 // console.log('checkeventsline221')
-// const checkWin = function () {
-//   if (gameboard[0] === 'X' &&
-//       gameboard[1] === 'X' &&
-//       gameboard[2] === 'X'
-//   ) {
-//     $('#x-win-count').html(function (i, val) { return +val + 1 })
-//     $('#x-winner-message').html('X is Winner')
-//   } else if (
-//       gameboard[3] === 'X' &&
-//       gameboard[4] === 'X' &&
-//       gameboard[5] === 'X'
-//   ) {
-//     $('#x-win-count').html(function (i, val) { return +val + 1 })
-//     $('#x-winner-message').html('X is Winner')
-//   } else if (
-//       gameboard[6] === 'X' &&
-//       gameboard[7] === 'X' &&
-//       gameboard[8] === 'X'
-//   ) {
-//     $('#x-win-count').html(function (i, val) { return +val + 1 })
-//     $('#x-winner-message').html('X is Winner')
-//   } else if (
-//       gameboard[0] === 'X' &&
-//       gameboard[3] === 'X' &&
-//       gameboard[6] === 'X'
-//   ) {
-//     $('#x-win-count').html(function (i, val) { return +val + 1 })
-//     $('#x-winner-message').html('X is Winner')
-//   } else if (
-//       gameboard[1] === 'X' &&
-//       gameboard[4] === 'X' &&
-//       gameboard[7] === 'X'
-//   ) {
-//     $('#x-win-count').html(function (i, val) { return +val + 1 })
-//     $('#x-winner-message').html('X is Winner')
-//   } else if (
-//       gameboard[2] === 'X' &&
-//       gameboard[5] === 'X' &&
-//       gameboard[8] === 'X'
-//   ) {
-//     $('#x-win-count').html(function (i, val) { return +val + 1 })
-//     $('#x-winner-message').html('X is Winner')
-//   } else if (
-//       gameboard[0] === 'X' &&
-//       gameboard[4] === 'X' &&
-//       gameboard[8] === 'X'
-//   ) {
-//     $('#x-win-count').html(function (i, val) { return +val + 1 })
-//     $('#x-winner-message').html('X is Winner')
-//   } else if (
-//       gameboard[6] === 'X' &&
-//       gameboard[4] === 'X' &&
-//       gameboard[2] === 'X'
-//   ) {
-//     $('#x-win-count').html(function (i, val) { return +val + 1 })
-//     $('#x-winner-message').html('X is Winner')
-//     // NOTE: switch to O
-//   } else if (
-//       gameboard[0] === 'O' &&
-//       gameboard[1] === 'O' &&
-//       gameboard[2] === 'O'
-//   ) {
-//     $('#o-win-count').html(function (i, val) { return +val + 1 })
-//     $('#o-winner-message').html('O is Winner')
-//   } else if (
-//       gameboard[3] === 'O' &&
-//       gameboard[4] === 'O' &&
-//       gameboard[5] === 'O'
-//   ) {
-//     $('#o-win-count').html(function (i, val) { return +val + 1 })
-//     $('#o-winner-message').html('O is Winner')
-//   } else if (
-//       gameboard[6] === 'O' &&
-//       gameboard[7] === 'O' &&
-//       gameboard[8] === 'O'
-//   ) {
-//     $('#o-win-count').html(function (i, val) { return +val + 1 })
-//     $('#o-winner-message').html('O is Winner')
-//   } else if (
-//       gameboard[0] === 'O' &&
-//       gameboard[3] === 'O' &&
-//       gameboard[6] === 'O'
-//   ) {
-//     $('#o-win-count').html(function (i, val) { return +val + 1 })
-//     $('#o-winner-message').html('O is Winner')
-//   } else if (
-//       gameboard[1] === 'O' &&
-//       gameboard[4] === 'O' &&
-//       gameboard[7] === 'O'
-//   ) {
-//     $('#o-win-count').html(function (i, val) { return +val + 1 })
-//     $('#o-winner-message').html('O is Winner')
-//   } else if (
-//       gameboard[2] === 'O' &&
-//       gameboard[5] === 'O' &&
-//       gameboard[8] === 'O'
-//   ) {
-//     $('#o-win-count').html(function (i, val) { return +val + 1 })
-//     $('#o-winner-message').html('O is Winner')
-//   } else if (
-//       gameboard[0] === 'O' &&
-//       gameboard[4] === 'O' &&
-//       gameboard[8] === 'O'
-//   ) {
-//     $('#o-win-count').html(function (i, val) { return +val + 1 })
-//     $('#o-winner-message').html('O is Winner')
-//   } else if (
-//       gameboard[6] === 'O' &&
-//       gameboard[4] === 'O' &&
-//       gameboard[2] === 'O'
-//   ) {
-//     $('#o-win-count').html(function (i, val) { return +val + 1 })
-//     $('#o-winner-message').html('O is Winner')
-//   }
 // }
 // // NOTE Dragons
 
-const addHandlers = function () {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
-  $('#change-password').on('submit', onPasswordChange)
-  $('#sign-out').on('submit', onSignOut)
-  $('#list-games').on('submit', onListGames)
-  $('#create-game').on('submit', onNewGame)
-  $('#show-game').on('submit', onShowGame)
-  $('.cell').on('click,onGameboard')
-  $('#new-game').on('click', onNewGame)
-  $('.cell').on('click', onUpdateMove)
-  $('#myModal').modal({backdrop: 'static'})
-  $('#on-click').on('click, onclick')
-  // $('#join-game').on('submit', onJoinGame)
-  // $('#gameboard').on('click', onUpdateGame)
-  // $('#marker0').on('click', onMarkCell)
-  // $('#marker1').on('click', onUpdateGame)
-  // $('#marker2').on('click', onUpdateGame)
-  // $('#marker3').on('click', onUpdateGame)
-  // $('#marker4').on('click', onUpdateGame)
-  // $('#marker5').on('click', onUpdateGame)
-  // $('#marker6').on('click', onUpdateGame)
-  // $('#marker7').on('click', onUpdateGame)
-  // $('#marker8').on('click', onUpdateGame)
-  // $('#markertest').on('click', gamelogicClick)
-
-  // $('#blah').on('click', alert('blah is clicked'))
-}
-
-module.exports = {
-  addHandlers,
-  onUpdateMove,
-  winCombos,
-  onGameboard,
-  onNewGame,
-  onClick
+  // onClick
 
   // onClick
 }

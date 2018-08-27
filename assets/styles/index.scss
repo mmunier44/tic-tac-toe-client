@@ -10,6 +10,10 @@ $blue: rgb(65, 105, 225);
 $red: rgb(240, 128, 128);
 $boardgamecolor: $red;
 
+.unclickable {
+  pointer-events: none;
+}
+
 html {
   min-height: 100%;
   position: relative;

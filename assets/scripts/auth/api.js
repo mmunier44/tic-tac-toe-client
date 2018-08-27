@@ -127,16 +127,16 @@ const newGame = () => {
 }
 
 const updateMove = (index, value, over) => {
-  console.log('updatemovedata', data)
+  // console.log('updatemovedata', data)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
     data: {
       'game': {
         'cell': {
-          'index': `${index}`,
-          'value': `${value}`,
-          'over': `${over}`
+          // 'index': `${index}`,
+          // 'value': `${value}`,
+          // 'over': `${over}`
         }
       }
     },

@@ -2,21 +2,544 @@
 
 const store = require('../store.js')
 const api = require('./api.js')
+const markers = ['X', 'O']
+// let endGame = false
+// let turn = true
+let markerClicked
+// let cells = []
+
+let currentPlayer = 'X'
+
+const onClickEvent = function (event) {
+  markerClicked = event.target.id
+  console.log(markerClicked)
+  playerMove()
+}
+
+const playerMove = function () {
+  if (currentPlayer === 'X') {
+    currentPlayer = 'O'
+    $('#player').text('X is Playing!')
+    // let markerClicked = document.getElementById(target)
+    // let value = markers[0]
+    // $(cells).toggleClass('unclickable')
+    // markerClicked.innerHTML = markers[0]
+    // $('markerClicked').html(markers[0])
+    $('#cell').html('X')
+  } else {
+    currentPlayer = 'X'
+    $('#player').text('O is Playing!')
+    // let markerClicked = document.getElementById(target)
+    // let value = markers[1]
+    // markerClicked.innerHTML = markers[1]
+    // $('markerClicked').html(markers[1])
+    $('#cell').html('O')
+  }
+  return currentPlayer
+}
+
+const resetGame = () => {
+  console.log(markerClicked)
+  if ($('.row').hasClass('unclickable')) {
+    console.log($('.row'))
+    $('.row').removeClass('unclickable')
+  }
+  $('.row').empty()
+  // xMoves = []
+  // oMoves = []
+  turn = true
+  endGame = false
+}
 
 
-// $('#marker0').on('click', gamelogic.Click)
-// $('#marker1').on('click', gamelogic.Click)
-// $('#marker2').on('click', gamelogic.Click)
-// $('#marker3').on('click', ggamelogi.Click)
-// $('#marker4').on('click', gamelogic.Click)
-// $('#marker5').on('click', gamelogic.Click)
-// $('#marker6').on('click', gamelogic.Click)
-// $('#marker7').on('click', gamelogic.Click)
-// $('#marker8').on('click', gamelogic.Click)
+const checkWin = function () {
+  if (gameboard[0] === 'X' &&
+      gameboard[1] === 'X' &&
+      gameboard[2] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[3] === 'X' &&
+      gameboard[4] === 'X' &&
+      gameboard[5] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[6] === 'X' &&
+      gameboard[7] === 'X' &&
+      gameboard[8] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[0] === 'X' &&
+      gameboard[3] === 'X' &&
+      gameboard[6] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[1] === 'X' &&
+      gameboard[4] === 'X' &&
+      gameboard[7] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[2] === 'X' &&
+      gameboard[5] === 'X' &&
+      gameboard[8] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[0] === 'X' &&
+      gameboard[4] === 'X' &&
+      gameboard[8] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+  } else if (
+      gameboard[6] === 'X' &&
+      gameboard[4] === 'X' &&
+      gameboard[2] === 'X'
+  ) {
+    $('#x-win-count').html(function (i, val) { return +val + 1 })
+    $('#x-winner-message').html('X is Winner')
+    // NOTE: switch to O
+  } else if (
+      gameboard[0] === 'O' &&
+      gameboard[1] === 'O' &&
+      gameboard[2] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[3] === 'O' &&
+      gameboard[4] === 'O' &&
+      gameboard[5] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[6] === 'O' &&
+      gameboard[7] === 'O' &&
+      gameboard[8] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[0] === 'O' &&
+      gameboard[3] === 'O' &&
+      gameboard[6] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[1] === 'O' &&
+      gameboard[4] === 'O' &&
+      gameboard[7] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[2] === 'O' &&
+      gameboard[5] === 'O' &&
+      gameboard[8] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[0] === 'O' &&
+      gameboard[4] === 'O' &&
+      gameboard[8] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  } else if (
+      gameboard[6] === 'O' &&
+      gameboard[4] === 'O' &&
+      gameboard[2] === 'O'
+  ) {
+    $('#o-win-count').html(function (i, val) { return +val + 1 })
+    $('#o-winner-message').html('O is Winner')
+  }
+}
 
-// const currentUser = player1
+module.exports = {
+  // playerMove,
+  onClickEvent
+  // placeMarker
+  // onClick,
+  // changePlayer,
+  // placeMarker,
+  // clickEvent
+  // gameboard
+  // marker0
+  // // marker1,
+  // // onMarker2,
+  // // onMarker3,
+  // // onMarker4,
+  // // onMarker5,
+  // // onMarker6,
+  // // onMarker7,
+  // onMarker8
+}
+
+// $('#' + window.location.hash.replace(/^#\/?/, '') );
+
+// const onClickEvent = function (event) {
+//   $('#cell').html('X')
+//   $('#marker0').html(markers[0])
+//   $('#marker1').html(markers[0])
+//   $('#marker2').html(markers[0])
+//   $('#marker3').html(markers[0])
+//   $('#marker4').html(markers[0])
+//   $('#marker5').html(markers[0])
+//   $('#marker6').html(markers[0])
+//   $('#marker7').html(markers[0])
+//   $('#marker8').html(markers[0])
+// }
+
+// let onClickEvent = function (marker, currentPlayer) {
+//   if (currentPlayer === 'X') {
+//     $(cell).html('X')
+//   } else {
+//     $('#' + marker).html('O')
+//   }
+// }
+
+// const onClickEvent = function (event) {
+//   markerClicked = event.target.id
+//   console.log(markerClicked)
+//   playerMove()
+// }
+  // $('#marker0').html(markers[0])
+  // $('#marker1').html(markers[0])
+  // $('#marker2').html(markers[0])
+  // $('#marker3').html(markers[0])
+  // $('#marker4').html(markers[0])
+  // $('#marker5').html(markers[0])
+  // $('#marker6').html(markers[0])
+  // $('#marker7').html(markers[0])
+  // $('#marker8').html(markers[0])
+  // // playerMove()
+  // placeMarker()
+  // turn ? playerMove(markerClicked, markers[0]) : playerMove(markerClicked, markers[1])
 
 
+
+//
+// const placeMarker = (target, marker) => {
+//   if(currentPlayer === 'X') {
+//     currentPlayer = 'O'
+//     $('#player').text('X is Playing!')
+//     let markerClicked = document.getElementById(target)
+//     let value = markers[0]
+//     $(cells).toggleClass('unclickable')
+//     markerClicked.innerHTML = markers[0]
+//     $('markerClicked').html(markers[0])
+//     $(target).html('X')
+//   } else {
+//     currentPlayer = 'X'
+//     $('#player').text('O is Playing!')
+//     let markerClicked = document.getElementById(target)
+//     let value = markers[1]
+//     markerClicked.innerHTML = markers[1]
+//     $('markerClicked').html(markers[1])
+//     $(target).html('O')
+//   }
+//   return currentPlayer
+// }
+
+// }
+
+// let clickEvent = function (marker, currentPlayer) {
+//   if (currentPlayer === 'X') {
+//     $('#' + marker).html('X')
+//   } else {
+//     $('#' + marker).html('O')
+//   }
+// }
+
+// const changePlayer = function () {
+//   if (store.currentPlayer === 'X') {
+//     $(store.onClick.target).text('X')
+//     store.currentPlayer = 'O'
+//     $('#message').text(store.currentPlayer + "'s turn")
+//   } else {
+//     $(store.onClick.target).text('O')
+//     store.currentPlayer = 'X'
+//     $('#message').text(store.currentPalyer + "'s turn")
+//   }
+
+// $("#table").click(function() {
+//   if ($(this).text()=="")
+// }
+
+// let onClick = function (boxId, currentPlayer) {
+//   if (currentPlayer == 0) {
+//     $('#' + boxId).html('X')
+//   } else {
+//     $('#' + boxId).html('O')
+//   }
+// }
+// $('#message').text('Sign Out Successful')
+// let marker = 'X'
+// const onClickEvent = function (event) {
+//   $('#marker0').html(markers[0])
+//   $('#marker1').html(markers[0])
+//   $('#marker2').html(markers[0])
+//   $('#marker3').html(markers[0])
+//   $('#marker4').html(markers[0])
+//   $('#marker5').html(markers[0])
+//   $('#marker6').html(markers[0])
+//   $('#marker7').html(markers[0])
+//   $('#marker8').html(markers[0])
+
+  // $('#' + marker).html('O')
+// }
+
+// const clickEvent = function (event) {
+//   markerClicked = event.target.id
+//
+//     }
+
+// const placeMarker = (target, marker) => {
+//   let markerClicked = document.getElementbyId(target)
+//   let value = marker
+//   markerClicked.innerHTML = marker
+//
+// }
+//
+
+//
+// const changePlayer = function () {
+//     if (!this.currentPlayer || this.currentPlayer === 'O') {this.currentPlayer = 'X';
+//   } else { this.currentPlayer = 'O'}
+// }
+//
+// const nextTurn = function () {
+//   this.turn = (this.turn === 0) ? 'X' : 'O'
+//   this.winConditions = this.checkWinConditions()
+//   if (this.winConditions) {
+//     this.endGame()
+//   }
+// // }
+//
+// const tieGame = function () {
+//   if(checkWin === false) {
+//     return endGame()
+//   }
+// }
+//
+// const endGame = function () {
+
+// }
+
+// let clearBoard = function(gameboard) {
+//   for (let i = 0; i < 9; i++) {
+//     gameboard.cells[i] = ''
+//   }
+
+// let gameboard = [
+//   '', '', '',
+//   '', '', '',
+//   '', '', ''
+// ]
+// //
+// const winConditions = [
+//   [0, 1, 2],
+//   [3, 4, 5],
+//   [6, 7, 8],
+//   [0, 3, 6],
+//   [1, 4, 7],
+//   [2, 5, 8],
+//   [0, 4, 8],
+//   [2, 4, 6]
+// ]
+
+  // let onClick = function (boxId, currentPlayer) {
+//   if (gameboard[1] === 'X' || 'O') {
+//   // console.log('check store', store)
+//   // console.log('event click check', event)
+//   // console.log(gameboard)
+//   // console.log('move updated')
+//   // console.log('event logged', event)
+//   // console.log('id', id)
+//   // console.log('game', game)
+//   // console.log('game.id', game.id)
+//   // console.log('store.game.id', store.game.id)
+//   // console.log('store.gameboard', store.gameboard)
+
+// }
+
+// const onMarker0 = function (event) {
+//   event.preventDefault()
+//   if ($('#marker0').text() === '' && !winConditions) {
+//     $('#marker0').text(currentPlayer)
+//     markers[0] = currentPlayer
+//     api.updateGame(0, currentPlayer)
+//     checkWin()
+//     // nextTurn()
+//   } else {
+//     $('#message').text('Try another Square')
+//   }
+// }
+//
+// const onMarker1 = function(event) {
+//   event.preventDefault()
+//   if ($('#marker1').text() === '' && !winConditions) {
+//     $('#marker1').text(currentPlayer)
+//     gameboard[1] = currentPlayer
+//     api.updateGame(1, currentPlayer)
+//     // api.updateGame()
+//     checkWin()
+//     nextTurn()
+//   } else {
+//     $('#message').text('Try another Square')
+//   }
+// }
+//
+// const onMarker2 = function(event) {
+//   event.preventDefault()
+//   if ($('#marker2').text() === '' && !winConditions) {
+//     $('#marker2').text(currentPlayer)
+//     gameboard[2] = currentPlayer
+//     api.updateGame(2, currentPlayer)
+//     checkWin()
+//     nextTurn()
+//   } else {
+//     $('#message').text('Try another Square')
+//   }
+// }
+//
+// const onMarker3 = function(event) {
+//   event.preventDefault()
+//   if ($('#marker3').text() === '' && !winConditions) {
+//     $('#marker3').text(currentPlayer)
+//     gameboard[3] = currentPlayer
+//     api.updateGame(3, currentPlayer)
+//     checkWin()
+//     nextTurn()
+//   } else {
+//     $('#message').text('Try another Square')
+//   }
+// }
+//
+// const onMarker4 = function(event) {
+//   event.preventDefault()
+//   if ($('#marker4').text() === '' && !winConditions) {
+//     $('#marker4').text(currentPlayer)
+//     gameboard[4] = currentPlayer
+//     api.updateGame(4, currentPlayer)
+//     checkWin()
+//     nextTurn()
+//   } else {
+//     $('#message').text('Try another Square')
+//   }
+// }
+//
+// const onMarker5 = function(event) {
+//   event.preventDefault()
+//   if ($('#marker5').text() === '' && !winConditions) {
+//     $('#marker5').text(currentPlayer)
+//     gameboard[5] = currentPlayer
+//     api.updateGame(5, currentPlayer)
+//     checkWin()
+//     nextTurn()
+//   } else {
+//     $('#message').text('Try another Square')
+//   }
+// }
+//
+// const onMarker6 = function(event) {
+//   event.preventDefault()
+//   if ($('#marker6').text() === '' && !winConditions) {
+//     $('#marker6').text(currentPlayer)
+//     gameboard[6] = currentPlayer
+//     api.updateGame(6, currentPlayer)
+//     checkWin()
+//     nextTurn()
+//   } else {
+//     $('#message').text('Try another Square')
+//   }
+// }
+//
+// const onMarker7 = function(event) {
+//   event.preventDefault()
+//   if ($('#marker7').text() === '' && !winConditions) {
+//     $('#marker7').text(currentPlayer)
+//     gameboard[7] = currentPlayer
+//     api.updateGame(7, currentPlayer)
+//     checkWin()
+//     nextTurn()
+//   } else {
+//     $('#message').text('Try another Square')
+//   }
+// }
+//
+// const onMarker8 = function(event) {
+//   event.preventDefault()
+//   if ($('#marker8').text() === '' && !winConditions) {
+//     $('#marker8').text(currentPlayer)
+//     gameboard[8] = currentPlayer
+//     api.updateGame(8, currentPlayer)
+//     checkWin()
+//     nextTurn()
+//   } else {
+//     $('#message').text('Try another Square')
+//   }
+// }
+
+
+// const endGame = function () {
+//   if (this.winConditions === 'player1') {
+//     $('#scoreboard').html('player1 wins!')
+//   } else {
+//     $('#scoreboard').html(this.winConditions + 'player2 wins!')
+//   }
+  // $('#scoreboard').append('<form id='play-again;>Play Again</form>
+  //
+  // $('#scoreboard').newgame
+
+//   $('#new-game').click(function () {
+//     ticTacToe.restartGame()
+//   })
+//   $('#scoreboard').show()
+//   this.winConditions = false
+// }
+
+// // NOTE: Talking Point Add check for blanks
+// const checkWinConditionsShort = function () {
+//   for (check in this.winConditions) {
+//     const winCombo = this.winConditions[check]
+//     const winner = this.gameboard[winCombo[0]] + this.gameboard[winCombo[1]] + this.gameboard[winCombo[2]]
+//     if (winner === 'XXX') {
+//       return 'player1 won'
+//     } else if (winner === 'OOO') {
+//       return 'player2 won'
+//     }
+//     else return tiegame()
+//   }
+// }
+
+// }
+
+// const winCombos = [
+//   [0, 1, 2],
+//   [3, 4, 5],
+//   [6, 7, 8],
+//   [0, 3, 6],
+//   [1, 4, 7],
+//   [2, 5, 8],
+//   [0, 4, 8],
+//   [6, 4, 2]
+// ]
+
+// NOTE Dragons
 
 
 // const space = ('#' + id)
@@ -48,21 +571,9 @@ const api = require('./api.js')
 //     ]
 //   }
 //
-//   const winConditions = [
-//       [0, 1, 2],
-//       [3, 4, 5],
-//     [6, 7, 8],
-//       [0, 3, 6],
-//       [1, 4, 7],
-//       [2, 5, 8],
-//       [0, 4, 8],
-//       [2, 4, 6]
-//     ]
-
 
 // module.exports = {
 //   checkWinConditions,
-//   endGame,
 //   nextTurn,
 //   move,
 //   restartGame,
@@ -98,137 +609,15 @@ const api = require('./api.js')
 //   onClick
 // }
 
-
 // const authEvents = require('./auth/events.js')
 //
 // $('#gameboard').click(function(event) {
-//   let boxId = $(this.attr('id'))
 //   console.log('check store', store)
 //   store.game.id = boxId
 //   ticTacToe.move(event.target.id)
 // })
 
-// const onMarker0 = function(event) {
-//   event.preventDefault()
-//   if ($('#marker0').text() === '' && !winConditions) {
-//     $('#marker0').text(currentUser)
-//     gameboard[0] = currentUser
-//     api.updateGame(0, currentUser)
-//     checkWinConditions()
-//     nextTurn()
-//   } else {
-//     $('#message').text('Try another Square')
-//   }
-// }
-//
-// const onMarker1 = function(event) {
-//   event.preventDefault()
-//   if ($('#marker1').text() === '' && !winConditions) {
-//     $('#marker1').text(currentUser)
-//     gameboard[1] = currentUser
-//     api.updateGame(1, currentUser)
-//     // api.updateGame()
-//     checkWinConditions()
-//     nextTurn()
-//   } else {
-//     $('#message').text('Try another Square')
-//   }
-// }
-//
-// const onMarker2 = function(event) {
-//   event.preventDefault()
-//   if ($('#marker2').text() === '' && !winConditions) {
-//     $('#marker2').text(currentUser)
-//     gameboard[2] = currentUser
-//     api.updateGame(2, currentUser)
-//     checkWinConditions()
-//     nextTurn()
-//   } else {
-//     $('#message').text('Try another Square')
-//   }
-// }
-//
-// const onMarker3 = function(event) {
-//   event.preventDefault()
-//   if ($('#marker3').text() === '' && !winConditions) {
-//     $('#marker3').text(currentUser)
-//     gameboard[3] = currentUser
-//     api.updateGame(3, currentUser)
-//     checkWinConditions()
-//     nextTurn()
-//   } else {
-//     $('#message').text('Try another Square')
-//   }
-// }
-//
-// const onMarker4 = function(event) {
-//   event.preventDefault()
-//   if ($('#marker4').text() === '' && !winConditions) {
-//     $('#marker4').text(currentUser)
-//     gameboard[4] = currentUser
-//     api.updateGame(4, currentUser)
-//     checkWinConditions()
-//     nextTurn()
-//   } else {
-//     $('#message').text('Try another Square')
-//   }
-// }
-//
-// const onMarker5 = function(event) {
-//   event.preventDefault()
-//   if ($('#marker5').text() === '' && !winConditions) {
-//     $('#marker5').text(currentUser)
-//     gameboard[5] = currentUser
-//     api.updateGame(5, currentUser)
-//     checkWinConditions()
-//     nextTurn()
-//   } else {
-//     $('#message').text('Try another Square')
-//   }
-// }
-//
-// const onMarker6 = function(event) {
-//   event.preventDefault()
-//   if ($('#marker6').text() === '' && !winConditions) {
-//     $('#marker6').text(currentUser)
-//     gameboard[6] = currentUser
-//     api.updateGame(6, currentUser)
-//     checkWinConditions()
-//     nextTurn()
-//   } else {
-//     $('#message').text('Try another Square')
-//   }
-// }
-//
-// const onMarker7 = function(event) {
-//   event.preventDefault()
-//   if ($('#marker7').text() === '' && !winConditions) {
-//     $('#marker7').text(currentUser)
-//     gameboard[7] = currentUser
-//     api.updateGame(7, currentUser)
-//     checkWinConditions()
-//     nextTurn()
-//   } else {
-//     $('#message').text('Try another Square')
-//   }
-// }
-//
-// const onMarker8 = function(event) {
-//   event.preventDefault()
-//   if ($('#marker8').text() === '' && !winConditions) {
-//     $('#marker8').text(currentUser)
-//     gameboard[8] = currentUser
-//     api.updateGame(8, currentUser)
-//     checkWinConditions()
-//     nextTurn()
-//   } else {
-//     $('#message').text('Try another Square')
-//   }
-// }
-
 // $('#gameboard').on('click','#marker0', function(event) {
-//   const $'#marker0' = $(event.currentTarget)
-//   $marker0.addClass('square-X')
 // })
 
 // const markerTest = function() {
@@ -252,62 +641,6 @@ const api = require('./api.js')
 //   }
 // }
 
-// const nextTurn = function () {
-//   this.turn = (this.turn === 0) ? 'X' : 'O'
-//   this.winConditions = this.checkWinConditions()
-//   if (this.winConditions) {
-//     this.endGame()
-//   }
-// }
-//
-// const endGame = function () {
-//   if (this.winConditions === 'player1') {
-//     $('#scoreboard').html('player1 wins!')
-//   } else {
-//     $('#scoreboard').html(this.winConditions + 'player2 wins!')
-//   }
-//   // $('#scoreboard').append('<form id='play-again;>Play Again</form>
-//   //
-//   // $('#scoreboard').newgame
-//
-//   $('#new-game').click(function () {
-//     ticTacToe.restartGame()
-//   })
-//   $('#scoreboard').show()
-//   this.winConditions = false
-// }
-//
-// // NOTE: Talking Point Add check for blanks
-// const checkWinConditions = function () {
-//   for (check in this.winConditions) {
-//     const winCombo = this.winConditions[check]
-//     const winner = this.gameboard[winCombo[0]] + this.gameboard[winCombo[1]] + this.gameboard[winCombo[2]]
-//     if (winner === 'XXX') {
-//       return 'player1 won'
-//     } else if (winner === 'OOO') {
-//       return 'player2 won'
-//     }
-//     else return tiegame()
-//   }
-// }
-//
-//   let count = 0
-//   for (space in this.gameboard) {
-//     if (this.gameboard[space]) {
-//       count += 1
-//     }
-//     if (count === 9) {
-//       return 'player1'
-//     }
-//   }
-// }
-//
-// const tieGame = function () {
-//   if(checkWinConditionsLong === false) {
-//     return endGame()
-//   }
-// }
-
 // [0, 1, 2],
 // [3, 4, 5],
 // [6, 7, 8],
@@ -316,29 +649,6 @@ const api = require('./api.js')
 // [2, 5, 8],
 // [0, 4, 8],
 // [2, 4, 6]
-
-// // NOTE:  Add check for blanks
-// const checkWinConditionsLong = function () {
-//   if (gameboard.cells[0] === gameboard.cells[1] && gameboard.cells[1] === gameboard.cells[2]) {
-//     return endGame()
-//   } else if (gameboard.cells[3] === gameboard.cells[4] && gameboard.cells[4] === gameboard.cells[5]) {
-//     return endGame()
-//   } else if (gameboard.cells[6] === gameboard.cells[7] && gameboard.cells[7] === gameboard.cells[8]) {
-//     return endGame()
-//   } else if (gameboard.cells[0] === gameboard.cells[3] && gameboard.cells[3] === gameboard.cells[6]) {
-//     return endGame()
-//   } else if (gameboard.cells[1] === gameboard.cells[4] && gameboard.cells[4] === gameboard.cells[7]) {
-//     return endGame()
-//   } else if (gameboard.cells[2] === gameboard.cells[5] && gameboard.cells[5] === gameboard.cells[8]) {
-//     return endGame()
-//   } else if (gameboard.cells[0] === gameboard.cells[4] && gameboard.cells[4] === gameboard.cells[8]) {
-//     return endGame()
-//   } else if (gameboard.cells[2] === gameboard.cells[4] && gameboard.cells[4] === gameboard.cells[6]) {
-//     return endGame()
-//   } else {
-//     return tieGame()
-//   }
-// }
 
 // $(document).ready(function() {
 //       console.log('ready steady!')
@@ -407,25 +717,8 @@ const api = require('./api.js')
 // //
 // // }
 
-// let onClick = function (boxId, currentPlayer) {
-//   if (currentPlayer === 0) {
-//     $('#'+boxId).html('X')
-//   } else {
-//     $('#'+boxId).html('O')
-//   }
-// }
-
-
-
-
 // $('<img/>')
 // .attr('src','Tic_Tac_Toc_Color.png')
-// .appendTo('#gamediv')
-//
-// var img = document.createElement('img')
-// img.src = "https://imgur.com/a/7wpBH3y"
-//
-// var src = document.getElementById('header')
 // src.appendChild(img)
 //
 // $('#blah').click(function() {
@@ -485,15 +778,6 @@ const api = require('./api.js')
 //   }
 // }
 //
-// const changePlayer = function () {
-//     if (!this.player || this.player === 'o') {this.player = 'x';
-//   } else {this.player = 'o'}
-// }
-//
-// let clearBoard = function(gamestate) {
-//   for (let i = 0; i < 9; i++) {
-//     gamestate.cells[i] = ''
-//   }
 //
 // $('#gameboard').children().html('')
 //

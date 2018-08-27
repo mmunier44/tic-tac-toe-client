@@ -44,7 +44,7 @@ const signInSuccess = function (response) {
   $('#new-game').removeClass('hide')
   $('#list-games').removeClass('hide')
   $('#join-games').removeClass('hide')
-  $('table').removeClass('hide')
+  // $('table').removeClass('hide')
   $('play-count').removeClass('hide')
   $('x-win count').removeClass('hide')
   $('o-win count').removeClass('hide')
@@ -126,6 +126,7 @@ const listGamesFail = function (response) {
 const createGameSuccess = (data) => {
   console.log('Game ID: ', data.game.id)
   store.game = data.game
+  $('table').removeClass('hide')
   console.log('store', store)
   console.log('data.game.id', data.game.id)
   console.log('newstoregame', store.game)
@@ -143,6 +144,15 @@ const createGameSuccess = (data) => {
 }
 
 const newGameSuccess = function (data) {
+  console.log('gameid', data.game.id)
+  store.game = data.game
+  console.log('store', store)
+  console.log('data.game.id', data.game.id)
+  console.log('store.game', store.game)
+  console.log('data.game', data.game)
+  console.log('game', game)
+  // console.log('id', id)
+  console.log('game.id', game.id)
   $('#table').show()
   $('#play-count').html(function (i, val) { return +val + 1 })
   $('x-winner-message').html('')
@@ -238,7 +248,7 @@ const updateGame = (data) => {
 
 module.exports = {
   signUpSuccess,
-  updateGame,
+  // updateGame,
   signUpFail,
   signInSuccess,
   signInFail,

@@ -3,7 +3,7 @@
 const store = {
 }
 
-// const gameUpdate = {
+// let gameUpdate = {
 //   game: {
 //     cell: {
 //       index: NaN,
